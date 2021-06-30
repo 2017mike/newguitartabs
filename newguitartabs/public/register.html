@@ -10,25 +10,27 @@
   <link rel="stylesheet" href="./assets/css/reset.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Benne&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/register.css">
 
 
   <style>
     body {
-      font-family: B612, arial;
+      font-family: Cutive Mono, arial;
   
-      background: black;
+       background: #222;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://cdn.pixabay.com/photo/2015/08/29/23/14/angel-913630_1280.png');
       background-repeat: no-repeat;
-      background-size: cover;
+      background-size: contain;
       background-position: center center;
       padding-top: 0 !important;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 112vh;
+      height: 120vh;
+      
       padding-right: 0 !important;
       z-index: 0 !important;
     }
@@ -54,11 +56,22 @@
   
     .container {
       animation: showUp 0.5s cubic-bezier(0.18, 1.3, 1, 1) forwards;
+      
     }
   
-    .myLog {
+    /* .myLog {
       padding-right: 10px;
       padding-left: 10px;
+     
+    } */
+
+    @media screen and (max-width: 676px) {
+  .myFont {
+    font-size:xx-large;
+  }
+}
+ .myInput {
+       font-family: Cutive Mono, arial;
     }
   </style>
 
@@ -67,13 +80,16 @@
 <body>
   <div class="container">
   <div class="row">
-    <div class="col m5  s12 white-text center myRow ">
-      <h2 class="myFont">Big Mike's Guitar Tabs</h2>
+    <div class="col m6  s12 white-text center myRow ">
+      <h2 class="myFont">BigMike's Guitar Tabs</h2>
+
+      
+    
     
     </div>
-    <div class="z-depth-1 grey lighten-4   myLog  col s12 m6 offset-m1"
-      style="display: inline-block; padding: 32px 30px 0px 48px; border: 1px solid #EEE; margin-top: 12px;">
-      <h5 class="black-text center">Create an account</h5>
+    <div class="z-depth-1 transparent   myLog  col s12 m6 "
+      style="display: inline-block; padding: 32px 32px 0px 32px; border: 1px solid #EEE; margin-top: 12px;">
+      <h5 class="white-text center">Create an account</h5>
       <form class="col s12 " method="post">
         <div class='row center-align'>
           <div class='col s12'>
@@ -82,13 +98,13 @@
         <div class='row'>
           <div class='input-field col s12'>
             <label for='email'></label>
-            <input class='validate' name='email' id='username' />
+            <input class='validate white-text myInput' name='email' id='username' />
             <p class="usernameField">choose a username</p>
           </div>
         </div>
         <div class='row'>
           <div class='input-field col s12'>
-            <input class='validate' type='password' name='password' id='password' />
+            <input class='validate white-text myInput' type='password' name='password' id='password' />
             <label for='password'></label>
             <p class="usernameField">choose a password</p>
           </div>
@@ -102,7 +118,7 @@
             <div class='col s12'></div>
             <div class='col s12'></div>
             <a type='submit' name='btn_login'
-              class='col s12 btn btn-large waves-effect #689f38 #33691e light-green darken-4' id='register'
+              class='col s12 btn btn-large waves-effect black' id='register'
               href="/register.html">Create Account</a>
             <div class='col s12'></div>
           </div>
