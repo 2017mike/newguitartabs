@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <title>Document</title>
+
+  <style>
+    body {
+      font-family: 'Benne', serif;
+
+      background: black;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+
+
+    @keyframes showUp {
+      0% {
+        transform: scale(0);
+      }
+
+      100% {
+        transoform: scale(1);
+      }
+    }
+
+    .container {
+      z-index: -1 !important;
+      animation: showUp 0.5s cubic-bezier(0.18, 1.3, 1, 1) forwards;
+    }
+
+    .nav-wrapper {
+      background-color: black;
+    }
+
+    .brand-logo {
+      margin-left: 1%;
+    }
+
+    .card-image {
+      background-position: top !important;
+      height: 300px;
+    }
+
+    .card {
+      height: 410px;
+    }
+
+    .image-reveal {
+      width: 100%;
+    }
+
+    .btn-floating {
+      position: fixed;
+      right: 20px;
+      bottom: 10px;
+    }
+
+    .nav-wrapper a:hover {
+      background: #ddd;
+      color: black;
+    }
+
+    .viewPost {
+      padding-bottom: 10px !important;
+    }
+
+    .homeDiv {
+      margin-bottom: 0px;
+    }
+
+    .active {
+      background-color: grey !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="nav-content ">
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper black">
+          <a href="" class="brand-logo" id="logoButton">Big Mike's Guitar Tabs</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li id="homePage" ><a href="/home">Home</a></li>
+            <li id="profilePage" class='active'><a href="/profile">Tabs</a></li>
+            <li id="aboutPage"><a href="/about">My Profile</a></li>
+            <li id="signOut"><a href="">Sign Out</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <ul class="sidenav" id="mobile-demo" style="width: 50vw;">
+      <li id="homePageNav"><a href="">Home</a></li>
+      <li id="profilePageNav"><a href="">My Profile</a></li>
+      <li id="aboutPageNav"><a href="">About</a></li>
+      <li id="signOutNav"><a href="">Sign Out</a></li>
+    </ul>
+
+
+
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</body>
+
+</html>
