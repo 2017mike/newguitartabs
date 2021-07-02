@@ -37,8 +37,9 @@
       background-size: cover;
       background-position: center center;
       padding-top: 0 !important;
-      justify-content: center;
-      align-items: center;
+      /* justify-content: center; */
+      display: flex;
+      /* align-items: center; */
       height: 150vh;
       padding-right: 0 !important;
       z-index: 0 !important;
@@ -72,7 +73,11 @@
 
  .myContainer {
    animation: showUp 0.5s cubic-bezier(0.18, 1.3, 1, 1) forwards;
-   background:rgba(255, 255, 255, 0.75)
+   background:rgba(255, 255, 255, .99);
+   /* width: 90vw; */
+   justify-content: center;
+   display: flex;
+   align-items: center;
  }
 
   .myCreate {
@@ -81,10 +86,19 @@
     width: 100%;
   }
 
-  @media screen and (max-width: 1100px) {
+  @media screen and (max-width: 725px) {
   .myCreate {
     font-size:11px;
   }
+}
+
+placeholder {
+  color: black;
+}
+
+.myCenter {
+  display: flex;
+  justify-content: center;
 }
 
 
@@ -99,25 +113,27 @@
           <a href="" class="brand-logo myLogo" id="logoButton">BigMike's Guitar Tabs</a>
           <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
-            <li id="homePage" class='active'><a href="/home">Home</a></li>
-            <li id="tabs"><a href="/tabs">Tabs</a></li>
-            <li id="myProfile"><a href="/profile">My Profile</a></li>
-            <li id="signOut"><a href="">Sign Out</a></li>
+            <li id="homePage" class='active'><a href="index.html">Home</a></li>
+            <li id="tabs"><a href="tabs.html">Tabs</a></li>
+            <li id="myProfile"><a href="myprofile.html">My Profile</a></li>
+            <li id="signOut"><a href="login.html">Sign Out</a></li>
           </ul>
         </div>
       </nav>
     </div>
     <ul class="sidenav" id="mobile-demo" style="width: 50vw;">
-      <li id="homePageNav"><a href="">Home</a></li>
-      <li id="profilePageNav"><a href="">My Profile</a></li>
+      <li id="homePageNav"><a href="index.html">Home</a></li>
+      <li id="profilePageNav"><a href="myprofile.html">My Profile</a></li>
       <li id="aboutPageNav"><a href="">About</a></li>
-      <li id="signOutNav"><a href="">Sign Out</a></li>
+      <li id="signOutNav"><a href="login.html">Sign Out</a></li>
     </ul>
 
 
 
 <div class="space"></div>
+<div class="myCenter">
 <div class="myContainer">
+ 
   <div class="row">
     <div class="col m10 offset-m1">
       <form method="GET" id='post_form'>
@@ -145,7 +161,7 @@
 
         <div class="row">
           <div class="input-field col s12 ">
-          <textarea name="" id="tabField" cols="30" rows="30" class="myCreate black-text"> 
+          <textarea name="" id="tabField" cols="30" rows="30" class="myCreate black-text center"> 
           E--------------------------------------------------------
           B--------------------------------------------------------
           G--------------------------------------------------------
@@ -160,6 +176,10 @@
         
   
             <button class="center" id="clearTemplate">Clear</button>
+
+            <br>
+            <br>
+            
 
 
             <p>
@@ -192,6 +212,7 @@
         id="create">Submit</button>
     </div>
   </div>
+</div>
 </div>
 
 
