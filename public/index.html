@@ -104,7 +104,10 @@
             <li id="homePage" class='active'><a href="/home">Home</a></li>
             <li id="tabs"><a href="/tabs">Tabs</a></li>
             <li id="myProfile"><a href="/profile">My Profile</a></li>
-            <li id="signOut"><a href="">Sign Out</a></li>
+            <div id="signOutConditional">
+
+            </div>
+            <!-- <li id="signOut"><a href="/login">Sign Out</a></li> -->
           </ul>
         </div>
       </nav>
@@ -143,6 +146,27 @@
   var elems = document.querySelectorAll('select');
   var instances = M.FormSelect.init(elems, options);
   });
+
+  function displaySignOut() {
+      
+    localStorage.getItem('token')
+    if ('token') {
+      const signOut1 = document.createElement('li')
+      signOut1.innerHTML = `
+      <li id="signOut"><a href="/login">Sign Out</a></li>
+      `
+      document.getElementById('signOutConditional').append(signOut1)
+    } else {
+      const signOut2 = document.createElement('li')
+      signOut1.innerHTML = `
+      <li id="logInButton"><a href="/login">Log In</a></li>
+      `
+      document.getElementById('signOutConditional').append(signOut2)
+    } 
+
+    
+  }
+  
   
   
   
