@@ -116,8 +116,8 @@
               <div class='col s12'></div>
               <div class='col s12'></div>
               <div class='col s12'></div>
-              <a type='submit' name='btn_login' class='col s12 btn btn-large waves-effect black' id='register'
-                href="/register.html">Log In</a>
+              <a type='submit' name='btn_login' class='col s12 btn btn-large waves-effect black' id='login'
+                >Log In</a>
 
                 <div class='col s12'></div>
                 <div class='col s12'></div>
@@ -136,8 +136,31 @@
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <script>
+    document.getElementById('login').addEventListener('click', event => {
+        event.preventDefault()
+        axios.post('/api/users/login', {
+          username: document.getElementById('username').value,
+          password: document.getElementById('password').value
+        })
+          .then(({ data: token }) => {
+            if (token) {
+              localStorage.setItem('token', token)
+              window.location = '/'
+            } else {
+              alert('Invalid username or password')
+            }
+          })
+          .catch(err => console.error(err))
+      })
+
+      document.getElementById('register').addEventListener('click', event => {
+        window.location = '/register'
+      })
+  </script>
   <!-- our javascript -->
-  <script src="./assets/js/register.js"></script>
+ 
 </body>
 
 </html>
