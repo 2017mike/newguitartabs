@@ -222,6 +222,7 @@ placeholder {
   
   
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script>
   //this is for hamburger, signout and navbar buttons
@@ -272,33 +273,33 @@ placeholder {
 
 
 
-    document.getElementById('logoButton').addEventListener('click', event => {
-      window.location = '/home'
-    })
+    // document.getElementById('logoButton').addEventListener('click', event => {
+    //   window.location = '/home'
+    // })
 
-    document.getElementById('homePage').addEventListener('click', event => {
-      window.location = '/home'
-    })
+    // document.getElementById('homePage').addEventListener('click', event => {
+    //   window.location = '/home'
+    // })
 
-    document.getElementById('homePageNav').addEventListener('click', event => {
-      window.location = '/home'
-    })
+    // document.getElementById('homePageNav').addEventListener('click', event => {
+    //   window.location = '/home'
+    // })
 
-    document.getElementById('profilePage').addEventListener('click', event => {
-      window.location = '/profile'
-    })
+    // document.getElementById('profilePage').addEventListener('click', event => {
+    //   window.location = '/profile'
+    // })
 
-    document.getElementById('profilePageNav').addEventListener('click', event => {
-      window.location = '/profile'
-    })
+    // document.getElementById('profilePageNav').addEventListener('click', event => {
+    //   window.location = '/profile'
+    // })
 
-    document.getElementById('aboutPage').addEventListener('click', event => {
-      window.location = '/aboutus'
-    })
+    // document.getElementById('aboutPage').addEventListener('click', event => {
+    //   window.location = '/aboutus'
+    // })
 
-    document.getElementById('aboutPageNav').addEventListener('click', event => {
-      window.location = '/aboutus'
-    })
+    // document.getElementById('aboutPageNav').addEventListener('click', event => {
+    //   window.location = '/aboutus'
+    // })
 
     document.getElementById('signOut').addEventListener('click', event => {
       localStorage.removeItem('token')
@@ -309,6 +310,28 @@ placeholder {
       localStorage.removeItem('token')
       window.location = '/login'
     })
+
+
+    document.getElementById('create').addEventListener('click', event => {
+        event.preventDefault()
+        
+
+        console.log(tabField.value)
+        let newPost = {
+          body: document.getElementById('tabField').value,
+        }
+
+
+        axios.post('/api/posts', newPost, {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+          .then(res => {
+            console.log(res)
+            // window.location = '/home'
+          })
+      })
   
 
 </script>
