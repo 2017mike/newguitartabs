@@ -60,33 +60,27 @@
       margin-left: 1%;
     }
 
-    .card-image {
+    /* .card-image {
       background-position: top !important;
       height: 300px;
-    }
+    } */
 
-    .card {
-      height: 410px;
-    }
+    /* .card {
+      height: 450px;
+    } */
 
-    .image-reveal {
-      width: 100%;
-    }
+  
 
-    .btn-floating {
-      position: fixed;
-      right: 20px;
-      bottom: 10px;
-    }
+   
 
     .nav-wrapper a:hover {
       background: #ddd;
       color: black;
     }
 
-    .viewPost {
+    /* .viewPost {
       padding-bottom: 10px !important;
-    }
+    } */
 
     .homeDiv {
       margin-bottom: 0px;
@@ -109,8 +103,9 @@
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <li id="homePage" class='active'><a href="/">Home</a></li>
-          <li id="tabs"><a href="/tabs">Tabs</a></li>
+          <!-- <li id="tabs"><a href="/tabs">Tabs</a></li> -->
           <li id="profilePage"><a href="/profile">My Profile</a></li>
+          <li id="createNav"><a href="/create">Create</a></li>
           <li id="signOutConditional"></li>
 
         </ul>
@@ -120,7 +115,8 @@
   <ul class="sidenav" id="mobile-demo" style="width: 50vw;">
     <li id="homePageNav"><a href="/">Home</a></li>
     <li id="profilePageNav"><a href="/profile">My Profile</a></li>
-    <li id="aboutPageNav"><a href="/tabs">Tabs</a></li>
+    <li id="createSideNav"><a href="/create">Create</a></li>
+    <!-- <li id="tabsNav"><a href="/tabs">Tabs</a></li> -->
     <li id="signOutNav"></li>
   </ul>
 
@@ -167,16 +163,16 @@
                 let artist = res.data
                 console.log(artist)
 
-                if (artist.artists[0].strArtistThumb) {
+                if (artist.artists[0].strArtistThumb != null) {
                   document.getElementById('renderCards').innerHTML += `
       <div class="col s12 m4">
         <div class="card #424242 grey darken-3">
           <div class="card-image waves-effect">
-            <img  src=${artist.artists[0].strArtistThumb} alt="image not found">
+            <img  class="viewPost" src=${artist.artists[0].strArtistThumb} data-id=${post.id} alt="image not found">
           </div>
           <div class="card-content center-align">
             
-            <span class="card-title activator white-text text-darken-4 myTitle">${post.song} <br> ${post.artist}</span>
+            <span class="card-title  white-text text-darken-4 myTitle">${post.song} <br> ${post.artist}</span>
             <a class="waves-effect waves-light btn viewPost black" data-id=${post.id}>view</a>
           </div>
          
@@ -221,7 +217,7 @@
     })
 
 
-    
+
     //this is for hamburger, signout and navbar buttons
 
     //for hamburger menu

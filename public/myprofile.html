@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
-  <title>Document</title>
+  <title>My Profile</title>
 
   <style>
     body {
@@ -43,6 +43,9 @@
     }
 
 
+     .myTitle {
+      font-size: 16px !important;
+    }
 
 
 
@@ -54,7 +57,7 @@
       margin-left: 1%;
     }
 
-    .card-image {
+    /* .card-image {
       background-position: top !important;
       height: 300px;
     }
@@ -65,13 +68,8 @@
 
     .image-reveal {
       width: 100%;
-    }
+    } */
 
-    .btn-floating {
-      position: fixed;
-      right: 20px;
-      bottom: 10px;
-    }
 
     .nav-wrapper a:hover {
       background: #ddd;
@@ -102,8 +100,9 @@
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <li id="homePage" ><a href="/">Home</a></li>
-          <li id="tabs"><a href="/tabs">Tabs</a></li>
+          <!-- <li id="tabs"><a href="/tabs">Tabs</a></li> -->
           <li id="profilePage" class='active'><a href="/profile">My Profile</a></li>
+          <li id="createNav"><a href="/create">Create</a></li>
           <li id="signOutConditional"></li>
   
         </ul>
@@ -113,7 +112,8 @@
   <ul class="sidenav" id="mobile-demo" style="width: 50vw;">
     <li id="homePageNav"><a href="/">Home</a></li>
     <li id="profilePageNav"><a href="/profile">My Profile</a></li>
-    <li id="aboutPageNav"><a href="/tabs">Tabs</a></li>
+    <li id="createSideNav"><a href="/create">Create</a></li>
+    <!-- <li id="aboutPageNav"><a href="/tabs">Tabs</a></li> -->
     <li id="signOutNav"></li>
   </ul>
 
@@ -158,11 +158,11 @@
       <div class="col s12 m4">
         <div class="card #424242 grey darken-3">
           <div class="card-image waves-effect">
-            <img  src=${artist.artists[0].strArtistThumb} alt="image not found">
+            <img  class="viewPost" src=${artist.artists[0].strArtistThumb} data-id=${post.id} alt="image not found">
           </div>
           <div class="card-content center-align">
             
-            <span class="card-title activator white-text text-darken-4">${post.song} <br> ${post.artist}</span>
+            <span class="card-title  white-text text-darken-4 myTitle">${post.song} <br> ${post.artist}</span>
             <a class="waves-effect waves-light btn viewPost black" data-id=${post.id}>view</a>
           </div>
          
@@ -177,7 +177,7 @@
           </div>
           <div class="card-content center-align">
             
-            <span class="card-title activator white-text text-darken-4">${post.song} <br> ${post.artist}</span>
+            <span class="card-title activator white-text text-darken-4 myTitle">${post.song} <br> ${post.artist}</span>
             <a class="waves-effect waves-light btn viewPost black" data-id=${post.id}>view</a>
           </div>
          

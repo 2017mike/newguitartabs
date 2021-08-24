@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Big Mike's Guitar Tabs - Tabs</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,10 +40,7 @@
       }
     }
 
-    * {
-      white-space: pre-line;
-    }
-
+  
      @media screen and (max-width: 561px) {
       .postBod {
         font-size: 12px !important;
@@ -117,9 +114,17 @@
     .active {
       background-color: grey !important;
     }
+
+    .postBod {
+      white-space: pre-line;
+    }
+    .spacerRow {
+      height: 10vh;
+    }
   </style>
 </head>
 <body>
+
 
   <div class="navbar-fixed">
     <nav>
@@ -128,8 +133,9 @@
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <li id="homePage" class='active'><a href="/">Home</a></li>
-          <li id="tabs"><a href="/tabs">Tabs</a></li>
+          
           <li id="profilePage"><a href="/profile">My Profile</a></li>
+          <li id="createNav"><a href="/create">Create</a></li>
           <li id="signOutConditional"></li>
   
         </ul>
@@ -139,15 +145,26 @@
   <ul class="sidenav" id="mobile-demo" style="width: 50vw;">
     <li id="homePageNav"><a href="/">Home</a></li>
     <li id="profilePageNav"><a href="/profile">My Profile</a></li>
-    <li id="aboutPageNav"><a href="/tabs">Tabs</a></li>
+    <li id="createSideNav"><a href="/create">Create</a></li>
+    
     <li id="signOutNav"></li>
   </ul>
 
 
+
+
+
+
+
 <div class="container">
-  <div id="postSong" class="white"></div>
-  <div id="postArtist" class="white"></div>
-  <div id="postBody" class="#fafafa grey lighten-5 postBod center"></div>
+  <div class="row spacerRow"></div>
+  <div class="row center">
+    <!-- <h1 class="section white-text homeDiv">Home</h1> -->
+    <h2 id="postSong" class="white"></h2>
+    <h3 id="postArtist" class="white"></h3>
+  </div>
+ 
+  <div id="postBody" class="#fafafa grey lighten-5 postBod center row"></div>
   
 
   </div>

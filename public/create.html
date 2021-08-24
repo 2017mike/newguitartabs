@@ -114,8 +114,9 @@ placeholder {
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <li id="homePage" class='active'><a href="/">Home</a></li>
-        <li id="tabs"><a href="/tabs">Tabs</a></li>
+        <!-- <li id="tabs"><a href="/tabs">Tabs</a></li> -->
         <li id="profilePage"><a href="/profile">My Profile</a></li>
+        <li id="createNav"><a href="/create">Create</a></li>
         <li id="signOutConditional"></li>
 
       </ul>
@@ -125,7 +126,8 @@ placeholder {
 <ul class="sidenav" id="mobile-demo" style="width: 50vw;">
   <li id="homePageNav"><a href="/">Home</a></li>
   <li id="profilePageNav"><a href="/profile">My Profile</a></li>
-  <li id="aboutPageNav"><a href="/tabs">Tabs</a></li>
+  <li id="createSideNav"><a href="/create">Create</a></li>
+  <!-- <li id="aboutPageNav"><a href="/tabs">Tabs</a></li> -->
   <li id="signOutNav"></li>
 </ul>
 
@@ -229,6 +231,8 @@ placeholder {
 <script>
   //this is for hamburger, signout and navbar buttons
 
+  
+
   document.getElementById('newTemplate').addEventListener('click', event => {
     event.preventDefault()
     let newTemplateElem = 
@@ -262,16 +266,16 @@ placeholder {
 
 
     //for hamburger menu
-    document.addEventListener('DOMContentLoaded', function () {
-      var elems = document.querySelectorAll('.sidenav');
-      var instances = M.Sidenav.init(elems, options);
-    });
+    // document.addEventListener('DOMContentLoaded', function () {
+    //   var elems = document.querySelectorAll('.sidenav');
+    //   var instances = M.Sidenav.init(elems, options);
+    // });
 
-    M.AutoInit();
-    document.addEventListener('DOMContentLoaded', function () {
-      var elems = document.querySelectorAll('select');
-      var instances = M.FormSelect.init(elems, options);
-    });
+    // M.AutoInit();
+    // document.addEventListener('DOMContentLoaded', function () {
+    //   var elems = document.querySelectorAll('select');
+    //   var instances = M.FormSelect.init(elems, options);
+    // });
 
 
 
@@ -303,15 +307,15 @@ placeholder {
     //   window.location = '/aboutus'
     // })
 
-    document.getElementById('signOut').addEventListener('click', event => {
-      localStorage.removeItem('token')
-      window.location = '/login'
-    })
+    // document.getElementById('signOut').addEventListener('click', event => {
+    //   localStorage.removeItem('token')
+    //   window.location = '/login'
+    // })
 
-    document.getElementById('signOutNav').addEventListener('click', event => {
-      localStorage.removeItem('token')
-      window.location = '/login'
-    })
+    // document.getElementById('signOutNav').addEventListener('click', event => {
+    //   localStorage.removeItem('token')
+    //   window.location = '/login'
+    // })
 
 
     document.getElementById('create').addEventListener('click', event => {
@@ -331,10 +335,20 @@ placeholder {
         })
           .then(res => {
             console.log(res)
+            alert('your tab has been created :)')
             window.location = '/'
-
           })
       })
+
+      function loginVerify() {
+        if (localStorage.getItem("token") === null) {
+          window.location='/login'
+          alert('you must be logged in to create a tab, sorry :/')
+        }
+      }
+        
+
+        loginVerify()
   
 
 </script>

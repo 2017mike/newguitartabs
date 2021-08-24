@@ -20,6 +20,14 @@ document.getElementById('logoButton').addEventListener('click', event => {
   window.location = '/'
 })
 
+document.getElementById('createNav').addEventListener('click', event => {
+  window.location = '/create'
+})
+
+document.getElementById('createSideNav').addEventListener('click', event => {
+  window.location = '/create'
+})
+
 document.getElementById('homePage').addEventListener('click', event => {
   window.location = '/'
 })
@@ -44,13 +52,13 @@ document.getElementById('profilePageNav').addEventListener('click', event => {
 //   window.location = '/aboutus'
 // })
 
-document.getElementById('signOut').addEventListener('click', event => {
-  localStorage.removeItem('token')
-  window.location = '/login'
-})
+// document.getElementById('signOut').addEventListener('click', event => {
+//   localStorage.removeItem('token')
+//   window.location = '/login'
+// })
 
-document.getElementById('signOutNav').addEventListener('click', event => {
-  localStorage.removeItem('token')
-  window.location = '/login'
-})
+// document.getElementById('signOutNav').addEventListener('click', event => {
+//   localStorage.removeItem('token')
+//   window.location = '/login'
+// })
 
