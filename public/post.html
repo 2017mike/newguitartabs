@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: Cutive Mono, arial;
+      background: #222;
+      background: linear-gradient(rgba(0, 0, 0, 0.764), rgba(0, 0, 55, 0.3)), url('https://cdn.pixabay.com/photo/2021/01/13/13/51/vintage-5914183_1280.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      padding-top: 0px !important;
+      display: flex;
+      /* justify-content: center;
+        align-items: center; */
+      height: 120vh;
+  
+      padding-right: 0 !important;
+      z-index: 0 !important;
+    }
+  
+    @media screen and (max-width: 806px) {
+      .myLogo {
+        font-size: 16px !important;
+      }
+    }
+  
+    @media screen and (max-width: 434px) {
+      .myLogo {
+        font-size: 12px !important;
+      }
+    }
+
+    * {
+      white-space: pre-line;
+    }
+
+     @media screen and (max-width: 561px) {
+      .postBod {
+        font-size: 12px !important;
+        
+      }
+    }
+
+    @media screen and (max-width: 467px) {
+      .postBod {
+        font-size: 11px !important;
+      }
+    }
+
+    @media screen and (max-width: 423px) {
+      .postBod {
+        font-size: 10px !important;
+      }
+    }
+     @media screen and (max-width: 423px) {
+      .postBod {
+        font-size: 9px !important;
+      }
+    }
+
+    @media screen and (max-width: 349px) {
+      .postBod {
+        font-size: 8px !important;
+      }
+    }
+  
+    .nav-wrapper {
+      background-color: black;
+    }
+  
+    .brand-logo {
+      margin-left: 1%;
+    }
+  
+    .card-image {
+      background-position: top !important;
+      height: 300px;
+    }
+  
+    .card {
+      height: 410px;
+    }
+  
+    .image-reveal {
+      width: 100%;
+    }
+  
+    .btn-floating {
+      position: fixed;
+      right: 20px;
+      bottom: 10px;
+    }
+  
+    .nav-wrapper a:hover {
+      background: #ddd;
+      color: black;
+    }
+  
+    .viewPost {
+      padding-bottom: 10px !important;
+    }
+  
+    .homeDiv {
+      margin-bottom: 0px;
+    }
+  
+    .active {
+      background-color: grey !important;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper black">
+        <a href="/" class="brand-logo myLogo" id="logoButton">BigMike's Guitar Tabs</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li id="homePage" class='active'><a href="/">Home</a></li>
+          <li id="tabs"><a href="/tabs">Tabs</a></li>
+          <li id="profilePage"><a href="/profile">My Profile</a></li>
+          <li id="signOutConditional"></li>
+  
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <ul class="sidenav" id="mobile-demo" style="width: 50vw;">
+    <li id="homePageNav"><a href="/">Home</a></li>
+    <li id="profilePageNav"><a href="/profile">My Profile</a></li>
+    <li id="aboutPageNav"><a href="/tabs">Tabs</a></li>
+    <li id="signOutNav"></li>
+  </ul>
+
+
+<div class="container">
+  <div id="postSong" class="white"></div>
+  <div id="postArtist" class="white"></div>
+  <div id="postBody" class="#fafafa grey lighten-5 postBod center"></div>
+  
+
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="./assets/js/all.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    //here we render the post by id that the user clicked on, 
+
+
+    // save the post id in local storage since we are going across multiple pages
+    let postId = window.location.pathname
+
+    console.log(window.location, 'this is location')
+
+    axios.get(`/api/${postId}`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    })
+      .then(({ data }) => {
+        console.log(data)
+        //get req or offer
+
+        //render post
+        document.getElementById('postSong').innerHTML = data.song
+        document.getElementById('postArtist').innerHTML = data.artist
+        document.getElementById('postBody').innerHTML = data.body
+
+        //render the comment onto the page
+        //     data.comments.forEach(comment => {
+        //       document.getElementById('comments').innerHTML += `
+        // <li class="collection-item #212121 grey darken-4 white-text">${comment.body}</li>
+        // `
+        //     })
+
+      })
+      .catch(err => console.log(err))
+
+  </script>
+</body>
+
+
+</html>

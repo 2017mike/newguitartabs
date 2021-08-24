@@ -6,44 +6,251 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="assets/profile.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
   <title>Document</title>
 
   <style>
-  
+    body {
+      font-family: Cutive Mono, arial;
+      background: #222;
+      background: linear-gradient(rgba(0, 0, 0, 0.764), rgba(0, 0, 55, 0.3)), url('https://cdn.pixabay.com/photo/2020/09/19/19/01/angel-5585186_1280.jpg');
+      /* background-repeat: repeat; */
+      background-size: cover;
+      background-position: center center;
+      padding-top: 0px !important;
+      display: flex;
+      /* justify-content: center;
+      align-items: center; */
+      height: 120vh;
+
+      padding-right: 0 !important;
+      z-index: 0 !important;
+    }
+
+    @media screen and (max-width: 806px) {
+      .myLogo {
+        font-size: 16px !important;
+      }
+    }
+
+    @media screen and (max-width: 434px) {
+      .myLogo {
+        font-size: 12px !important;
+      }
+    }
+
+
+
+
+
+    .nav-wrapper {
+      background-color: black;
+    }
+
+    .brand-logo {
+      margin-left: 1%;
+    }
+
+    .card-image {
+      background-position: top !important;
+      height: 300px;
+    }
+
+    .card {
+      height: 410px;
+    }
+
+    .image-reveal {
+      width: 100%;
+    }
+
+    .btn-floating {
+      position: fixed;
+      right: 20px;
+      bottom: 10px;
+    }
+
+    .nav-wrapper a:hover {
+      background: #ddd;
+      color: black;
+    }
+
+    .viewPost {
+      padding-bottom: 10px !important;
+    }
+
+    .homeDiv {
+      margin-bottom: 0px;
+    }
+
+    .active {
+      background-color: grey !important;
+    }
   </style>
 </head>
 
 <body>
 
-  <div class="nav-content ">
-    <div class="navbar-fixed">
-      <nav>
-        <div class="nav-wrapper black">
-          <a href="" class="brand-logo" id="logoButton">Big Mike's Guitar Tabs</a>
-          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-          <ul class="right hide-on-med-and-down">
-            <li id="homePage" ><a href="/home">Home</a></li>
-            <li id="profilePage"><a href="/profile">Tabs</a></li>
-            <li id="aboutPage" class='active'><a href="/about">My Profile</a></li>
-            <li id="signOut"><a href="">Sign Out</a></li>
-          </ul>
-        </div>
-      </nav>
-    </div>
-    <ul class="sidenav" id="mobile-demo" style="width: 50vw;">
-      <li id="homePageNav"><a href="">Home</a></li>
-      <li id="profilePageNav"><a href="">My Profile</a></li>
-      <li id="aboutPageNav"><a href="">About</a></li>
-      <li id="signOutNav"><a href="">Sign Out</a></li>
-    </ul>
 
+  <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper black">
+        <a href="/" class="brand-logo myLogo" id="logoButton">BigMike's Guitar Tabs</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li id="homePage" ><a href="/">Home</a></li>
+          <li id="tabs"><a href="/tabs">Tabs</a></li>
+          <li id="profilePage" class='active'><a href="/profile">My Profile</a></li>
+          <li id="signOutConditional"></li>
+  
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <ul class="sidenav" id="mobile-demo" style="width: 50vw;">
+    <li id="homePageNav"><a href="/">Home</a></li>
+    <li id="profilePageNav"><a href="/profile">My Profile</a></li>
+    <li id="aboutPageNav"><a href="/tabs">Tabs</a></li>
+    <li id="signOutNav"></li>
+  </ul>
+
+
+  <div class="container">
+    <div class="row center">
+      <h1 class="section white-text homeDiv">My Profile</h1>
+    </div>
+    <div class="row" id="renderProfile">
+
+  </div>
 
 
 
 
     <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="./assets/js/all.js"></script>
+
+    <script>
+      //here we render the users profile
+        const renderProfile = () => {
+            axios.get('/api/posts/users', {
+              headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+              }
+            })
+              .then(({ data }) => {
+
+                data.forEach(post => {
+
+                  console.log(post, 'this is post')
+
+                  axios.get(`https://theaudiodb.com/api/v1/json/1/search.php?s=${post.artist}`)
+                    .then(res => {
+                      let artist = res.data
+                      console.log(artist)
+
+                      if (artist.artists[0].strArtistThumb) {
+                        document.getElementById('renderProfile').innerHTML += `
+      <div class="col s12 m4">
+        <div class="card #424242 grey darken-3">
+          <div class="card-image waves-effect">
+            <img  src=${artist.artists[0].strArtistThumb} alt="image not found">
+          </div>
+          <div class="card-content center-align">
+            
+            <span class="card-title activator white-text text-darken-4">${post.song} <br> ${post.artist}</span>
+            <a class="waves-effect waves-light btn viewPost black" data-id=${post.id}>view</a>
+          </div>
+         
+      </div>
+      `
+                      } else {
+                        document.getElementById('renderCards').innerHTML += `
+      <div class="col s12 m4">
+        <div class="card #424242 grey darken-3">
+          <div class="card-image waves-effect">
+            <img  src='https://cdn.pixabay.com/photo/2018/10/11/17/38/angel-3740393_1280.jpg' alt="image not found">
+          </div>
+          <div class="card-content center-align">
+            
+            <span class="card-title activator white-text text-darken-4">${post.song} <br> ${post.artist}</span>
+            <a class="waves-effect waves-light btn viewPost black" data-id=${post.id}>view</a>
+          </div>
+         
+      </div>
+      `
+                      }
+
+
+
+                      //end forEach
+                    })
+                })
+              })
+              .catch(err => console.log(err))
+          }
+
+          renderProfile()
+
+
+          //listener to view post
+          document.addEventListener('click', event => {
+              event.preventDefault()
+              if (event.target.classList.contains('viewPost')) {
+                //grab post id set it to local storage then go to post page
+                // localStorage.setItem('postId', event.target.dataset.id)
+                window.location = `/post/${event.target.dataset.id}`
+              }
+            })
+
+     
+
+
+          function displaySignOut() {
+
+              localStorage.getItem('token')
+              if ('token') {
+                const signOut1 = document.createElement('li')
+                signOut1.innerHTML = `
+      <li id="signOut"><a href="/login">Sign Out</a></li>
+      `
+                document.getElementById('signOutConditional').append(signOut1)
+              } else {
+                const signOut2 = document.createElement('li')
+                signOut1.innerHTML = `
+      <li id="logInButton"><a href="/login">Log In</a></li>
+      `
+                document.getElementById('signOutConditional').append(signOut2)
+              }
+            }
+
+            function displaySignOutNav() {
+
+              localStorage.getItem('token')
+              if ('token') {
+                const signOut1 = document.createElement('li')
+                signOut1.innerHTML = `
+      <li id="signOut"><a href="/login">Sign Out</a></li>
+      `
+                document.getElementById('signOutNav').append(signOut1)
+              } else {
+                const signOut2 = document.createElement('li')
+                signOut1.innerHTML = `
+      <li id="logInButton"><a href="/login">Log In</a></li>
+      `
+                document.getElementById('signOutNav').append(signOut2)
+              }
+            }
+
+
+            displaySignOut()
+            displaySignOutNav()
+
+    </script>
 
 </body>
 

@@ -17,15 +17,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 document.getElementById('logoButton').addEventListener('click', event => {
-  window.location = '/home'
+  window.location = '/'
 })
 
 document.getElementById('homePage').addEventListener('click', event => {
-  window.location = '/home'
+  window.location = '/'
 })
 
 document.getElementById('homePageNav').addEventListener('click', event => {
-  window.location = '/home'
+  window.location = '/'
 })
 
 document.getElementById('profilePage').addEventListener('click', event => {
@@ -36,13 +36,13 @@ document.getElementById('profilePageNav').addEventListener('click', event => {
   window.location = '/profile'
 })
 
-document.getElementById('aboutPage').addEventListener('click', event => {
-  window.location = '/aboutus'
-})
+// document.getElementById('aboutPage').addEventListener('click', event => {
+//   window.location = '/aboutus'
+// })
 
-document.getElementById('aboutPageNav').addEventListener('click', event => {
-  window.location = '/aboutus'
-})
+// document.getElementById('aboutPageNav').addEventListener('click', event => {
+//   window.location = '/aboutus'
+// })
 
 document.getElementById('signOut').addEventListener('click', event => {
   localStorage.removeItem('token')

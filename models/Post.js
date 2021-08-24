@@ -5,7 +5,10 @@ class Post extends Model { }
 
 Post.init({
   //true for request, false its an offer
-  body: DataTypes.STRING,
+  song: DataTypes.STRING,
+  artist: DataTypes.STRING,
+  body: DataTypes.TEXT,
+
 }, { sequelize, modelName: 'post' })
 
 module.exports = Post

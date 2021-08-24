@@ -14,11 +14,15 @@ router.get('/register', (req, res) => {
 
 //sends user to their profile page
 router.get('/profile', (req, res) => {
-  res.sendFile(join(__dirname, '..', 'public', 'profile.html'))
+  res.sendFile(join(__dirname, '..', 'public', 'myprofile.html'))
 })
 
 //sends user to the post page they clicked on
 router.get('/post', (req, res) => {
+  res.sendFile(join(__dirname, '..', 'public', 'post.html'))
+})
+
+router.get('/post/:id', (req, res) => {
   res.sendFile(join(__dirname, '..', 'public', 'post.html'))
 })
 
@@ -27,10 +31,6 @@ router.get('/create', (req, res) => {
   res.sendFile(join(__dirname, '..', 'public', 'create.html'))
 })
 
-//
-router.get('/home', (req, res) => {
-  res.sendFile(join(__dirname, '..', 'public', 'home.html'))
-})
 
 router.get('/aboutus', (req, res) => {
   res.sendFile(join(__dirname, '..', 'public', 'aboutus.html'))

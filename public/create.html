@@ -107,26 +107,27 @@ placeholder {
 
 <body>
 
- <div class="navbar-fixed">
-      <nav>
-        <div class="nav-wrapper black">
-          <a href="" class="brand-logo myLogo" id="logoButton">BigMike's Guitar Tabs</a>
-          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-          <ul class="right hide-on-med-and-down">
-            <li id="homePage" class='active'><a href="index.html">Home</a></li>
-            <li id="tabs"><a href="tabs.html">Tabs</a></li>
-            <li id="myProfile"><a href="myprofile.html">My Profile</a></li>
-            <li id="signOut"><a href="login.html">Sign Out</a></li>
-          </ul>
-        </div>
-      </nav>
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper black">
+      <a href="/" class="brand-logo myLogo" id="logoButton">BigMike's Guitar Tabs</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li id="homePage" class='active'><a href="/">Home</a></li>
+        <li id="tabs"><a href="/tabs">Tabs</a></li>
+        <li id="profilePage"><a href="/profile">My Profile</a></li>
+        <li id="signOutConditional"></li>
+
+      </ul>
     </div>
-    <ul class="sidenav" id="mobile-demo" style="width: 50vw;">
-      <li id="homePageNav"><a href="index.html">Home</a></li>
-      <li id="profilePageNav"><a href="myprofile.html">My Profile</a></li>
-      <li id="aboutPageNav"><a href="">About</a></li>
-      <li id="signOutNav"><a href="login.html">Sign Out</a></li>
-    </ul>
+  </nav>
+</div>
+<ul class="sidenav" id="mobile-demo" style="width: 50vw;">
+  <li id="homePageNav"><a href="/">Home</a></li>
+  <li id="profilePageNav"><a href="/profile">My Profile</a></li>
+  <li id="aboutPageNav"><a href="/tabs">Tabs</a></li>
+  <li id="signOutNav"></li>
+</ul>
 
 
 
@@ -223,6 +224,7 @@ placeholder {
   
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="./assets/js/all.js"></script>
 
 <script>
   //this is for hamburger, signout and navbar buttons
@@ -318,10 +320,10 @@ placeholder {
 
         console.log(tabField.value)
         let newPost = {
-          body: document.getElementById('tabField').value,
+          song: document.getElementById('songName').value,
+          artist: document.getElementById('artistName').value,
+          body: document.getElementById('tabField').value
         }
-
-
         axios.post('/api/posts', newPost, {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -329,7 +331,8 @@ placeholder {
         })
           .then(res => {
             console.log(res)
-            // window.location = '/home'
+            window.location = '/'
+
           })
       })
   
