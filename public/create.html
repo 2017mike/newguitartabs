@@ -197,6 +197,7 @@ placeholder {
             <p>
               You can actually add whatever info you want in the tab field, it will just save as is. It doesn't have to be strictly
               tab!!You could add your YouTube tutorial link or even your Venmo I'm not here to judge!!
+              HOWEVER please make sure all of your string fields have the same amount of characters otherwise they will start doing a weird wrap thing and they won't show up right :( 
             </p>
             <br>
             <p>
@@ -232,7 +233,7 @@ placeholder {
   //this is for hamburger, signout and navbar buttons
 
   
-
+//function to add a new empty template
   document.getElementById('newTemplate').addEventListener('click', event => {
     event.preventDefault()
     let newTemplateElem = 
@@ -248,6 +249,8 @@ placeholder {
           document.getElementById('tabField').value += (newTemplateElem)
   })
   
+
+//function to clear template
    document.getElementById('clearTemplate').addEventListener('click', event => {
       event.preventDefault()
      
@@ -263,61 +266,7 @@ placeholder {
     })
 
 
-
-
-    //for hamburger menu
-    // document.addEventListener('DOMContentLoaded', function () {
-    //   var elems = document.querySelectorAll('.sidenav');
-    //   var instances = M.Sidenav.init(elems, options);
-    // });
-
-    // M.AutoInit();
-    // document.addEventListener('DOMContentLoaded', function () {
-    //   var elems = document.querySelectorAll('select');
-    //   var instances = M.FormSelect.init(elems, options);
-    // });
-
-
-
-    // document.getElementById('logoButton').addEventListener('click', event => {
-    //   window.location = '/home'
-    // })
-
-    // document.getElementById('homePage').addEventListener('click', event => {
-    //   window.location = '/home'
-    // })
-
-    // document.getElementById('homePageNav').addEventListener('click', event => {
-    //   window.location = '/home'
-    // })
-
-    // document.getElementById('profilePage').addEventListener('click', event => {
-    //   window.location = '/profile'
-    // })
-
-    // document.getElementById('profilePageNav').addEventListener('click', event => {
-    //   window.location = '/profile'
-    // })
-
-    // document.getElementById('aboutPage').addEventListener('click', event => {
-    //   window.location = '/aboutus'
-    // })
-
-    // document.getElementById('aboutPageNav').addEventListener('click', event => {
-    //   window.location = '/aboutus'
-    // })
-
-    // document.getElementById('signOut').addEventListener('click', event => {
-    //   localStorage.removeItem('token')
-    //   window.location = '/login'
-    // })
-
-    // document.getElementById('signOutNav').addEventListener('click', event => {
-    //   localStorage.removeItem('token')
-    //   window.location = '/login'
-    // })
-
-
+//submit tab function
     document.getElementById('create').addEventListener('click', event => {
         event.preventDefault()
         
@@ -340,19 +289,21 @@ placeholder {
           })
       })
 
-      function loginVerify() {
+  
+ //login function, checks for token in local storage     
+ function loginVerify() {
         if (localStorage.getItem("token") === null) {
           window.location='/login'
           alert('you must be logged in to create a tab, sorry :/')
         }
       }
         
-
-        loginVerify()
-
+loginVerify()
 
 
-         function displaySignOut() {
+//conditional logic to display sign in or sign out depending on whether user is logged in
+
+function displaySignOut() {
 
             localStorage.getItem('token')
             if (localStorage.getItem("token") === null) {
@@ -381,7 +332,7 @@ placeholder {
             }
           }
 
-          function displaySignOutNav() {
+function displaySignOutNav() {
 
             localStorage.getItem('token')
             if (localStorage.getItem("token") === null) {
@@ -407,9 +358,8 @@ placeholder {
             }
           }
 
-
-          displaySignOut()
-          displaySignOutNav()
+displaySignOut()
+displaySignOutNav()
 
 
 

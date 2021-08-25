@@ -25,4 +25,7 @@ router.post('/users/login', (req, res) => {
   })
 })
 
+router.get('/user/:id', (req, res) => {
+  res.json
+})
 module.exports = router
