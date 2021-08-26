@@ -24,7 +24,7 @@
       display: flex;
       /* justify-content: center;
       align-items: center; */
-      height: 200vh;
+      height: 450vh;
 
       padding-right: 0 !important;
       z-index: 0 !important;
@@ -233,8 +233,17 @@
 
       
       function renderUsername() {
-
-      }
+         axios.get('/api/user', {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+          .then(({ data }) => {
+            console.log(data, 'user data')
+            document.getElementById('myProfileName').innerHTML=`${data.username}`
+      })
+    }
+    renderUsername()
 
 
       //here we render the users' profile by requesting all tabs that the user has created and rendering them in a grid of cards similar to the home page

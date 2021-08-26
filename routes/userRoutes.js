@@ -25,7 +25,22 @@ router.post('/users/login', (req, res) => {
   })
 })
 
-router.get('/user/:id', (req, res) => {
-  res.json
-})
+
+
+router.get('/user',
+  passport.authenticate('jwt'), 
+  (req, res) => User.findOne({
+    where: { id: req.user.id }
+    // , include: [Comment]
+  })
+    .then(userData => res.json(userData))
+    .catch(err => console.log(err)))
+
+
+// router.get('/user', (req, res) => {
+//   res.json (req.user.username)
+// }
+ 
+
+
 module.exports = router

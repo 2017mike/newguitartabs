@@ -230,7 +230,22 @@ placeholder {
   <script src="./assets/js/all.js"></script>
 
 <script>
-  //this is for hamburger, signout and navbar buttons
+
+
+
+  let tabField = document.getElementById('tabField').value  
+
+  document.getElementById('tabField').addEventListener('input', updateValue)
+
+
+  function updateValue(tabfield) {
+    tabField.replace('-', '')
+  }
+
+
+
+
+ 
 
   
 //function to add a new empty template
