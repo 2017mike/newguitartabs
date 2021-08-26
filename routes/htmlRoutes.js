@@ -7,6 +7,10 @@ router.get('/login', (req, res) => {
   res.sendFile(join(__dirname, '..', 'public', 'login.html'))
 })
 
+router.get('/', (req, res) => {
+  res.sendFile(join(__dirname, '..', 'public', 'index.html'))
+})
+
 //sends to the register page
 router.get('/register', (req, res) => {
   res.sendFile(join(__dirname, '..', 'public', 'register.html'))
@@ -32,9 +36,9 @@ router.get('/create', (req, res) => {
 })
 
 
-router.get('/aboutus', (req, res) => {
-  res.sendFile(join(__dirname, '..', 'public', 'aboutus.html'))
-})
+// router.get('/aboutus', (req, res) => {
+//   res.sendFile(join(__dirname, '..', 'public', 'aboutus.html'))
+// })
 
 
 //export routes
