@@ -31,7 +31,7 @@ router.get('/user',
   passport.authenticate('jwt'), 
   (req, res) => User.findOne({
     where: { id: req.user.id }
-    // , include: [Comment]
+    // , include: [User]
   })
     .then(userData => res.json(userData))
     .catch(err => console.log(err)))

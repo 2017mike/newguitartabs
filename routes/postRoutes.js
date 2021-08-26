@@ -28,7 +28,7 @@ router.get('/post/:id',
 // passport.authenticate('jwt'), 
 (req, res) => Post.findOne({
   where: { id: req.params.id }
-  // , include: [Comment]
+  , include: [User]
 })
   .then(posts => res.json(posts))
   .catch(err => console.log(err)))

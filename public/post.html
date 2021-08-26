@@ -159,8 +159,9 @@
   <div class="row spacerRow"></div>
   <div class="row center">
     <!-- <h1 class="section white-text homeDiv">Home</h1> -->
-    <h3 id="postSong" class="white"></h3>
-    <h3 id="postArtist" class="white"></h3>
+    <h4 id="postSong" class="white-text"></h4>
+    <h4 id="postArtist" class="white-text"></h4>
+    <h5 id="postUser" class="white-text"></h5>
   </div>
  
   <div id="postBody" class="#fafafa grey lighten-5 postBod center row"></div>
@@ -186,13 +187,15 @@
       }
     })
       .then(({ data }) => {
-        console.log(data)
+        console.log(data, 'this is post data')
         //get req or offer
 
         //render post
         document.getElementById('postSong').innerHTML = data.song
         document.getElementById('postArtist').innerHTML = data.artist
         document.getElementById('postBody').innerHTML = data.body
+        document.getElementById('postUser').innerHTML = `posted by: ${data.User.username}`
+        
 
         //render the comment onto the page
         //     data.comments.forEach(comment => {
