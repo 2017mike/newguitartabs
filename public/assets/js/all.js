@@ -43,6 +43,9 @@ document.getElementById('profilePage').addEventListener('click', event => {
 document.getElementById('profilePageNav').addEventListener('click', event => {
   window.location = '/profile'
 })
+document.getElementById('aboutPage').addEventListener('click', event => {
+  window.location = '/about'
+})
 
 
 

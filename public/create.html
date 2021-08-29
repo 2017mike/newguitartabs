@@ -58,6 +58,22 @@
    margin-bottom: 0px !important;
  }
 
+  @media screen and (max-width: 806px) {
+      .myLogo {
+        font-size: 16px !important;
+      }
+    }
+
+    @media screen and (max-width: 434px) {
+      .myLogo {
+        font-size: 12px !important;
+      }
+    }
+
+    .myTitle {
+      font-size: 16px !important;
+    }
+
  .brand-logo {
    margin-left: 1%;
  }
@@ -92,6 +108,28 @@
   }
 }
 
+ @media screen and (max-width: 450px) {
+  .myCreate {
+    font-size:10px;
+  }
+}
+@media screen and (max-width: 408px) {
+  .myCreate {
+    font-size:9px;
+  }
+}
+@media screen and (max-width: 370px) {
+  .myCreate {
+    font-size:8px;
+  }
+}
+
+@media screen and (max-width: 333px) {
+  .myCreate {
+    font-size:7px;
+  }
+}
+
 placeholder {
   color: black;
 }
@@ -117,6 +155,7 @@ placeholder {
         <!-- <li id="tabs"><a href="/tabs">Tabs</a></li> -->
         <li id="profilePage"><a href="/profile">My Profile</a></li>
         <li id="createNav" class='active'><a href="/create">Create</a></li>
+        <li id="aboutPage"><a href="/about">About</a></li>
         <li id="signOutConditional"></li>
 
       </ul>
@@ -127,6 +166,7 @@ placeholder {
   <li id="homePageNav"><a href="/">Home</a></li>
   <li id="profilePageNav"><a href="/profile">My Profile</a></li>
   <li id="createSideNav"><a href="/create">Create</a></li>
+  <li id="aboutPage"><a href="/about">About</a></li>
   <!-- <li id="aboutPageNav"><a href="/tabs">Tabs</a></li> -->
   <li id="signOutNav"></li>
 </ul>
@@ -165,12 +205,7 @@ placeholder {
         <div class="row">
           <div class="input-field col s12 ">
           <textarea name="" id="tabField" cols="30" rows="30" class="myCreate black-text "> 
-          E----------------------------------------------------
-          B----------------------------------------------------
-          G----------------------------------------------------
-          D----------------------------------------------------
-          A----------------------------------------------------
-          E----------------------------------------------------</textarea>
+        </textarea>
             <label for="textarea1"></label>
           
           </div>
@@ -182,7 +217,12 @@ placeholder {
 
             <br>
             <br>
-            
+
+            <p>
+              please make sure all of your string fields have the same amount of characters otherwise they will start doing a
+              weird wrap thing and they won't show up right :(
+            </p>
+            <br>
 
 
             <p>
@@ -197,7 +237,7 @@ placeholder {
             <p>
               You can actually add whatever info you want in the tab field, it will just save as is. It doesn't have to be strictly
               tab!!You could add your YouTube tutorial link or even your Venmo I'm not here to judge!!
-              HOWEVER please make sure all of your string fields have the same amount of characters otherwise they will start doing a weird wrap thing and they won't show up right :( 
+             
             </p>
             <br>
             <p>
@@ -252,31 +292,19 @@ placeholder {
   document.getElementById('newTemplate').addEventListener('click', event => {
     event.preventDefault()
     let newTemplateElem = 
-          `
-
-          E----------------------------------------------------
-          B----------------------------------------------------
-          G----------------------------------------------------
-          D----------------------------------------------------
-          A----------------------------------------------------
-          E----------------------------------------------------`
+          "\nE----------------------------------------------------\nB----------------------------------------------------\nG----------------------------------------------------\nD----------------------------------------------------\nA----------------------------------------------------\nE----------------------------------------------------\n"
 
           document.getElementById('tabField').value += (newTemplateElem)
   })
-  
+
+
+  document.querySelector("#newTemplate").click();
 
 //function to clear template
    document.getElementById('clearTemplate').addEventListener('click', event => {
       event.preventDefault()
      
-      document.getElementById('tabField').value = `
-
-          E----------------------------------------------------
-          B----------------------------------------------------
-          G----------------------------------------------------
-          D----------------------------------------------------
-          A----------------------------------------------------
-          E----------------------------------------------------`
+      document.getElementById('tabField').value = "\nE----------------------------------------------------\nB----------------------------------------------------\nG----------------------------------------------------\nD----------------------------------------------------\nA----------------------------------------------------\nE----------------------------------------------------\n"
 
     })
 
@@ -378,7 +406,32 @@ displaySignOutNav()
 
 
 
+function editString(e){
+  
+  let str = e.target.value;
+ 
+  let strArr = str.split("\n")
+  console.log(strArr);
+  console.log(strArr[1].length)
+  strArr = strArr.map(i => {
+    console.log(i)
+    if(!i) i ="";
+    if(i.length > 52)return i.slice(0,52);
+    return i
+  });
 
+  strArr.shift();
+  strArr.shift();
+  strArr.unshift("        ");
+  strArr.unshift(" ")
+
+
+console.log(strArr.join('\n'))
+e.target.value = strArr.join('\n')
+
+}
+
+document.querySelector('.myCreate').addEventListener("keyup",editString);
 
         
   
