@@ -8,7 +8,7 @@ BigMike's Guitar Tabs uses a SQL database, which is hosted on JawsDB via Heroku.
 
 To access the website click here: https://bigmikesguitartabs.herokuapp.com/
 
-#Screenshots
+# Screenshots
 
 ![Screen Shot 2021-09-17 at 3 56 25 AM](https://user-images.githubusercontent.com/82760568/133776385-8518080c-3395-4ade-8a9e-4cf7b5d362c8.png)
 
