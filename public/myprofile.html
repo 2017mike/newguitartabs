@@ -417,6 +417,7 @@
       document.addEventListener('click', event => {
          
           if (event.target.classList.contains('deletePost')) {
+           if (window.confirm('are you sure you want to delete this tab?')) {
            axios.delete(`/api/posts/${event.target.dataset.id}`, {
             headers: {
               'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -424,11 +425,13 @@
           })
             .then(res => {
               console.log(res)
-              alert('your tab has been deleted')
-              window.location.reload
+             
+              window.location.reload()
+               
             })
-        }
+        }}
           })
+
         
 
       //listener to take you to correct post to edit
