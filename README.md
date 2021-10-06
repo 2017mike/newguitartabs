@@ -1,6 +1,6 @@
 # BigMike's Guitar Tabs
 
-BigMike's Guitar tabs is a website where anyone can submit guitar tabs for their favorite songs. Each tab that is submitted will be on the front page and will include a picture of the artist if one is available from the API that is used. 
+BigMike's Guitar tabs is a website where anyone can submit guitar tabs for their favorite songs. Each tab that is submitted will be on the front page and will include a picture of the artist if one is available from theAudioDB API. 
 
 I decided to make BigMike's guitar tabs because I hadn't seen a tab website that with a simple, easy to use tabbing process that also let you view tabs easily. Almost all of the tabbing websites I saw required you to pay to use a tabbing tool, required an app download, and/or were not mobile friendly at all. I also wasn't a big fan of the look of most of the tab sites either. 
 
