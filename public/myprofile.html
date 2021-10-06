@@ -62,7 +62,7 @@
     .card-image {
       background-position: top !important;
       height: 300px;
-      background: linear-gradient(rgba(0, 0, 0, 0.764), rgba(0, 0, 55, 0.3))
+      /* background: linear-gradient(rgba(0, 0, 0, 0.764), rgba(0, 0, 55, 0.3)) */
     }
 
 
@@ -196,7 +196,7 @@
           <!-- <li id="tabs"><a href="/tabs">Tabs</a></li> -->
           <li id="profilePage" class='active'><a href="/profile">My Profile</a></li>
           <li id="createNav"><a href="/create">Create</a></li>
-          <li id="aboutPage"><a href="/about">About</a></li>
+          <li id="aboutPageNav"><a href="/about">About</a></li>
           <li id="signOutConditional"></li>
 
         </ul>
@@ -281,8 +281,10 @@
           <div class="card-content center-align">
 
             <span class="card-title activator white-text text-darken-4 myTitle">${post.song} <br> ${post.artist}</span>
-            <a class="waves-effect waves-light btn viewPost black myBtn" data-id=${post.id}>view</a>
-             <a class="waves-effect waves-light btn deletePost red myBtn" data-id=${post.id}>delete</a>
+            <a class="waves-effect waves-light btn viewPost black myBtn" data-id=${post.id}>Tab</a>
+            
+             <a class="waves-effect waves-light btn  orange myBtn editPost" data-id=${post.id}>Edit</a>
+              <a class="waves-effect waves-light btn deletePost red myBtn" data-id=${post.id}>delete</a>
           </div>
 
       </div>
@@ -303,8 +305,10 @@
           <div class="card-content center-align">
             
             <span class="card-title  white-text text-darken-4 myTitle">${post.song} <br> ${post.artist}</span>
-            <a class="waves-effect waves-light btn viewPost black myBtn" data-id=${post.id}>view</a>
-            <a class="waves-effect waves-light btn deletePost red myBtn" data-id=${post.id}>delete</a>
+            <a class="waves-effect waves-light btn viewPost black myBtn" data-id=${post.id}>Tab</a>
+           
+            <a class="waves-effect waves-light btn  orange myBtn editPost" data-id=${post.id}>Edit</a>
+             <a class="waves-effect waves-light btn deletePost red myBtn" data-id=${post.id}>delete</a>
           </div>
 
       </div>
@@ -406,6 +410,8 @@
 
       loginVerify()
 
+      
+      
       //listener to delete post
 
       document.addEventListener('click', event => {
@@ -424,6 +430,19 @@
         }
           })
         
+
+      //listener to take you to correct post to edit
+    document.addEventListener('click', event => {
+        event.preventDefault()
+        if (event.target.classList.contains('editPost')) {
+          //grab post id, takes you to edit/:id
+          localStorage.setItem('postId', event.target.dataset.id)
+          window.location = `/edit`
+        }
+      })
+
+
+
 
        
 

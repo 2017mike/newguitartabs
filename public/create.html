@@ -154,7 +154,7 @@ placeholder {
         <li id="homePage" ><a href="/">Home</a></li>
         <!-- <li id="tabs"><a href="/tabs">Tabs</a></li> -->
         <li id="profilePage"><a href="/profile">My Profile</a></li>
-        <li id="createNav" class='active'><a href="/create">Create</a></li>
+        <li id="createNav" class="active"><a href="/create">Create</a></li>
         <li id="aboutPage"><a href="/about">About</a></li>
         <li id="signOutConditional"></li>
 
@@ -166,7 +166,7 @@ placeholder {
   <li id="homePageNav"><a href="/">Home</a></li>
   <li id="profilePageNav"><a href="/profile">My Profile</a></li>
   <li id="createSideNav"><a href="/create">Create</a></li>
-  <li id="aboutPage"><a href="/about">About</a></li>
+  <li id="aboutPageNav"><a href="/about">About</a></li>
   <!-- <li id="aboutPageNav"><a href="/tabs">Tabs</a></li> -->
   <li id="signOutNav"></li>
 </ul>
@@ -404,32 +404,6 @@ function displaySignOutNav() {
 displaySignOut()
 displaySignOutNav()
 
-
-
-function editString(e){
-  
-  let str = e.target.value;
- 
-  let strArr = str.split("\n")
-  console.log(strArr);
-  console.log(strArr[1].length)
-  strArr = strArr.map(i => {
-    console.log(i)
-    if(!i) i ="";
-    if(i.length > 52)return i.slice(0,52);
-    return i
-  });
-
-  strArr.shift();
-  strArr.shift();
-  strArr.unshift("        ");
-  strArr.unshift(" ")
-
-
-console.log(strArr.join('\n'))
-e.target.value = strArr.join('\n')
-
-}
 
 document.querySelector('.myCreate').addEventListener("keyup",editString);
 

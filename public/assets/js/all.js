@@ -47,6 +47,10 @@ document.getElementById('aboutPage').addEventListener('click', event => {
   window.location = '/about'
 })
 
+document.getElementById('aboutPageNav').addEventListener('click', event => {
+  window.location = '/about'
+})
+
 
 
 // document.getElementById('aboutPage').addEventListener('click', event => {

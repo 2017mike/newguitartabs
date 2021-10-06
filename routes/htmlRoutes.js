@@ -39,6 +39,10 @@ router.get('/about', (req, res) => {
   res.sendFile(join(__dirname, '..', 'public', 'aboutus.html'))
 })
 
+router.get('/edit', (req, res) => {
+  res.sendFile(join(__dirname, '..', 'public', 'editPage.html'))
+})
+
 
 // router.get('/aboutus', (req, res) => {
 //   res.sendFile(join(__dirname, '..', 'public', 'aboutus.html'))
