@@ -261,12 +261,12 @@
 
           data.forEach(post => {
 
-            console.log(post, 'this is post')
+            // console.log(post, 'this is post')
 
             axios.get(`https://theaudiodb.com/api/v1/json/1/search.php?s=${post.artist}`)
               .then(res => {
                 let artist = res.data
-                console.log(artist,  'this is artist')
+                // console.log(artist,  'this is artist')
 
                 if (artist.artists === null) {
                   document.getElementById('renderCards').innerHTML += `

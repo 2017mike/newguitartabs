@@ -307,9 +307,9 @@
         .then(({ data }) => {
           // console.log(data)
           //get req or offer
-          console.log(data, 'this is data')
-          console.log(data.id)
-          console.log(data.body)
+          // console.log(data, 'this is data')
+          // console.log(data.id)
+          // console.log(data.body)
           songName.value=data.song
           artistName.value=data.artist
 
@@ -357,7 +357,7 @@
       event.preventDefault()
 
 
-      console.log(tabField.value)
+      // console.log(tabField.value)
       let newPost = {
         song: document.getElementById('songName').value,
         artist: document.getElementById('artistName').value,

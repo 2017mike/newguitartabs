@@ -8,12 +8,12 @@ const renderCards = () => {
 
       data.forEach(post => {
 
-        console.log(post, 'this is post')
+        // console.log(post, 'this is post')
 
         axios.get(`https://theaudiodb.com/api/v1/json/1/search.php?s=${post.artist}`)
           .then(res => {
             let artist = res.data
-            console.log(artist)
+            // console.log(artist)
 
             if (artist.artists[0].strArtistThumb) {
               document.getElementById('renderCards').innerHTML += `

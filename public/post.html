@@ -181,7 +181,7 @@
     // save the post id in local storage since we are going across multiple pages
     let postId = window.location.pathname
 
-    console.log(window.location, 'this is location')
+    // console.log(window.location, 'this is location')
 
     axios.get(`/api/${postId}`, {
       headers: {
@@ -189,7 +189,7 @@
       }
     })
       .then(({ data }) => {
-        console.log(data, 'this is post data')
+        // console.log(data, 'this is post data')
         //get req or offer
 
         //render post
