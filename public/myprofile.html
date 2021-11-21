@@ -159,12 +159,6 @@
     }
     }
 
-
-
-  
-
-   
-
     .nav-wrapper a:hover {
       background: #ddd;
       color: black;
@@ -233,7 +227,7 @@
     <script>
 
       
-      function renderUsername() {
+    function renderUsername() {
          axios.get('/api/user', {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -267,61 +261,40 @@
 
                   if (artist.artists === null) {
                     document.getElementById('renderProfile').innerHTML += `
+                <div class="col s12 m6 l4">
+                <div class="card #424242 grey darken-3 transparent">
+                <div class="card-image waves-effect">
+                <img class="viewPostImg" src='https://cdn.pixabay.com/photo/2015/08/10/21/26/angel-883200_1280.png' data-id=${post.id} alt="image not found">
+                </div>
+                <div class="card-content center-align">
 
-
-
-     
-
-
-
- <div class="col s12 m6 l4">
-        <div class="card #424242 grey darken-3 transparent">
-          <div class="card-image waves-effect">
-            <img class="viewPostImg" src='https://cdn.pixabay.com/photo/2015/08/10/21/26/angel-883200_1280.png' data-id=${post.id} alt="image not found">
-          </div>
-          <div class="card-content center-align">
-
-            <span class="card-title activator white-text text-darken-4 myTitle truncate">${post.song} <br> ${post.artist}</span>
-            <a class="waves-effect waves-light btn viewPost black myBtn" data-id=${post.id}>Tab</a>
+                <span class="card-title activator white-text text-darken-4 myTitle truncate">${post.song} <br> ${post.artist}</span>
+                <a class="waves-effect waves-light btn viewPost black myBtn" data-id=${post.id}>Tab</a>
             
-             <a class="waves-effect waves-light btn  orange myBtn editPost" data-id=${post.id}><i class="material-icons">edit</i></a>
-              <a class="waves-effect waves-light btn deletePost red myBtn" data-id=${post.id}><i class="material-icons">delete</i></a>
-          </div>
-
-      </div>
+                <a class="waves-effect waves-light btn  orange myBtn editPost" data-id=${post.id}><i data-id=${post.id} class="material-icons editPost">edit</i></a>
+                <a class="waves-effect waves-light btn deletePost red myBtn" data-id=${post.id}><i data-id=${post.id} class="material-icons deletePost">delete</i></a>
+                </div>
+                </div>
       `
-
 
                   } else {
                     document.getElementById('renderProfile').innerHTML += `
 
-
-     
-
- <div class="col s12 m6 l4">
-        <div class="card #424242 grey darken-3">
-          <div class="card-image waves-effect">
-            <img  class="viewPostImg" src=${artist.artists[0].strArtistThumb} data-id=${post.id} alt="image not found">
-          </div>
-          <div class="card-content center-align">
-            
-            <span class="card-title  white-text text-darken-4 myTitle truncate">${post.song} <br> ${post.artist}</span>
-            <a class="waves-effect waves-light btn viewPost black myBtn" data-id=${post.id}>Tab</a>
+                <div class="col s12 m6 l4">
+                <div class="card #424242 grey darken-3">
+                <div class="card-image waves-effect">
+                <img  class="viewPostImg" src=${artist.artists[0].strArtistThumb} data-id=${post.id} alt="image not found">
+                </div>
+                <div class="card-content center-align">
+                <span class="card-title  white-text text-darken-4 myTitle truncate">${post.song} <br> ${post.artist}</span>
+                <a class="waves-effect waves-light btn viewPost black myBtn" data-id=${post.id}>Tab</a>
            
-            <a class="waves-effect waves-light btn  orange myBtn editPost" data-id=${post.id}><i class="material-icons">edit</i></a>
-             <a class="waves-effect waves-light btn deletePost red myBtn" data-id=${post.id}><i class="material-icons">delete</i></a>
-          </div>
-
-      </div>
-
-
-      `
-
-
+                <a class="waves-effect waves-light btn  orange myBtn editPost" data-id=${post.id}><i class="material-icons editPost" data-id=${post.id}>edit</i></a>
+                <a class="waves-effect waves-light btn deletePost red myBtn" data-id=${post.id}><i data-id=${post.id} class="material-icons deletePost">delete</i></a>
+                </div>
+                </div>
+                `
                   }
-
-
-
                   //end forEach
                 })
             })
@@ -331,12 +304,10 @@
       renderProfile()
 
 
-      //listener to view post
+      //listener to view post. takes your to /post/post_id. Once you are at post/post_id, a get is performed to that post id and populates the post page. 
       document.addEventListener('click', event => {
         event.preventDefault()
         if (event.target.classList.contains('viewPost')) {
-          //grab post id set it to local storage then go to post page
-          // localStorage.setItem('postId', event.target.dataset.id)
           window.location = `/post/${event.target.dataset.id}`
         }
       })
@@ -344,13 +315,12 @@
 
       //conditional logic to display either sign in or sign out depending on whether user is signed in or not
       function displaySignOut() {
-
         localStorage.getItem('token')
         if (localStorage.getItem("token") === null) {
           const signOut2 = document.createElement('li')
           signOut2.innerHTML = `
-      <li id="logInButtonMain"><a href="/login">Log In</a></li>
-      `
+          <li id="logInButtonMain"><a href="/login">Log In</a></li>
+          `
           document.getElementById('signOutConditional').append(signOut2)
           document.getElementById('logInButtonMain').addEventListener('click', event => {
             window.location = '/login'
@@ -361,8 +331,8 @@
 
           const signOut1 = document.createElement('li')
           signOut1.innerHTML = `
-      <li id="signOutMain"><a href="/login">Sign Out</a></li>
-      `
+           <li id="signOutMain"><a href="/login">Sign Out</a></li>
+          `
           document.getElementById('signOutConditional').append(signOut1)
           document.getElementById('signOutMain').addEventListener('click', event => {
             localStorage.removeItem('token')
@@ -371,15 +341,15 @@
 
         }
       }
-
+      //function to display sign out in mobile view
       function displaySignOutNav() {
 
         localStorage.getItem('token')
         if (localStorage.getItem("token") === null) {
           const signOut2 = document.createElement('li')
           signOut2.innerHTML = `
-      <li id="logInButtonNav"><a href="/login">Log In</a></li>
-      `
+          <li id="logInButtonNav"><a href="/login">Log In</a></li>
+          `
           document.getElementById('signOutNav').append(signOut2)
           document.getElementById('logInButtonNav').addEventListener('click', event => {
             window.location = '/login'
@@ -388,8 +358,8 @@
 
           const signOut1 = document.createElement('li')
           signOut1.innerHTML = `
-      <li id="signOutButtonNav"><a href="/login">Sign Out</a></li>
-      `
+          <li id="signOutButtonNav"><a href="/login">Sign Out</a></li>
+          `
           document.getElementById('signOutNav').append(signOut1)
           document.getElementById('signOutButtonNav').addEventListener('click', event => {
             localStorage.removeItem('token')
@@ -402,7 +372,6 @@
       displaySignOutNav()
 
       //verify user is logged in to view profile, otherwise send them to login page
-
       function loginVerify() {
         if (localStorage.getItem("token") === null) {
           window.location = '/login'
@@ -411,10 +380,7 @@
 
       loginVerify()
 
-      
-      
       //listener to delete post
-
       document.addEventListener('click', event => {
          
           if (event.target.classList.contains('deletePost')) {
@@ -433,8 +399,7 @@
         }}
           })
 
-        
-
+      
       //listener to take you to correct post to edit
     document.addEventListener('click', event => {
         event.preventDefault()
