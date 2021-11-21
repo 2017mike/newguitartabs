@@ -3,13 +3,13 @@
 //for hamburger menu
 document.addEventListener('DOMContentLoaded', function () {
   var elems = document.querySelectorAll('.sidenav');
-  var instances = M.Sidenav.init(elems, options);
+  var instances = M.Sidenav.init(elems, {});
 });
 
 M.AutoInit();
 document.addEventListener('DOMContentLoaded', function () {
   var elems = document.querySelectorAll('select');
-  var instances = M.FormSelect.init(elems, options);
+  var instances = M.FormSelect.init(elems, {});
 });
 
 
