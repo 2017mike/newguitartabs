@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <title>My Profile</title>
 
   <style>
@@ -283,8 +284,8 @@
             <span class="card-title activator white-text text-darken-4 myTitle truncate">${post.song} <br> ${post.artist}</span>
             <a class="waves-effect waves-light btn viewPost black myBtn" data-id=${post.id}>Tab</a>
             
-             <a class="waves-effect waves-light btn  orange myBtn editPost" data-id=${post.id}>Edit</a>
-              <a class="waves-effect waves-light btn deletePost red myBtn" data-id=${post.id}>delete</a>
+             <a class="waves-effect waves-light btn  orange myBtn editPost" data-id=${post.id}><i class="material-icons">edit</i></a>
+              <a class="waves-effect waves-light btn deletePost red myBtn" data-id=${post.id}><i class="material-icons">delete</i></a>
           </div>
 
       </div>
@@ -307,8 +308,8 @@
             <span class="card-title  white-text text-darken-4 myTitle truncate">${post.song} <br> ${post.artist}</span>
             <a class="waves-effect waves-light btn viewPost black myBtn" data-id=${post.id}>Tab</a>
            
-            <a class="waves-effect waves-light btn  orange myBtn editPost" data-id=${post.id}>Edit</a>
-             <a class="waves-effect waves-light btn deletePost red myBtn" data-id=${post.id}>delete</a>
+            <a class="waves-effect waves-light btn  orange myBtn editPost" data-id=${post.id}><i class="material-icons">edit</i></a>
+             <a class="waves-effect waves-light btn deletePost red myBtn" data-id=${post.id}><i class="material-icons">delete</i></a>
           </div>
 
       </div>
@@ -443,6 +444,16 @@
           window.location = `/edit`
         }
       })
+
+      //listener for images to take you to your post
+       document.addEventListener('click', event => {
+          event.preventDefault()
+          if (event.target.classList.contains('viewPostImg')) {
+            //grab post id, takes you to post/:id
+            window.location = `/post/${event.target.dataset.id}`
+          }
+        })
+
 
 
 
