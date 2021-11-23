@@ -74,6 +74,34 @@
       }
     }
 
+     @media screen and (max-width: 1400px) {
+       .card {
+        height: 330px !important;
+      }
+    
+       .card-image {
+      background-position: top !important;
+      height: 220px;
+     
+    } 
+
+    .card-title {
+      margin: 2px !important;
+    }
+     
+      .card-content {
+        padding: 0px !important;
+        
+      }
+     
+       .card-title {
+        font-size: 13px !important;
+      }
+      .myBtn {
+        font-size: 10px;
+      }
+    } 
+
 
      @media screen and (max-width: 1200px) {
        .card {
@@ -227,9 +255,9 @@
       <ul class="right hide-on-med-and-down">
         <li id="homePage"><a href="/">Home</a></li>
         <!-- <li id="tabs"><a href="/tabs">Tabs</a></li> -->
-        <li id="profilePage"><a href="/profile">My Profile</a></li>
+        <li id="profilePage" class='active'><a href="/profile">My Profile</a></li>
         <li id="createNav"><a href="/create">Create</a></li>
-        <li id="aboutPage" class='active'><a href="/about">About</a></li>
+        <li id="aboutPage" ><a href="/about">About</a></li>
         <li>
           <div class="input-field white-text">
             <i class="white-text material-icons prefix notActive" id="mySearch">search</i>
