@@ -4,13 +4,25 @@
 document.addEventListener('DOMContentLoaded', function () {
   var elems = document.querySelectorAll('.sidenav');
   var instances = M.Sidenav.init(elems, {});
-});
+})
 
 M.AutoInit();
 document.addEventListener('DOMContentLoaded', function () {
   var elems = document.querySelectorAll('select');
   var instances = M.FormSelect.init(elems, {});
-});
+})
+
+//js for searchbar animation
+document.getElementById('mySearch').addEventListener('click', event => {
+  document.getElementById('autocomplete-input').classList.add('showNav')
+  document.getElementById('autocomplete-input').classList.remove('hidden')
+})
+
+document.getElementById('mySearchMobile').addEventListener('click', event => {
+  console.log('ping')
+  document.getElementById('autocomplete-input-mobile').classList.remove('hidden')
+})
+
 
 
 

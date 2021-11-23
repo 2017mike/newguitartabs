@@ -142,6 +142,44 @@
     display: flex;
     justify-content: center;
   }
+
+    /* search animation css start */
+
+
+    .showNav {
+      -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+    width: 11vw !important;
+    }
+
+    .hidden {
+      opacity: 0;
+      width: 0px !important;
+    }
+
+     #autocomplete-input{
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+    }
+
+    #autocomplete-input-mobile{
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+    }
+
+    .notActive {
+      background-color: transparent !important;
+    }
+
+    
+  
+  /* search animation end */
 </style>
 
 
@@ -156,10 +194,16 @@
           <li id="homePage"><a href="/">Home</a></li>
           <!-- <li id="tabs"><a href="/tabs">Tabs</a></li> -->
           <li id="profilePage"><a href="/profile">My Profile</a></li>
-          <li id="createNav" class='active'><a href="/create">Create</a></li>
-          <li id="aboutPage"><a href="/about">About</a></li>
+          <li id="createNav"><a href="/create">Create</a></li>
+          <li id="aboutPage" class='active'><a href="/about">About</a></li>
+          <li>
+            <div class="input-field white-text">
+              <i class="white-text material-icons prefix notActive" id="mySearch">search</i>
+              <input type="text" placeholder="search" id="autocomplete-input" class="autocomplete white-text hidden">
+            </div>
+          </li>
           <li id="signOutConditional"></li>
-
+  
         </ul>
       </div>
     </nav>
@@ -169,7 +213,10 @@
     <li id="profilePageNav"><a href="/profile">My Profile</a></li>
     <li id="createSideNav"><a href="/create">Create</a></li>
     <li id="aboutPageNav"><a href="/about">About</a></li>
-    <!-- <li id="aboutPageNav"><a href="/tabs">Tabs</a></li> -->
+    <div class="input-field col s6 s12 black-text">
+      <i id="mySearchMobile" class="black-text material-icons prefix notActive">search</i>
+      <input type="text" placeholder="search" id="autocomplete-input-mobile" class="autocomplete black-text hidden">
+    </div>
     <li id="signOutNav"></li>
   </ul>
 

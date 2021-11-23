@@ -141,6 +141,44 @@
     .spacerRow {
       height: 10vh;
     }
+
+      /* search animation css start */
+
+
+    .showNav {
+      -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+    width: 11vw !important;
+    }
+
+    .hidden {
+      opacity: 0;
+      width: 0px !important;
+    }
+
+     #autocomplete-input{
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+    }
+
+    #autocomplete-input-mobile{
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+    }
+
+    .notActive {
+      background-color: transparent !important;
+    }
+
+    
+  
+  /* search animation end */
   </style>
 </head>
 <body>
@@ -152,11 +190,17 @@
       <a href="/" class="brand-logo myLogo" id="logoButton">BigMike's Guitar Tabs</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
-        <li id="homePage" class=''><a href="/">Home</a></li>
+        <li id="homePage"><a href="/">Home</a></li>
         <!-- <li id="tabs"><a href="/tabs">Tabs</a></li> -->
         <li id="profilePage"><a href="/profile">My Profile</a></li>
         <li id="createNav"><a href="/create">Create</a></li>
         <li id="aboutPage"><a href="/about">About</a></li>
+        <li>
+          <div class="input-field white-text">
+            <i class="white-text material-icons prefix notActive" id="mySearch">search</i>
+            <input type="text" placeholder="search" id="autocomplete-input" class="autocomplete white-text hidden">
+          </div>
+        </li>
         <li id="signOutConditional"></li>
 
       </ul>
@@ -167,8 +211,11 @@
   <li id="homePageNav"><a href="/">Home</a></li>
   <li id="profilePageNav"><a href="/profile">My Profile</a></li>
   <li id="createSideNav"><a href="/create">Create</a></li>
-  <!-- <li id="tabsNav"><a href="/tabs">Tabs</a></li> -->
   <li id="aboutPageNav"><a href="/about">About</a></li>
+  <div class="input-field col s6 s12 black-text">
+    <i id="mySearchMobile" class="black-text material-icons prefix notActive">search</i>
+    <input type="text" placeholder="search" id="autocomplete-input-mobile" class="autocomplete black-text hidden">
+  </div>
   <li id="signOutNav"></li>
 </ul>
 
@@ -193,8 +240,22 @@
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="assets/js/all.js"></script>
   
   <script>
+
+    //js for searchbar animation
+      document.getElementById('mySearch').addEventListener('click', event => {
+        document.getElementById('autocomplete-input').classList.add('showNav')
+        document.getElementById('autocomplete-input').classList.remove('hidden')
+      })
+
+      document.getElementById('mySearchMobile').addEventListener('click', event => {
+        console.log('ping')
+        document.getElementById('autocomplete-input-mobile').classList.remove('hidden')
+      })
+
+
     //here we render the post by id that the user clicked on, 
 
 
