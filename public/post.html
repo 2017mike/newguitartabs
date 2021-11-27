@@ -14,8 +14,8 @@
     body {
       font-family: Cutive Mono, arial;
       /* background-color: #222; */
-      /* background: url("https://i.imgur.com/wCrn7As.jpeg"); */
-      background-color: black;
+      background: url("/assets/images/posbackground.jpeg");
+      /* background-color: black; */
       
       background-size: cover;
       background-position: center center;
@@ -29,7 +29,7 @@
       z-index: 0 !important;
     }
 
-     /* @media screen and (max-width: 434px) {
+     @media screen and (max-width: 434px) {
       body {
          font-family: Cutive Mono, arial;
       background-color: #222;
@@ -43,7 +43,7 @@
       padding-right: 0 !important;
       z-index: 0 !important;
       }
-    } */
+    }
   
     @media screen and (max-width: 806px) {
       .myLogo {
@@ -258,8 +258,6 @@
 
     //here we render the post by id that the user clicked on, 
 
-
-    // save the post id in local storage since we are going across multiple pages
     let postId = window.location.pathname
 
     // console.log(window.location, 'this is location')

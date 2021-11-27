@@ -43,7 +43,8 @@ router.post('/posts', passport.authenticate('jwt'), (req, res) => Post.create({
   .then(post => res.json(post))
   .catch(err => console.log(err)))
 
-//update post: May not be used (6/22/21)
+
+//update post
 router.put('/posts/:id', passport.authenticate('jwt'), (req, res) => Post.update(req.body, { where: { id: req.params.id } })
   .then(() => res.sendStatus(200))
   .catch(err => console.log(err)))
