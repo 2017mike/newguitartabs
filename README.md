@@ -6,7 +6,7 @@ I decided to make BigMike's guitar tabs because I hadn't seen a tab website that
 
 BigMike's Guitar Tabs uses a SQL database, which is hosted on JawsDB via Heroku. For front-end design, the Materialize CSS library is used, and for backend and routing functions Node and Express are used. 
 
-To access the website click here: https://bigmikesguitartabs.herokuapp.com/
+To access the website click here: https://www.bigmikesguitartabs.com/
 
 # Screenshots
 
