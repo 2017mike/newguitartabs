@@ -64,22 +64,63 @@ document.getElementById('aboutPageNav').addEventListener('click', event => {
 })
 
 
+function displaySignOut() {
 
-// document.getElementById('aboutPage').addEventListener('click', event => {
-//   window.location = '/aboutus'
-// })
+  localStorage.getItem('token')
+  if (localStorage.getItem("token") === null) {
+    const signOut2 = document.createElement('li')
+    signOut2.innerHTML = `
+      <li id="logInButtonMain"><a href="/login">Log In</a></li>
+      `
+    document.getElementById('signOutConditional').append(signOut2)
+    document.getElementById('logInButtonMain').addEventListener('click', event => {
+      window.location = '/login'
+    })
 
-// document.getElementById('aboutPageNav').addEventListener('click', event => {
-//   window.location = '/aboutus'
-// })
 
-// document.getElementById('signOut').addEventListener('click', event => {
-//   localStorage.removeItem('token')
-//   window.location = '/login'
-// })
+  } else {
 
-// document.getElementById('signOutNav').addEventListener('click', event => {
-//   localStorage.removeItem('token')
-//   window.location = '/login'
-// })
+    const signOut1 = document.createElement('li')
+    signOut1.innerHTML = `
+      <li id="signOutMain"><a href="/login">Sign Out</a></li>
+      `
+    document.getElementById('signOutConditional').append(signOut1)
+    document.getElementById('signOutMain').addEventListener('click', event => {
+      localStorage.removeItem('token')
+      window.location = '/login'
+    })
+
+  }
+}
+
+function displaySignOutNav() {
+
+  localStorage.getItem('token')
+  if (localStorage.getItem("token") === null) {
+    const signOut2 = document.createElement('li')
+    signOut2.innerHTML = `
+      <li id="logInButtonNav"><a href="/login">Log In</a></li>
+      `
+    document.getElementById('signOutNav').append(signOut2)
+    document.getElementById('logInButtonNav').addEventListener('click', event => {
+      window.location = '/login'
+    })
+  } else {
+
+    const signOut1 = document.createElement('li')
+    signOut1.innerHTML = `
+      <li id="signOutButtonNav"><a href="/login">Sign Out</a></li>
+      `
+    document.getElementById('signOutNav').append(signOut1)
+    document.getElementById('signOutButtonNav').addEventListener('click', event => {
+      localStorage.removeItem('token')
+      window.location = '/login'
+    })
+  }
+}
+
+
+displaySignOut()
+displaySignOutNav()
+
 

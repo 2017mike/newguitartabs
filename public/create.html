@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,174 +13,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
-
+  <link rel="stylesheet" href="./assets/css/create.css">
 </head>
 
 <style>
- .container {
-   outline: auto;
-   font-family: Cutive Mono, arial;
-   padding-top: 5%;
-   padding: 2%;
-   margin-top: 1%;
-   background-color: black;
-   position: static !important;
-   
-   background: ghostwhite;
- }
 
-  body {
-      font-family: Cutive Mono, arial;
-
-      background: ghost-white;
-      background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('https://cdn.pixabay.com/photo/2016/01/09/17/15/cherub-1130585_1280.jpg');
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center center;
-      padding-top: 0 !important;
-      /* justify-content: center; */
-      display: flex;
-      /* align-items: center; */
-      height: 150vh;
-      padding-right: 0 !important;
-      z-index: 0 !important;
-    }
-
-     .active {
-      background-color: grey !important;
-    }
-
- .space {
-   height: 1vh;
- }
-
- .nav-wrapper a:hover {
-   background: #ddd;
-   color: black;
- }
-
- .row {
-   margin-bottom: 0px !important;
- }
-
-  @media screen and (max-width: 806px) {
-      .myLogo {
-        font-size: 16px !important;
-      }
-    }
-
-    @media screen and (max-width: 434px) {
-      .myLogo {
-        font-size: 12px !important;
-      }
-    }
-
-    .myTitle {
-      font-size: 16px !important;
-    }
-
- .brand-logo {
-   margin-left: 1%;
- }
-
- @keyframes showUp {
-   0% {
-     transform: scale(0);
-   }
-   100% {
-     transform: scale(1);
-   }
- }
-
- .myContainer {
-   animation: showUp 0.5s cubic-bezier(0.18, 1.3, 1, 1) forwards;
-   background:rgba(255, 255, 255, .99);
-   /* width: 90vw; */
-   justify-content: center;
-   display: flex;
-   align-items: center;
- }
-
-  .myCreate {
-    font-family: 'Courier New', Courier, monospace;
-    height: 40vh;
-    width: 100%;
-  }
-
-  @media screen and (max-width: 725px) {
-  .myCreate {
-    font-size:11px;
-  }
-}
-
- @media screen and (max-width: 450px) {
-  .myCreate {
-    font-size:10px;
-  }
-}
-@media screen and (max-width: 408px) {
-  .myCreate {
-    font-size:9px;
-  }
-}
-@media screen and (max-width: 370px) {
-  .myCreate {
-    font-size:8px;
-  }
-}
-
-@media screen and (max-width: 333px) {
-  .myCreate {
-    font-size:7px;
-  }
-}
-
-placeholder {
-  color: black;
-}
-
-.myCenter {
-  display: flex;
-  justify-content: center;
-}
-
-  /* search animation css start */
-
-
-    .showNav {
-      -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    transition: all 1s ease;
-    width: 11vw !important;
-    }
-
-    .hidden {
-      opacity: 0;
-      width: 0px !important;
-    }
-
-     #autocomplete-input{
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    transition: all 1s ease;
-    }
-
-    #autocomplete-input-mobile{
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    transition: all 1s ease;
-    }
-
-    .notActive {
-      background-color: transparent !important;
-    }
-
-    
-  
-  /* search animation end */
 
 
 </style>
@@ -187,281 +25,140 @@ placeholder {
 
 <body>
 
-<div class="navbar-fixed">
-  <nav>
-    <div class="nav-wrapper black">
-      <a href="/" class="brand-logo myLogo" id="logoButton">BigMike's Guitar Tabs</a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-        <li id="homePage"><a href="/">Home</a></li>
-        <!-- <li id="tabs"><a href="/tabs">Tabs</a></li> -->
-        <li id="profilePage"><a href="/profile">My Profile</a></li>
-        <li id="createNav"class='active'><a href="/create">Create</a></li>
-        <li id="aboutPage" ><a href="/about">About</a></li>
-        <li>
-          <div class="input-field white-text">
-            <i class="white-text material-icons prefix notActive" id="mySearch">search</i>
-            <input type="text" placeholder="search" id="autocomplete-input" class="autocomplete white-text hidden">
-          </div>
-        </li>
-        <li id="signOutConditional"></li>
+  <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper black">
+        <a href="/" class="brand-logo myLogo" id="logoButton">BigMike's Guitar Tabs</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li id="homePage"><a href="/">Home</a></li>
+          <!-- <li id="tabs"><a href="/tabs">Tabs</a></li> -->
+          <li id="profilePage"><a href="/profile">My Profile</a></li>
+          <li id="createNav" class='active'><a href="/create">Create</a></li>
+          <li id="aboutPage"><a href="/about">About</a></li>
+          <li>
+            <div class="input-field white-text">
+              <i class="white-text material-icons prefix notActive" id="mySearch">search</i>
+              <input type="text" placeholder="search" id="autocomplete-input" class="autocomplete white-text hidden">
+            </div>
+          </li>
+          <li id="signOutConditional"></li>
 
-      </ul>
-    </div>
-  </nav>
-</div>
-<ul class="sidenav" id="mobile-demo" style="width: 50vw;">
-  <li id="homePageNav"><a href="/">Home</a></li>
-  <li id="profilePageNav"><a href="/profile">My Profile</a></li>
-  <li id="createSideNav"><a href="/create">Create</a></li>
-  <li id="aboutPageNav"><a href="/about">About</a></li>
-  <div class="input-field col s6 s12 black-text">
-    <i id="mySearchMobile" class="black-text material-icons prefix notActive">search</i>
-    <input type="text" placeholder="search" id="autocomplete-input-mobile" class="autocomplete black-text hidden">
+        </ul>
+      </div>
+    </nav>
   </div>
-  <li id="signOutNav"></li>
-</ul>
+  <ul class="sidenav" id="mobile-demo" style="width: 50vw;">
+    <li id="homePageNav"><a href="/">Home</a></li>
+    <li id="profilePageNav"><a href="/profile">My Profile</a></li>
+    <li id="createSideNav"><a href="/create">Create</a></li>
+    <li id="aboutPageNav"><a href="/about">About</a></li>
+    <div class="input-field col s6 s12 black-text">
+      <i id="mySearchMobile" class="black-text material-icons prefix notActive">search</i>
+      <input type="text" placeholder="search" id="autocomplete-input-mobile" class="autocomplete black-text hidden">
+    </div>
+    <li id="signOutNav"></li>
+  </ul>
 
 
 
-<div class="space"></div>
-<div class="myCenter">
-<div class="myContainer">
- 
-  <div class="row">
-    <div class="col m10 offset-m1">
-      <form method="GET" id='post_form'>
-       
-        <div class="row">
-          <div class="input-field col s12">
-            <textarea id="songName" class="materialize-textarea validate black-text"
-              placeholder="Song Name" style="font-size: 18px; font-family: Cutive Mono, arial;"></textarea>
-            <label for="textarea1"></label>
-        
-          </div>
-          
-        </div>
+  <div class="space"></div>
+  <div class="myCenter">
+    <div class="myContainer">
 
-        <div class="row">
-          <div class="input-field col s12">
-            <textarea id="artistName" class="materialize-textarea validate black-text" placeholder="Artist"
-              style="font-size: 18px; font-family: Cutive Mono, arial;"></textarea>
-            <label for="textarea1"></label>
-        
-          </div>
-        
-        </div>
+      <div class="row">
+        <div class="col m10 offset-m1">
+          <form method="GET" id='post_form'>
+
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea id="songName" class="materialize-textarea validate black-text" placeholder="Song Name"
+                  style="font-size: 18px; font-family: Cutive Mono, arial;"></textarea>
+                <label for="textarea1"></label>
+
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea id="artistName" class="materialize-textarea validate black-text" placeholder="Artist"
+                  style="font-size: 18px; font-family: Cutive Mono, arial;"></textarea>
+                <label for="textarea1"></label>
+
+              </div>
+
+            </div>
 
 
-        <div class="row">
-          <div class="input-field col s12 ">
-          <textarea name="" id="tabField" cols="30" rows="30" class="myCreate black-text "> 
+            <div class="row">
+              <div class="input-field col s12 ">
+                <textarea name="" id="tabField" cols="30" rows="30" class="myCreate black-text ">
         </textarea>
-            <label for="textarea1"></label>
-          
-          </div>
-          <button class=" center" id="newTemplate">New Empty Template</button>
+                <label for="textarea1"></label>
 
-        
-  
-            <button class="center" id="clearTemplate">Clear</button>
-
-            <br>
-            <br>
-
-            <p>
-              please make sure all of your string fields have the same amount of characters otherwise they will start doing a
-              weird wrap thing and they won't show up right :(
-            </p>
-            <br>
+              </div>
+              <button class=" center" id="newTemplate">New Empty Template</button>
 
 
-            <p>
-              
-              New Empty Template just adds an empty 6-string template. It doesn't delete what you've already tabbed out!! Try it out!  </p>
-            <br>
-            
-            <p>
-              Clear does delete what you have so far so keep that in mind!
-            </p>
-            <br>
-            <p>
-              You can actually add whatever info you want in the tab field, it will just save as is. It doesn't have to be strictly
-              tab!!You could add your YouTube tutorial link or even your Venmo I'm not here to judge!!
-             
-            </p>
-            <br>
-            <p>
-              Remember that I am still working hard to get this site going so please be patient with me and also please let me know
-              if you encounter any bugs or anything like that... Also it is going to be very hard to tab on mobile so make sure you
-              tab on a computer!!
-            </p>
+
+              <button class="center" id="clearTemplate">Clear</button>
+
+              <br>
+              <br>
+
+              <p>
+                please make sure all of your string fields have the same amount of characters otherwise they will start
+                doing a
+                weird wrap thing and they won't show up right :(
+              </p>
+              <br>
+
+
+              <p>
+
+                New Empty Template just adds an empty 6-string template. It doesn't delete what you've already tabbed
+                out!! Try it out! </p>
+              <br>
+
+              <p>
+                Clear does delete what you have so far so keep that in mind!
+              </p>
+              <br>
+              <p>
+                You can actually add whatever info you want in the tab field, it will just save as is. It doesn't have
+                to be strictly
+                tab!!You could add your YouTube tutorial link or even your Venmo I'm not here to judge!!
+
+              </p>
+              <br>
+              <p>
+                Remember that I am still working hard to get this site going so please be patient with me and also
+                please let me know
+                if you encounter any bugs or anything like that... Also it is going to be very hard to tab on mobile so
+                make sure you
+                tab on a computer!!
+              </p>
+            </div>
+
+          </form>
+
+          <br>
+          <br>
+
+          <button form='post_form' class="btn waves-effect waves-light black center" type="submit" name="action"
+            id="create">Submit</button>
         </div>
-       
-      </form>
-
-      <br>
-      <br>
-
-      <button form='post_form' class="btn waves-effect waves-light black center" type="submit" name="action"
-        id="create">Submit</button>
+      </div>
     </div>
   </div>
-</div>
-</div>
 
 
-
-
-
-  
-  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="./assets/js/all.js"></script>
+  <script src="assets/js/create.js"></script>
 
-<script>
-
-
-
-  let tabField = document.getElementById('tabField').value  
-
-  document.getElementById('tabField').addEventListener('input', updateValue)
-
-
-  function updateValue(tabfield) {
-    tabField.replace('-', '')
-  }
-
-
-
-
- 
-
-  
-//function to add a new empty template
-  document.getElementById('newTemplate').addEventListener('click', event => {
-    event.preventDefault()
-    let newTemplateElem = 
-          "\nE----------------------------------------------------\nB----------------------------------------------------\nG----------------------------------------------------\nD----------------------------------------------------\nA----------------------------------------------------\nE----------------------------------------------------\n"
-
-          document.getElementById('tabField').value += (newTemplateElem)
-  })
-
-
-  document.querySelector("#newTemplate").click();
-
-//function to clear template
-   document.getElementById('clearTemplate').addEventListener('click', event => {
-      event.preventDefault()
-     
-      document.getElementById('tabField').value = "\nE----------------------------------------------------\nB----------------------------------------------------\nG----------------------------------------------------\nD----------------------------------------------------\nA----------------------------------------------------\nE----------------------------------------------------\n"
-
-    })
-
-
-//submit tab function
-    document.getElementById('create').addEventListener('click', event => {
-        event.preventDefault()
-        
-
-        // console.log(tabField.value)
-        let newPost = {
-          song: document.getElementById('songName').value,
-          artist: document.getElementById('artistName').value,
-          body: document.getElementById('tabField').value
-        }
-        axios.post('/api/posts', newPost, {
-          headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
-          }
-        })
-          .then(res => {
-            console.log(res)
-            alert('your tab has been created :)')
-            window.location = '/'
-          })
-      })
-
-  
- //login function, checks for token in local storage     
- function loginVerify() {
-        if (localStorage.getItem("token") === null) {
-          window.location='/login'
-          alert('you must be logged in to create a tab, sorry :/')
-        }
-      }
-        
-loginVerify()
-
-
-//conditional logic to display sign in or sign out depending on whether user is logged in
-
-function displaySignOut() {
-
-            localStorage.getItem('token')
-            if (localStorage.getItem("token") === null) {
-              const signOut2 = document.createElement('li')
-              signOut2.innerHTML = `
-      <li id="logInButtonMain"><a href="/login">Log In</a></li>
-      `
-              document.getElementById('signOutConditional').append(signOut2)
-              document.getElementById('logInButtonMain').addEventListener('click', event => {
-                window.location = '/login'
-              })
-
-
-            } else {
-
-              const signOut1 = document.createElement('li')
-              signOut1.innerHTML = `
-      <li id="signOutMain"><a href="/login">Sign Out</a></li>
-      `
-              document.getElementById('signOutConditional').append(signOut1)
-              document.getElementById('signOutMain').addEventListener('click', event => {
-                localStorage.removeItem('token')
-                window.location = '/login'
-              })
-
-            }
-          }
-
-function displaySignOutNav() {
-
-            localStorage.getItem('token')
-            if (localStorage.getItem("token") === null) {
-              const signOut2 = document.createElement('li')
-              signOut2.innerHTML = `
-      <li id="logInButtonNav"><a href="/login">Log In</a></li>
-      `
-              document.getElementById('signOutNav').append(signOut2)
-              document.getElementById('logInButtonNav').addEventListener('click', event => {
-                window.location = '/login'
-              })
-            } else {
-
-              const signOut1 = document.createElement('li')
-              signOut1.innerHTML = `
-      <li id="signOutButtonNav"><a href="/login">Sign Out</a></li>
-      `
-              document.getElementById('signOutNav').append(signOut1)
-              document.getElementById('signOutButtonNav').addEventListener('click', event => {
-                localStorage.removeItem('token')
-                window.location = '/login'
-              })
-            }
-          }
-
-displaySignOut()
-displaySignOutNav()
-
-
-document.querySelector('.myCreate').addEventListener("keyup",editString);
-
-        
-  
-
-</script>
 </body>
 
 

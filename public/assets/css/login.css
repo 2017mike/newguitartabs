@@ -1,0 +1,54 @@
+ body {
+   font-family: Cutive Mono, arial;
+
+   background: #222;
+   background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('../images/angel-1075947_1280.png');
+   background-repeat: no-repeat;
+   background-size: contain;
+   background-position: center center;
+   padding-top: 0 !important;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 120vh;
+   padding-right: 0 !important;
+   z-index: 0 !important;
+ }
+
+ html {
+   overflow-y: auto;
+ }
+
+ /* main {
+    background: black;
+  } */
+
+ .swal2-shown {
+   display: flex;
+   height: 112vh;
+   width: 100vw;
+ }
+
+ .usernameField {
+   font-size: 16px;
+   color: darkgray;
+ }
+
+ /* .container {
+      animation: showUp 0.5s cubic-bezier(0.18, 1.3, 1, 1) forwards;
+      background:;
+      #222background: linear-gradient(rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.95));
+      -webkit-animation: showUp 0.5s cubic-bezier(0.18, 1.3, 1, 1) forwards;
+} */
+
+ @media screen and (max-width: 676px) {
+   .myFont {
+     font-size: xx-large;
+   }
+ }
+
+
+
+ .myInput {
+   font-family: Cutive Mono, arial;
+ }

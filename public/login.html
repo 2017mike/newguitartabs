@@ -14,63 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/register.css">
-
-
-  <style>
-    body {
-      font-family: Cutive Mono, arial;
-
-      background: #222;
-      background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('https://cdn.pixabay.com/photo/2015/12/04/00/22/angel-1075947_1280.png');
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: center center;
-      padding-top: 0 !important;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 120vh;
-      padding-right: 0 !important;
-      z-index: 0 !important;
-    }
-
-    html {
-      overflow-y: auto;
-    }
-
-    /* main {
-    background: black;
-  } */
-
-    .swal2-shown {
-      display: flex;
-      height: 112vh;
-      width: 100vw;
-    }
-
-    .usernameField {
-      font-size: 16px;
-      color: darkgray;
-    }
-
-    /* .container {
-      animation: showUp 0.5s cubic-bezier(0.18, 1.3, 1, 1) forwards;
-      background: #222
-      background: linear-gradient(rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.95));
-    } */
-
-    @media screen and (max-width: 676px) {
-  .myFont {
-    font-size:xx-large;
-  }
-}
-
-   
-
-    .myInput {
-       font-family: Cutive Mono, arial;
-    }
-  </style>
+  <link rel="stylesheet" href="./assets/css/login.css">
 
 </head>
 
@@ -79,11 +23,6 @@
     <div class="row">
       <div class="col m6  s12 white-text left">
         <h2 class="myFont">BigMike's Guitar Tabs</h2>
-
-
-
-
-
 
       </div>
       <div class="z-depth-1 transparent   myLog  col s12 m6 "
@@ -136,30 +75,8 @@
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="assets/js/login.js"></script>
 
-  <script>
-    document.getElementById('login').addEventListener('click', event => {
-        event.preventDefault()
-        axios.post('/api/users/login', {
-          username: document.getElementById('username').value,
-          password: document.getElementById('password').value
-        })
-          .then(({ data: token }) => {
-            if (token) {
-              localStorage.setItem('token', token)
-              window.location = '/'
-            } else {
-              alert('Invalid username or password')
-            }
-          })
-          .catch(err => console.error(err))
-      })
-
-      document.getElementById('register').addEventListener('click', event => {
-        window.location = '/register'
-      })
-  </script>
-  <!-- our javascript -->
  
 </body>
 

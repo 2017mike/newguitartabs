@@ -240,8 +240,6 @@
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="assets/js/all.js"></script>
-  
   <script>
 
     //js for searchbar animation
@@ -256,164 +254,112 @@
       })
 
 
-    //here we render the post by id that the user clicked on, 
+      //here we render the post by id that the user clicked on, 
 
-    let postId = window.location.pathname
+      let postId = window.location.pathname
 
-    // console.log(window.location, 'this is location')
+      // console.log(window.location, 'this is location')
 
-    axios.get(`/api/${postId}`, {
-      headers: {
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
-      }
-    })
-      .then(({ data }) => {
-        // console.log(data, 'this is post data')
-        //get req or offer
-
-        //render post
-        document.getElementById('postSong').innerHTML = data.song
-        document.getElementById('postArtist').innerHTML = data.artist
-        document.getElementById('postBody').innerHTML = data.body
-        document.getElementById('postUser').innerHTML = `posted by: ${data.User.username}`
-        
-
-        //render the comment onto the page
-        //     data.comments.forEach(comment => {
-        //       document.getElementById('comments').innerHTML += `
-        // <li class="collection-item #212121 grey darken-4 white-text">${comment.body}</li>
-        // `
-        //     })
-
+      axios.get(`/api/${postId}`, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
       })
-      .catch(err => console.log(err))
+        .then(({ data }) => {
+          // console.log(data, 'this is post data')
+          //get req or offer
+
+          //render post
+          document.getElementById('postSong').innerHTML = data.song
+          document.getElementById('postArtist').innerHTML = data.artist
+          document.getElementById('postBody').innerHTML = data.body
+          document.getElementById('postUser').innerHTML = `posted by: ${data.User.username}`
 
 
-        function displaySignOut() {
+          //render the comment onto the page
+          //     data.comments.forEach(comment => {
+          //       document.getElementById('comments').innerHTML += `
+          // <li class="collection-item #212121 grey darken-4 white-text">${comment.body}</li>
+          // `
+          //     })
 
-            localStorage.getItem('token')
-            if (localStorage.getItem("token") === null) {
-              const signOut2 = document.createElement('li')
-              signOut2.innerHTML = `
+        })
+        .catch(err => console.log(err))
+
+
+      function displaySignOut() {
+
+        localStorage.getItem('token')
+        if (localStorage.getItem("token") === null) {
+          const signOut2 = document.createElement('li')
+          signOut2.innerHTML = `
       <li id="logInButtonMain"><a href="/login">Log In</a></li>
       `
-              document.getElementById('signOutConditional').append(signOut2)
-              document.getElementById('logInButtonMain').addEventListener('click', event => {
-                window.location = '/login'
-              })
+          document.getElementById('signOutConditional').append(signOut2)
+          document.getElementById('logInButtonMain').addEventListener('click', event => {
+            window.location = '/login'
+          })
 
 
-            } else {
+        } else {
 
-              const signOut1 = document.createElement('li')
-              signOut1.innerHTML = `
+          const signOut1 = document.createElement('li')
+          signOut1.innerHTML = `
       <li id="signOutMain"><a href="/login">Sign Out</a></li>
       `
-              document.getElementById('signOutConditional').append(signOut1)
-              document.getElementById('signOutMain').addEventListener('click', event => {
-                localStorage.removeItem('token')
-                window.location = '/login'
-              })
+          document.getElementById('signOutConditional').append(signOut1)
+          document.getElementById('signOutMain').addEventListener('click', event => {
+            localStorage.removeItem('token')
+            window.location = '/login'
+          })
 
-            }
-          }
+        }
+      }
 
-          function displaySignOutNav() {
+      function displaySignOutNav() {
 
-            localStorage.getItem('token')
-            if (localStorage.getItem("token") === null) {
-              const signOut2 = document.createElement('li')
-              signOut2.innerHTML = `
+        localStorage.getItem('token')
+        if (localStorage.getItem("token") === null) {
+          const signOut2 = document.createElement('li')
+          signOut2.innerHTML = `
       <li id="logInButtonNav"><a href="/login">Log In</a></li>
       `
-              document.getElementById('signOutNav').append(signOut2)
-              document.getElementById('logInButtonNav').addEventListener('click', event => {
-                window.location = '/login'
-              })
-            } else {
+          document.getElementById('signOutNav').append(signOut2)
+          document.getElementById('logInButtonNav').addEventListener('click', event => {
+            window.location = '/login'
+          })
+        } else {
 
-              const signOut1 = document.createElement('li')
-              signOut1.innerHTML = `
+          const signOut1 = document.createElement('li')
+          signOut1.innerHTML = `
       <li id="signOutButtonNav"><a href="/login">Sign Out</a></li>
       `
-              document.getElementById('signOutNav').append(signOut1)
-              document.getElementById('signOutButtonNav').addEventListener('click', event => {
-                localStorage.removeItem('token')
-                window.location = '/login'
-              })
-            }
-          }
+          document.getElementById('signOutNav').append(signOut1)
+          document.getElementById('signOutButtonNav').addEventListener('click', event => {
+            localStorage.removeItem('token')
+            window.location = '/login'
+          })
+        }
+      }
 
 
-          displaySignOut()
-          displaySignOutNav()
+      displaySignOut()
+      displaySignOutNav()
 
-          //this is for hamburger, signout and navbar buttons
+      //this is for hamburger, signout and navbar buttons
 
-            //for hamburger menu
-            document.addEventListener('DOMContentLoaded', function () {
-              var elems = document.querySelectorAll('.sidenav');
-              var instances = M.Sidenav.init(elems, {});
-            });
+      //for hamburger menu
+      document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.sidenav');
+        var instances = M.Sidenav.init(elems, {});
+      });
 
-            M.AutoInit();
-            document.addEventListener('DOMContentLoaded', function () {
-              var elems = document.querySelectorAll('select');
-              var instances = M.FormSelect.init(elems, {});
-            });
+      M.AutoInit();
+      document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems, {});
+      });
 
-
-
-
-
-            document.getElementById('logoButton').addEventListener('click', event => {
-              window.location = '/'
-            })
-
-            document.getElementById('createNav').addEventListener('click', event => {
-              window.location = '/create'
-            })
-
-            document.getElementById('createSideNav').addEventListener('click', event => {
-              window.location = '/create'
-            })
-
-            document.getElementById('homePage').addEventListener('click', event => {
-              window.location = '/'
-            })
-
-            document.getElementById('homePageNav').addEventListener('click', event => {
-              window.location = '/'
-            })
-
-            document.getElementById('profilePage').addEventListener('click', event => {
-              window.location = '/profile'
-            })
-
-            document.getElementById('profilePageNav').addEventListener('click', event => {
-              window.location = '/profile'
-            })
-
-
-
-// document.getElementById('aboutPage').addEventListener('click', event => {
-//   window.location = '/aboutus'
-// })
-
-// document.getElementById('aboutPageNav').addEventListener('click', event => {
-//   window.location = '/aboutus'
-// })
-
-// document.getElementById('signOut').addEventListener('click', event => {
-//   localStorage.removeItem('token')
-//   window.location = '/login'
-// })
-
-// document.getElementById('signOutNav').addEventListener('click', event => {
-//   localStorage.removeItem('token')
-//   window.location = '/login'
-// })
-          
 
   </script>
 </body>

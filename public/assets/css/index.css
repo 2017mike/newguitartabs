@@ -1,0 +1,245 @@
+body {
+  font-family: Cutive Mono, arial;
+  background: #222;
+  background: linear-gradient(rgba(0, 0, 0, 0.764), rgba(0, 0, 55, 0.3)), url('https://images.unsplash.com/photo-1599564139043-bc29b0909b6b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=604&q=80');
+  /* background-repeat: repeat; */
+  background-size: cover;
+  background-position: center center;
+  padding-top: 0px !important;
+  display: flex;
+  /* justify-content: center;
+      align-items: center; */
+  height: 350vh;
+  padding-right: 0 !important;
+  z-index: 0 !important;
+}
+
+/* .hoverable {
+      background-color: white;
+      color: white;
+    } */
+
+@media screen and (max-width: 806px) {
+  .myLogo {
+    font-size: 16px !important;
+  }
+}
+
+@media screen and (max-width: 434px) {
+  .myLogo {
+    font-size: 12px !important;
+  }
+}
+
+.myTitle {
+  font-size: 16px !important;
+}
+
+
+
+
+
+
+
+.nav-wrapper {
+  background-color: black;
+}
+
+.brand-logo {
+  margin-left: 1%;
+}
+
+.card-image {
+  background-position: top !important;
+  height: 300px;
+  /* background: linear-gradient(rgba(0, 0, 0, 0.764), rgba(0, 0, 55, 0.3)) */
+}
+
+
+
+@media screen and (max-width: 434px) {
+  .myLogo {
+    font-size: 12px !important;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .card {
+    height: 330px !important;
+  }
+
+  .card-image {
+    background-position: top !important;
+    height: 220px;
+
+  }
+
+  .card-title {
+    margin: 2px !important;
+  }
+
+  .card-content {
+    padding: 0px !important;
+
+  }
+
+  .card-title {
+    font-size: 13px !important;
+  }
+
+  .myBtn {
+    font-size: 10px;
+  }
+}
+
+
+
+
+/* @media screen and (max-width: 1200px) {
+       .card {
+        height: 330px !important;
+      }
+    
+       .card-image {
+      background-position: top !important;
+      height: 220px;
+     
+    } 
+
+    .card-title {
+      margin: 2px !important;
+    }
+     
+      .card-content {
+        padding: 0px !important;
+        
+      }
+     
+       .card-title {
+        font-size: 13px !important;
+      }
+      .myBtn {
+        font-size: 10px;
+      }
+    } 
+
+     @media screen and (max-width: 750px) {
+      .card-image {
+        height: 220px !important;
+      }
+
+    .myBtn {
+        visibility: visible;
+      }
+      .viewPostImg {
+        height: 350px !important;
+      }
+
+      .card-title {
+        font-size: 13px !important;
+      }
+      .myBtn {
+        font-size: 10px;
+      }
+    }
+
+    @media screen and (max-width: 650px) {
+       .card-title {
+        font-size: 12px !important;
+      }
+      .myBtn {
+        font-size: 10px !important;
+      }
+
+    } */
+
+@media screen and (max-width: 600px) {
+  .card-title {
+    font-size: 16px !important;
+  }
+
+  .myBtn {
+    font-size: 16px;
+  }
+
+  .card-image {
+    height: auto !important;
+  }
+
+  .viewPostImg {
+    height: auto !important;
+  }
+
+  .card {
+    height: auto !important;
+  }
+
+  .card-content {
+    padding-bottom: 10px !important;
+  }
+
+  .card-image {
+    background-position: top !important;
+    height: auto;
+  }
+}
+
+
+
+
+
+
+.nav-wrapper a:hover {
+  background: #ddd;
+  color: black;
+}
+
+.viewPost {
+  padding-bottom: 10px !important;
+}
+
+.homeDiv {
+  margin-bottom: 0px;
+}
+
+.active {
+  background-color: grey !important;
+}
+
+/* search animation css start */
+
+
+.showNav {
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+  width: 11vw !important;
+}
+
+.hidden {
+  opacity: 0;
+  width: 0px !important;
+}
+
+#autocomplete-input {
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+#autocomplete-input-mobile {
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.notActive {
+  background-color: transparent !important;
+}
+
+
+
+/* search animation end */
