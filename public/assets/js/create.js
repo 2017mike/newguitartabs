@@ -25,10 +25,50 @@ populateTab()
  }
 
 
+let pastTabFieldValue = document.getElementById("tabField").value
+
+
+
 
 document.getElementById("tabField").addEventListener("input", (event) => {
-  
+
+ if(!document.getElementById("formatter").checked) {
+   return
+ }
+
+
+
+
+
+ console.log(event)
+
+  if(event.inputType === 'insertLineBreak') {
+    let tabValue = event.target.value;
+    getCursorPosition()
+    if (
+      tabValue[cursorPosition] == "-" ||
+      tabValue[cursorPosition - 1] == "-" ||
+      tabValue[cursorPosition + 1] == "E" ||
+      tabValue[cursorPosition + 1] == "A" ||
+      tabValue[cursorPosition + 1] == "D" ||
+      tabValue[cursorPosition + 1] == "G" ||
+      tabValue[cursorPosition + 1] == "B" 
+    ) {
+      console.log(tabValue)
+      document.getElementById("tabField").value = pastTabFieldValue;
+
+      // document.getElementById("tabField").value = tabValue;
+
+
+      setCursorPosition(cursorPosition+53)
+      return
+
+
+    }
+  }
+
  
+
   if (event.inputType === "deleteContentBackward") {
     getCursorPosition();
 
@@ -40,9 +80,18 @@ document.getElementById("tabField").addEventListener("input", (event) => {
     console.log(tabValue[cursorPosition])
     console.log(tabValue[cursorPosition+1]);
 
+    
 
     
-    if (tabValue[cursorPosition] == "-" || tabValue[cursorPosition - 1]== '-')  {
+    if (
+      tabValue[cursorPosition] == "-" ||
+      tabValue[cursorPosition - 1] == "-" ||
+      tabValue[cursorPosition + 1] == "E" ||
+      tabValue[cursorPosition + 1] == "A" ||
+      tabValue[cursorPosition + 1] == "D" ||
+      tabValue[cursorPosition + 1] == "G" ||
+      tabValue[cursorPosition + 1] == "B" 
+    ) {
       tabValue.splice(cursorPosition, 0, "--");
       console.log("spliced!");
     }
@@ -52,8 +101,10 @@ document.getElementById("tabField").addEventListener("input", (event) => {
     document.getElementById("tabField").value = tabValue;
 
     setCursorPosition(cursorPosition);
-
+    
   }
+
+
   if (event.inputType === 'insertFromPaste') {
     return
   }
@@ -66,14 +117,42 @@ document.getElementById("tabField").addEventListener("input", (event) => {
   console.log(tabValue[cursorPosition]);
   console.log(tabValue[cursorPosition + 1]);
 
-  if (tabValue[cursorPosition + 1] === "E" ||
+  if (tabValue[cursorPosition + 1] === "E"  ||
     tabValue[cursorPosition + 1] === "A" ||
     tabValue[cursorPosition + 1] === "D" ||
     tabValue[cursorPosition + 1] === "G" ||
     tabValue[cursorPosition + 1] === "B" ||
     tabValue[cursorPosition + 1] === "E") 
     {
-    
+    tabValue = tabValue.split("");
+
+    tabValue.splice(cursorPosition-1, 1);
+
+    tabValue = tabValue.join("");
+
+    document.getElementById("tabField").value = tabValue;
+
+    setCursorPosition(cursorPosition);
+    return;
+  }
+
+  if (
+    tabValue[cursorPosition] === "E" ||
+    tabValue[cursorPosition] === "A" ||
+    tabValue[cursorPosition] === "D" ||
+    tabValue[cursorPosition] === "G" ||
+    tabValue[cursorPosition] === "B" ||
+    tabValue[cursorPosition] === "E"
+  ) {
+    tabValue = tabValue.split("");
+
+    tabValue.splice(cursorPosition - 1, 1);
+
+    tabValue = tabValue.join("");
+
+    document.getElementById("tabField").value = tabValue;
+
+    setCursorPosition(cursorPosition);
     return;
   }
 
@@ -92,124 +171,73 @@ document.getElementById("tabField").addEventListener("input", (event) => {
   setCursorPosition(cursorPosition)
 
 
-  
-  // if(event.data === '-') {
-  //   getCursorPosition()
-  //   console.log(cursorPosition)
-    
-  //    currentTabValue = currentTabValue.split(`\n`);
-  //    console.log(currentTabValue)
 
-  //    let linesArray = []
-  //    for (let i = 0; i < currentTabValue.length; i++) {
-  //      const element = currentTabValue[i];
-  //      console.log(element)
-  //      if (element[0] === "E" && element[1] === "-" || element[0] === "A" || element[0] === "D" || element[0] === 'G' || element[0] ==="B") {
-  //        let lineObject = {
-  //          text: element,
-  //          index: i
-  //        }
-  //        linesArray.push(lineObject);
-         
-  //      }
+  //check length of each line within tab to see if it has the correct number of dashes. This is error-handling in case something goes wrong. Most notably, if a user backspaces while the cursor is not within one space of a dash, the behavior without this code will allow the user to backspace such that the line will have a length of less than 53. 
+    tabValue=tabValue.split('\n')
+    //splice here to check the length of each element in the array.this array will have each line as an item; each template line should have a length of 53
+    for (let i = 0; i < tabValue.length; i++) {
+      let element = tabValue[i];
+      
+      if (
+        element[0] === "E" ||
+        element[0] === "A" ||
+        element[0] === "D" ||
+        element[0] === "G" ||
+        element[0] === "B"
+      ) {
+        // here we are checking to make sure we are actually in the tab part of the textarea
+        console.log(element)
+        if (element.length < 53) {
+          //if we are in the tab part of the textarea, and we find ourselves with less than 53 characters, that means the tab is missing characters. We must add dashes to the end so that we have the correct amount of characters again.
+          console.log(i);
 
-  //    }
-  //    console.log(linesArray)
-     
-  //    for (let i = 0; i < linesArray.length; i++) {
-  //       let line = linesArray[i].text
-  //       if(line.length != 53) {
-  //         console.log(line)
-  //         line = line.split('')
-  //         console.log(line)
-  //         line.pop()
-  //         console.log(line)
-  //         line = line.join('')
-  //         console.log(line)
-  //         linesArray[i] = {
-  //           text: line,
-  //           index: linesArray[i].index
-  //         }
-  //         break
-  //       }
-  //    }
-  //    console.log(linesArray)
-  //    linesArray.forEach(line => {
-  //      console.log(line)
-  //      line.text += '\n'
-  //      currentTabValue += line.text
-  //    })
-  //    console.log(currentTabValue)
+          element = element.split("");
+          while (element.length < 53) {
+            element.push("-");
+          }
+          element = element.join("");
+          console.log(tabValue)
+          tabValue.splice(i, 1, element);
+          //we are putting the corrected line back into our array, at its original index. we are replacing the old short line with the new longer line
+          tabValue = tabValue.join("\n");
+          document.getElementById("tabField").value = tabValue;
+          setCursorPosition(cursorPosition);
+        }
+        else if (element.length > 53) {
+          //if we are in the tab part of the textarea, and we find ourselves with less than 53 characters, that means the tab is missing characters. We must add dashes to the end so that we have the correct amount of characters again.
+          console.log(i);
 
-  //    document.getElementById("tabField").value = currentTabValue;
-  //    currentTabValue = pastTabValue
-     
-     
+          element = element.split("");
+          while (element.length > 53) {
+            element.pop();
+          }
+          element = element.join("");
 
-   
-  // } else if (event.inputType === "deleteContentBackward") {
-  //   console.log(event)
-  //    pastTabValue = pastTabValue.split("");
-  //    currentTabValue = currentTabValue.split("");
-  //    console.log(pastTabValue);
-  //    console.log(currentTabValue);
-  //    for (let i = 0; i < pastTabValue.length; i++) {
-  //      const element = pastTabValue[i]
-  //      const newElement = currentTabValue[i]
-  //      if (element != newElement) {
-  //        console.log(i, element, newElement)
-  //        currentTabValue.splice(i + 1, 0, '-')
-  //        cursorPosition = i
-  //        break;
-  //      }
-  //    }
-  //    console.log(currentTabValue, pastTabValue);
-  //    currentTabValue = currentTabValue.join("");
+          tabValue.splice(i, 1, element);
+          //we are putting the corrected line back into our array, at its original index. we are replacing the old short line with the new longer line
+          tabValue = tabValue.join("\n");
+          document.getElementById("tabField").value = tabValue;
+          setCursorPosition(cursorPosition);
+        }
+      }
 
-  //    document.getElementById("tabField").value = currentTabValue;
+    }
 
-  //    pastTabValue = currentTabValue;
-  //    setCursorPosition(cursorPosition);
-  // }
-  // else {
-  //    pastTabValue = pastTabValue.split("");
-  //    currentTabValue = currentTabValue.split("");
-  //    console.log(pastTabValue);
-  //    console.log(currentTabValue);
-  //    for (let i = 0; i < pastTabValue.length; i++) {
-  //      const element = pastTabValue[i];
-  //      const newElement = currentTabValue[i];
-  //      if (element != newElement) {
-  //        console.log(i, element, newElement);
-  //        currentTabValue.splice(i + 1, 1);
-  //        cursorPosition = i + 1
-
-  //        break;
-  //      }
-  //    }
-    
-  //    console.log(currentTabValue, pastTabValue);
-  //    currentTabValue = currentTabValue.join("");
-
-  //    document.getElementById("tabField").value = currentTabValue;
-
-  //    pastTabValue = currentTabValue;
-  //    setCursorPosition(cursorPosition);
-  //    console.log(cursorPosition)
+    pastTabFieldValue = document.getElementById('tabField').value
 
   })
 
 
+
   
 
-  // console.log(pastTabValue);
-  // console.log(currentTabValue);
 
  
 
 
-  // inputString = inputString.split('')
-  // console.log(inputString)
+
+  
+
 
 
 //function to add a new empty template
@@ -219,7 +247,8 @@ document.getElementById("newTemplate").addEventListener("click", (event) => {
     "\nE----------------------------------------------------\nB----------------------------------------------------\nG----------------------------------------------------\nD----------------------------------------------------\nA----------------------------------------------------\nE----------------------------------------------------\n";
 
   document.getElementById("tabField").value += newTemplateElem;
-  pastTabValue = document.getElementById("tabField").value;
+  pastTabFieldValue = document.getElementById("tabField").value;
+
 });
 
 // document.querySelector("#newTemplate").click();
