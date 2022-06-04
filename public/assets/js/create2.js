@@ -1,6 +1,13 @@
+
+//IMPORTANT: THIS CODE USES A ZERO WIDTH SPACE BEFORE THE FIRST LETTER OF EACH LINE IN THE TABLATURE. YOU CAN INSTALL THE VSCODE EXTENSION "GREMLINS" TO SHOW WHERE THESE SPACES ARE.
+//Without this or a similar extension, this code will make no sense to you.
+//I used these zero-width spaces in order to distinguish the first letter of tab versus a normal capital E, A, D, G, or B. Users must be capable of starting their sentences with a capital letter without the code assuming it is the first letter of a new line of tablature.
+
+
+
 const populateTab = () => {
   let newTemplateElem =
-    "\nE----------------------------------------------------\nB----------------------------------------------------\nG----------------------------------------------------\nD----------------------------------------------------\nA----------------------------------------------------\nE----------------------------------------------------\n" 
+    "\n​E----------------------------------------------------\n​B----------------------------------------------------\n​G----------------------------------------------------\n​D----------------------------------------------------\n​A----------------------------------------------------\n​E----------------------------------------------------\n"; 
 
   document.getElementById("tabField").value += newTemplateElem 
 } 
@@ -8,6 +15,7 @@ const populateTab = () => {
 populateTab() 
 
 let cursorPosition 
+
 //we need this function to check where we are in the textarea. We want a certain behavior within the tab, and a certain behavior outside of the tab. 
 const getCursorPosition = () => {
   var elem = document.getElementById("tabField") 
@@ -20,92 +28,113 @@ const setCursorPosition = (pos) => {
   elem.setSelectionRange(pos, pos) 
 }
 
+//function to return true or false if user is within the tab inside the textarea
+//Once we get our cursor position, we check if there is a zero-width space within the last 55 items at the index of the cursor position
+//we do this by slicing the array so that we get a new array with only the last 55 items before our cursor
+//If there is a zero-width space, then we must be in the tabarea
+const inTabCheck = (tabValue) => {
+  getCursorPosition()
+  tabValue = tabValue.split('')
 
-//this function will verify whether the action performed within the textarea was within a tab template or not. If it was, return true, else return false
-const verifyWithinTab = (tabValue) => {
-  tabValue = tabValue.split("\n") 
-  getCursorPosition() 
-  // console.log(cursorPosition)
-  elementArray = [] 
-  let elementTotal = 0 
-  let elementTotalArray = [] 
-  for (let i = 0;  i < tabValue.length;  i++) {
-    // console.log(tabValue)
-    let element = tabValue[i] 
-    elementArray.push(element) 
-    elementTotal += element.length 
-    elementTotalArray.push(elementTotal) 
-  }
-  // console.log(elementTotal)
-  // console.log(elementTotalArray)
-  // console.log(elementArray)
+ //this conditional is to check that we are actually deep enough in the tabarea. If we are not at least 54 spaces deep witihin the tabarea then cursorPosition-54 will be negative, and we can't get the index at a negative number. So in that case we need to start slicing at index 0, which is contained within the else statement. 
+  if(tabValue[cursorPosition-55]) {
+  let start = cursorPosition-55
 
-  let currentLine 
-
-  for (let i = 0;  i < elementTotalArray.length;  i++) {
-    if (
-      cursorPosition > elementTotalArray[i] &&
-      cursorPosition < elementTotalArray[i + 1]
-    ) {
-      // console.log(i)
-      // console.log(i+1)
-      // console.log(cursorPosition-tabValue.length)
-      // console.log(elementTotalArray[i])
-      // console.log(elementTotalArray[i+1])
-      let adjustedCursorPosition = cursorPosition - i 
-      console.log(elementArray) 
-      console.log(cursorPosition) 
-      console.log(adjustedCursorPosition) 
-
-      if (
-        (adjustedCursorPosition > elementTotalArray[i] &&
-          adjustedCursorPosition < elementTotalArray[i + 1]) ||
-        adjustedCursorPosition === elementTotalArray[i]
-      ) {
-        currentLine = elementArray[i + 1] 
-      }
+  let end = cursorPosition
+  
+  let slicedValue = tabValue.slice(start, end)
+  
+  let inTab = false
+  for (let i = 0; i < slicedValue.length; i++) {
+    const element = slicedValue[i];
+    if(element === "​") {
+      return true
     }
   }
-  console.log(elementTotalArray)
-  console.log(currentLine) 
-  if (!currentLine) {
-    return 
+  if(!inTab) {
+    return false
   }
+  } else {
+    let start = 0
+    let end = cursorPosition
+    let slicedValue = tabValue.slice(start, end);
 
-  // console.log(currentLine)
-
-  if (
-    currentLine[0] === "E" ||
-    currentLine[0] === "A" ||
-    currentLine[0] === "D" ||
-    currentLine[0] === "G" ||
-    currentLine[0] === "B"
-  ) {
-    console.log("inTab") 
+    let inTab = false;
+    for (let i = 0; i < slicedValue.length; i++) {
+      const element = slicedValue[i];
+      if (element === "​") {
+        console.log(true)
+        return true;
+      }
+    }
+    if (!inTab) {
+      console.log(false)
+      return false;
+    }
   }
 }
-
-
 
 let pastTabFieldValue = document.getElementById("tabField").value
 
 document.getElementById("tabField").addEventListener("input", (event) => {
+  // console.log(event)
   let tabValue = document.getElementById("tabField").value
-  // verifyWithinTab(tabValue)
+  
+  
+
+
+
   //the main functonality of the textarea input is at the bottom of the event listener. Here, we will handle special cases including return, backspace, and paste
 
-  //still need to write this part lol
+
+  //in the case that a user presses enter, and is also within the tab, we just want their cursor to go down vertically by one line. The tab itself should not be affected. 
+  if(event.inputType === "insertLineBreak") {
+    
+    
+    // tabValue = tabValue.split("")
+    if(inTabCheck(tabValue)) {
+      tabValue = tabValue.split("");
+      console.log(tabValue)
+      console.log('hi')
+      getCursorPosition()
+      console.log(cursorPosition)
+      
+      console.log(cursorPosition)
+      document.getElementById("tabField").value = pastTabFieldValue
+      pastTabFieldValue = document.getElementById("tabField").value
+      setCursorPosition(cursorPosition +54);
+      return
+    }
+  }
+
+  if (event.inputType === 'deleteContentBackward') {
  
+    if (inTabCheck(tabValue)) {
+      
+     
+      let currentTabValue = tabValue.split("")
+     
+      getCursorPosition()
+     
+      if (
+        pastTabFieldValue[cursorPosition] === "​" ||
+        pastTabFieldValue[cursorPosition] === "\n"
+      ) {
+        console.log("hello");
+        document.getElementById("tabField").value = pastTabFieldValue;
+        pastTabFieldValue = document.getElementById("tabField").value;
+        setCursorPosition(cursorPosition);
+        return
+      }
+  }
+}
+    //still need to write this part lol
+    //TODO: write functionality where users cannot backspace over a zero-width space. If they were allowed to do so, then the special functionality of the tab would be lost and that line of tab would be treated as normal text.
 
-  getCursorPosition()
+    // MAIN FUNCTIONALITY
+    //check length of each line within tab to see if it has the correct number of dashes. If there is less than or more than 54 then we add or remove dashes to equal 54. This is the main functionality,
+    getCursorPosition();
 
-  // verifyWithinTab(tabValue)
-
-
-
-
-  // MAIN FUNCTIONALITY
-  //check length of each line within tab to see if it has the correct number of dashes. If there is less than or more than 53 then we add or remove dashes to equal 53. This is the main functionality, 
   tabValue = tabValue.split("\n") 
 
   //splice here to check the length of each element in the array.this array will have each line as an item  each template line should have a length of 53
@@ -118,44 +147,40 @@ document.getElementById("tabField").addEventListener("input", (event) => {
     let element = tabValue[i] 
 
     if (
-      element[0] === "E" ||
-      element[0] === "A" ||
-      element[0] === "D" ||
-      element[0] === "G" ||
-      element[0] === "B"
+      element[0] === "​"
     ) {
       // here we are checking to make sure we are actually in the tab part of the textarea
-      // at the moment we are doing this by seeing if the first character is EADGB.
-      if (element.length < 53) {
+      // we do this by checking for the zero-width space being at the first position
+      if (element.length < 54) {
         //if we are in the tab part of the textarea, and we find ourselves with less than 53 characters, that means the tab is missing characters. We must add dashes to the end so that we have the correct amount of characters again.
-        console.log(i) 
+        // console.log(i);
 
-        element = element.split("") 
-        while (element.length < 53) {
-          element.push("-") 
+        element = element.split("");
+        while (element.length < 54) {
+          element.push("-");
         }
-        element = element.join("") 
-        // console.log(tabValue) 
-        tabValue.splice(i, 1, element) 
+        element = element.join("");
+        // console.log(tabValue)
+        tabValue.splice(i, 1, element);
         //we are putting the corrected line back into our array, at its original index. we are replacing the old short line with the new longer line
-        tabValue = tabValue.join("\n") 
-        document.getElementById("tabField").value = tabValue 
-        setCursorPosition(cursorPosition) 
-      } else if (element.length > 53) {
+        tabValue = tabValue.join("\n");
+        document.getElementById("tabField").value = tabValue;
+        setCursorPosition(cursorPosition);
+      } else if (element.length > 54) {
         //if we are in the tab part of the textarea, and we find ourselves with less than 53 characters, that means the tab is missing characters. We must add dashes to the end so that we have the correct amount of characters again.
-        // console.log(i) 
+        // console.log(i)
 
-        element = element.split("") 
-        while (element.length > 53) {
-          element.pop() 
+        element = element.split("");
+        while (element.length > 54) {
+          element.pop();
         }
-        element = element.join("") 
+        element = element.join("");
 
-        tabValue.splice(i, 1, element) 
+        tabValue.splice(i, 1, element);
         //we are putting the corrected line back into our array, at its original index. we are replacing the old short line with the new longer line
-        tabValue = tabValue.join("\n") 
-        document.getElementById("tabField").value = tabValue 
-        setCursorPosition(cursorPosition) 
+        tabValue = tabValue.join("\n");
+        document.getElementById("tabField").value = tabValue;
+        setCursorPosition(cursorPosition);
       }
     }
   }
@@ -167,7 +192,7 @@ document.getElementById("tabField").addEventListener("input", (event) => {
 document.getElementById("newTemplate").addEventListener("click", (event) => {
   event.preventDefault() 
   let newTemplateElem =
-    "\nE----------------------------------------------------\nB----------------------------------------------------\nG----------------------------------------------------\nD----------------------------------------------------\nA----------------------------------------------------\nE----------------------------------------------------\n" 
+    "\n​E----------------------------------------------------\n​B----------------------------------------------------\n​G----------------------------------------------------\n​D----------------------------------------------------\n​A----------------------------------------------------\n​E----------------------------------------------------\n"; 
 
   document.getElementById("tabField").value += newTemplateElem 
   pastTabFieldValue = document.getElementById("tabField").value 
@@ -180,7 +205,7 @@ document.getElementById("clearTemplate").addEventListener("click", (event) => {
   event.preventDefault() 
 
   document.getElementById("tabField").value =
-    "\nE----------------------------------------------------\nB----------------------------------------------------\nG----------------------------------------------------\nD----------------------------------------------------\nA----------------------------------------------------\nE----------------------------------------------------\n" 
+    "\n​E----------------------------------------------------\n​B----------------------------------------------------\n​G----------------------------------------------------\n​D----------------------------------------------------\n​A----------------------------------------------------\n​E----------------------------------------------------\n"; 
 }) 
 
 //submit tab function
