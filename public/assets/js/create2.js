@@ -33,46 +33,30 @@ const setCursorPosition = (pos) => {
 //we do this by slicing the array so that we get a new array with only the last 55 items before our cursor
 //If there is a zero-width space, then we must be in the tabarea
 const inTabCheck = (tabValue) => {
-  getCursorPosition()
-  tabValue = tabValue.split('')
+  getCursorPosition();
+  tabValue = tabValue.split("");
 
- //this conditional is to check that we are actually deep enough in the tabarea. If we are not at least 54 spaces deep witihin the tabarea then cursorPosition-54 will be negative, and we can't get the index at a negative number. So in that case we need to start slicing at index 0, which is contained within the else statement. 
-  if(tabValue[cursorPosition-55]) {
-  let start = cursorPosition-55
+  let start;
+  cursorPosition > 55 ? (start = cursorPosition-55) : (start = 0);
+  //this conditional is to check that we are actually deep enough in the tabarea. If we are not at least 55 spaces deep witihin the tabarea then cursorPosition-55 will be negative, and we can't get the index at a negative number. So in that case we need to start slicing at index 0, which is contained within the else statement.
 
-  let end = cursorPosition
-  
-  let slicedValue = tabValue.slice(start, end)
-  
-  let inTab = false
+
+  let end = cursorPosition;
+
+  let slicedValue = tabValue.slice(start, end);
+
+  let inTab = false;
   for (let i = 0; i < slicedValue.length; i++) {
     const element = slicedValue[i];
-    if(element === "​") {
-      return true
+    if (element === "​") {
+      return true;
     }
   }
-  if(!inTab) {
-    return false
+  if (!inTab) {
+    return false;
   }
-  } else {
-    let start = 0
-    let end = cursorPosition
-    let slicedValue = tabValue.slice(start, end);
+} 
 
-    let inTab = false;
-    for (let i = 0; i < slicedValue.length; i++) {
-      const element = slicedValue[i];
-      if (element === "​") {
-        console.log(true)
-        return true;
-      }
-    }
-    if (!inTab) {
-      console.log(false)
-      return false;
-    }
-  }
-}
 
 let pastTabFieldValue = document.getElementById("tabField").value
 
@@ -108,7 +92,21 @@ document.getElementById("tabField").addEventListener("input", (event) => {
   }
 
   if (event.inputType === 'deleteContentBackward') {
- 
+
+    let currentTabValue = tabValue.split("");
+
+    getCursorPosition();
+
+    //this is making it so users cannot backspace over a zero-width space. We need to use the past-tab value because a user deleting over the zero-width will not allow us to actually have it in our array. So we need to look at the tabarea before they made their deletion. 
+      if (pastTabFieldValue[cursorPosition] === "​") {
+      document.getElementById("tabField").value = pastTabFieldValue;
+      pastTabFieldValue = document.getElementById("tabField").value;
+      setCursorPosition(cursorPosition);
+      return;
+    }
+
+    
+    //this is handling line breaks. Users shouldn't be able to delete line breaks when they are within the tab. 
     if (inTabCheck(tabValue)) {
       
      
@@ -117,7 +115,7 @@ document.getElementById("tabField").addEventListener("input", (event) => {
       getCursorPosition()
      
       if (
-        pastTabFieldValue[cursorPosition] === "​" ||
+     
         pastTabFieldValue[cursorPosition] === "\n"
       ) {
         console.log("hello");
