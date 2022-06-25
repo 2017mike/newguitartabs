@@ -217,17 +217,17 @@ body {
   width: 11vw !important;
 }
 
-.hidden {
+ .hidden {
   opacity: 0;
   width: 0px !important;
 }
 
-#autocomplete-input {
+/* #autocomplete-input {
   -webkit-transition: all 1s ease;
   -moz-transition: all 1s ease;
   -o-transition: all 1s ease;
   transition: all 1s ease;
-}
+} */
 
 #autocomplete-input-mobile {
   -webkit-transition: all 1s ease;
