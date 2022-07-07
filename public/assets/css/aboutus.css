@@ -1,7 +1,7 @@
  body {
    font-family: Cutive Mono, arial;
    background: #222;
-   background: linear-gradient(rgba(0, 0, 0, 0.764), rgba(0, 0, 55, 0.3)), url('/assets/images/church.webp');
+   background: linear-gradient(rgba(0, 0, 0, 0.764), rgba(0, 0, 55, 0.3)), url('/assets/images/church.png');
    background-size: cover;
    background-position: center center;
    padding-top: 0px !important;
