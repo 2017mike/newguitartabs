@@ -14,14 +14,14 @@ body {
   font-family: Cutive Mono, arial;
 
   background: ghost-white;
-  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('https://cdn.pixabay.com/photo/2016/01/09/17/15/cherub-1130585_1280.jpg');
+  /* background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('https://cdn.pixabay.com/photo/2016/01/09/17/15/cherub-1130585_1280.jpg'); */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   padding-top: 0 !important;
-  /* justify-content: center; */
+
   display: flex;
-  /* align-items: center; */
+
   height: 150vh;
   padding-right: 0 !important;
   z-index: 0 !important;

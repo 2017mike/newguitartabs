@@ -32,11 +32,11 @@ const renderProfile = () => {
         // console.log(artist, 'this is artist')
 
         // if (artist.artists === null) {
-        document.getElementById('renderProfile').innerHTML += `
+        document.getElementById("renderProfile").innerHTML += `
                 <div class="col s12 m6 l4">
                 <div class="card #424242 grey darken-3 transparent">
                 <div class="card-image waves-effect">
-                <img class="viewPostImg" src='https://cdn.pixabay.com/photo/2015/08/10/21/26/angel-883200_1280.png' data-id=${post.id} alt="image not found">
+                <img class="viewPostImg" src='/assets/images/angel.png' data-id=${post.id} alt="image not found">
                 </div>
                 <div class="card-content center-align">
 
@@ -47,7 +47,7 @@ const renderProfile = () => {
                 <a class="waves-effect waves-light btn deletePost red myBtn" data-id=${post.id}><i data-id=${post.id} class="material-icons deletePost">delete</i></a>
                 </div>
                 </div>
-      `
+      `;
 
         //   } else {
         //     document.getElementById('renderProfile').innerHTML += `

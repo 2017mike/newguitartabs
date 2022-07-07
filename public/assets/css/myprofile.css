@@ -1,16 +1,12 @@
 body {
   font-family: Cutive Mono, arial;
   background: #222;
-  background: linear-gradient(rgba(0, 0, 0, 0.764), rgba(0, 0, 55, 0.3)), url('https://cdn.pixabay.com/photo/2020/09/19/19/01/angel-5585186_1280.jpg');
-  /* background-repeat: repeat; */
+  background: linear-gradient(rgba(0, 0, 0, 0.764), rgba(0, 0, 55, 0.3)), url('/assets/images/creepyAngel.webp');
   background-size: cover;
   background-position: center center;
   padding-top: 0px !important;
   display: flex;
-  /* justify-content: center;
-      align-items: center; */
   height: 450vh;
-
   padding-right: 0 !important;
   z-index: 0 !important;
 }
@@ -48,7 +44,6 @@ body {
 .card-image {
   background-position: top !important;
   height: 300px;
-  /* background: linear-gradient(rgba(0, 0, 0, 0.764), rgba(0, 0, 55, 0.3)) */
 }
 
 
@@ -213,13 +208,6 @@ body {
   opacity: 0;
   width: 0px !important;
 }
-
-/* #autocomplete-input {
-  -webkit-transition: all 1s ease;
-  -moz-transition: all 1s ease;
-  -o-transition: all 1s ease;
-  transition: all 1s ease;
-} */
 
 #autocomplete-input-mobile {
   -webkit-transition: all 1s ease;
