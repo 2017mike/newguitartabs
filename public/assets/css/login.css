@@ -2,7 +2,7 @@
    font-family: Cutive Mono, arial;
 
    background: #222;
-   background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('../images/angel-1075947_1280.png');
+   background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('/assets/images/angel-1075947_1280.png');
    background-repeat: no-repeat;
    background-size: contain;
    background-position: center center;
