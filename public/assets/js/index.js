@@ -24,7 +24,7 @@ const renderCards = () => {
                 <div class="col s12 m6 l4">
                 <div class="card #424242 grey darken-3 transparent hoverable">
                 <div class="card-image waves-effect">
-                <img class="viewPostImg" src='/assets/images/angel.png' data-id=${post.id} alt="image not found">
+                <img class="viewPostImg" src='/assets/images/angel.webp' data-id=${post.id} alt="image not found">
                 </div>
                 <div class="card-content center-align">
 
