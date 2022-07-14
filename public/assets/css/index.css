@@ -1,7 +1,7 @@
 body {
   font-family: Cutive Mono, arial;
-  background: #222;
-  background: linear-gradient(rgba(0, 0, 0, 0.764), rgba(0, 0, 55, 0.3)), url('/assets/images/church.png');
+
+  background: linear-gradient(rgba(0, 0, 0, 0.764), rgba(0, 0, 55, 0.3)), url('https://images.unsplash.com/photo-1599564139043-bc29b0909b6b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=604&q=80');
   background-attachment: scroll;
   -o-background-size: cover;
   -moz-background-size: cover;
