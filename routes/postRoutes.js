@@ -7,10 +7,12 @@ const passport = require('passport')
 //get all posts from all users and all the comments per post
 router.get('/posts',
 //  passport.authenticate('jwt'),
-  (req, res) => Post.findAll({
+  (req, res) => 
+  
+  Post.findAll({
  
 })
-  .then(posts => res.json(posts))
+  .then(posts => res.json(posts.reverse()))
   .catch(err => console.log(err)))
 
 //get all posts from one user
