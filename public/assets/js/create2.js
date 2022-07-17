@@ -68,8 +68,22 @@ document.getElementById("tabField").addEventListener("input", (event) => {
 
 
 
-  //the main functonality of the textarea input is at the bottom of the event listener. Here, we will handle special cases including return, backspace, and paste
+  //the main functonality of the textarea input is at the bottom of the event listener. Here, we will handle special cases including enter, backspace, and space
 
+
+  //handle space first
+  //if a user presses the spacebar, and is also within the tab, then we want to cursor to go forward by one but not affect the tab. 
+
+  if (inTabCheck(tabValue)) {
+    console.log(event)
+    if(event.data === " ") {
+      getCursorPosition()
+      document.getElementById("tabField").value = pastTabFieldValue;
+      pastTabFieldValue = document.getElementById("tabField").value;
+      setCursorPosition(cursorPosition);
+      return;
+    }
+  }
 
   //in the case that a user presses enter, and is also within the tab, we just want their cursor to go down vertically by one line. The tab itself should not be affected. 
   if(event.inputType === "insertLineBreak") {
@@ -126,8 +140,6 @@ document.getElementById("tabField").addEventListener("input", (event) => {
       }
   }
 }
-    //still need to write this part lol
-    //TODO: write functionality where users cannot backspace over a zero-width space. If they were allowed to do so, then the special functionality of the tab would be lost and that line of tab would be treated as normal text.
 
     // MAIN FUNCTIONALITY
     //check length of each line within tab to see if it has the correct number of dashes. If there is less than or more than 54 then we add or remove dashes to equal 54. This is the main functionality,
