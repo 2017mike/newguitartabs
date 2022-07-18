@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/myprofile.css">
+  <title>My Profile</title>
+
+
+</head>
+
+<body>
+
+
+  <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper black">
+        <a href="/" class="brand-logo myLogo" id="logoButton">BigMike's Guitar Tabs</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li id="homePage"><a href="/">Home</a></li>
+          <!-- <li id="tabs"><a href="/tabs">Tabs</a></li> -->
+          <li id="profilePage" class='active'><a href="/profile">My Profile</a></li>
+          <li id="createNav"><a href="/create">Create</a></li>
+          <li id="aboutPage"><a href="/about">About</a></li>
+          <li>
+            <div class="input-field white-text">
+              <i class="white-text material-icons prefix notActive" id="mySearch">search</i>
+              <input type="text" placeholder="search" id="autocomplete-input" class="autocomplete white-text hidden">
+            </div>
+          </li>
+          <li id="signOutConditional"></li>
+
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <ul class="sidenav" id="mobile-demo" style="width: 50vw;">
+    <li id="homePageNav"><a href="/">Home</a></li>
+    <li id="profilePageNav"><a href="/profile">My Profile</a></li>
+    <li id="createSideNav"><a href="/create">Create</a></li>
+    <li id="aboutPageNav"><a href="/about">About</a></li>
+    <div class="input-field col s6 s12 black-text">
+      <i id="mySearchMobile" class="black-text material-icons prefix notActive">search</i>
+      <input type="text" placeholder="search" id="autocomplete-input-mobile" class="autocomplete black-text hidden">
+    </div>
+    <li id="signOutNav"></li>
+  </ul>
+
+  <div class="container">
+    <div class="row center">
+      <h1 class="section white-text homeDiv" id="myProfileName"></h1>
+    </div>
+    <div class="row" id="renderProfile">
+      hi
+    </div>
+
+
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/assets/js/all.js"></script>
+    <script src="/assets/js/user.js"></script>
+
+</body>
+
+</html>

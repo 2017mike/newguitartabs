@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { User } = require('../models')
+const { User, Post } = require('../models')
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
 
@@ -35,6 +35,25 @@ router.get('/user',
   })
     .then(userData => res.json(userData))
     .catch(err => console.log(err)))
+
+
+router.get("/users/:username", passport.authenticate("jwt"), async(req, res) => {
+  console.log(req.params.username)
+  const user =  await User.findOne({where: {
+   username: req.params.username
+ }})
+
+ console.log(user)
+
+ const posts = await Post.findAll({
+    where: { uid: user.id },
+  })
+
+  res.json(posts)
+  
+})
+
+
 
 
 // router.get('/user', (req, res) => {

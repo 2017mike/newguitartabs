@@ -48,6 +48,11 @@ router.get("/search/:searchValue", (req, res) => {
 });
 
 
+router.get("/users/:username", (req, res) => {
+  res.sendFile(join(__dirname, "..", "public", "users.html"));
+});
+
+
 // router.get('/aboutus', (req, res) => {
 //   res.sendFile(join(__dirname, '..', 'public', 'aboutus.html'))
 // })

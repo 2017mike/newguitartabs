@@ -64,14 +64,14 @@ document.getElementById("tabField").addEventListener("input", (event) => {
   // console.log(event)
   let tabValue = document.getElementById("tabField").value
   
-  
-
-
 
   //the main functonality of the textarea input is at the bottom of the event listener. Here, we will handle special cases including enter, backspace, and space
 
+  //handle undo. this one's easy, all we have to do is set the pastTabField value to the value.
+  console.log(event)
 
-  //handle space first
+
+  //handle space 
   //if a user presses the spacebar, and is also within the tab, then we want to cursor to go forward by one but not affect the tab. 
 
   if (inTabCheck(tabValue)) {

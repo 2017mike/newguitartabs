@@ -27,7 +27,6 @@ router.get('/posts/users', passport.authenticate('jwt'), (req, res) => {
 
 
 router.get("/posts/search/:searchTerm", async(req, res) => {
-
   const searchTerm = req.params.searchTerm.toLowerCase();
   const songPosts = await Post.findAll({
     where: { song: req.params.searchTerm },
@@ -36,10 +35,19 @@ router.get("/posts/search/:searchTerm", async(req, res) => {
     where: { artist: req.params.searchTerm },
   });
 
-  console.log(songPosts, artistPosts)
-  const totalResults = songPosts.concat(artistPosts)
-  res.json(totalResults)
-  
+  const users = await User.findOne({
+    where: { username: req.params.searchTerm },
+  });
+
+  delete users.dataValues.activationKey;
+  delete users.dataValues.hash;
+  delete users.dataValues.resetPasswordKey;
+  delete users.dataValues.salt
+  delete users.dataValues.updatedAt;
+  delete users.dataValues.verified
+
+  const totalResults = songPosts.concat(artistPosts).concat(users);
+  res.json(totalResults);
 });
 
 

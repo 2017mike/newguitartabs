@@ -101,8 +101,9 @@
         })
           .then(({ data }) => {
             console.log(data)
+            
             data.forEach(post => {
-
+              if(post.song !== undefined) {
               // console.log(post, 'this is post')
 
               // axios.get(`https://theaudiodb.com/api/v1/json/1/search.php?s=${post.artist}`)
@@ -142,7 +143,26 @@
               // }
               //end forEach
               //     })
+
+              } else {
+              console.log('null')
+                document.getElementById('renderCards').innerHTML += `
+
+                <div class="col s12 m6 l4">
+                <div class="card #424242 grey darken-3 transparent hoverable">
+                <div class="card-image waves-effect">
+                <img class="viewUserImg" src='/assets/images/angel-913630_1280.webp' data-username=${post.username} alt="image not found">
+                </div>
+                <div class="card-content center-align">
+
+                <span class="card-title activator white-text text-darken-4 myTitle truncate">User <br> ${post.username}</span>
+                <a class="waves-effect waves-light btn viewUser black myBtn"  data-username=${post.username}>Profile</a>
+                </div>
+                </div>
+                `
+              }
             })
+
           })
           .catch(err => console.log(err))
       }
@@ -166,6 +186,22 @@
           window.location = `/post/${event.target.dataset.id}`
         }
       })
+
+        document.addEventListener('click', event => {
+            event.preventDefault()
+            if (event.target.classList.contains('viewUserImg')) {
+              //grab post id, takes you to post/:id
+              window.location = `/users/${event.target.dataset.username}`
+            }
+          })
+      
+        document.addEventListener('click', event => {
+            event.preventDefault()
+            if (event.target.classList.contains('viewUser')) {
+              //grab post id, takes you to post/:id
+              window.location = `/users/${event.target.dataset.username}`
+            }
+          })
 
 
 

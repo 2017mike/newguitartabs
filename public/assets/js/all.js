@@ -128,8 +128,7 @@ function search(searchInput) {
 } 
 
 document.addEventListener('keydown', event => {
-  console.log(event)
-  console.log(document.getElementById('autocomplete-input-mobile').value)
+
 
   if (
     event.target.id === "autocomplete-input-mobile" && event.code==="Enter" ||
