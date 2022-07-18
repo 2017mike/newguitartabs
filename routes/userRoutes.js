@@ -6,13 +6,13 @@ const jwt = require('jsonwebtoken')
 router.post('/users/register', (req, res) => {
   const {
     username,
-    bio
+
     // any other properties you need
   } = req.body
 
   User.register(new User({
     username,
-    bio
+
     // any other properties you need
   }), req.body.password, err => {
     if (err) { console.log(err) }
