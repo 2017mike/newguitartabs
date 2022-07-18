@@ -188,6 +188,11 @@
       background-color: transparent !important;
     }
 
+    .goToUser {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
     
   
   /* search animation end */
@@ -286,8 +291,12 @@
           document.getElementById('postSong').innerHTML = data.song
           document.getElementById('postArtist').innerHTML = data.artist
           document.getElementById('postBody').innerHTML = data.body
-          document.getElementById('postUser').innerHTML = `posted by: ${data.User.username}`
+          document.getElementById('postUser').innerHTML = `<div > posted by: <span class="goToUser" data-username="${data.User.username}" id="goToUser">${data.User.username}</span></div>`
 
+
+            document.getElementById('goToUser').addEventListener('click', event => {
+            window.location = `/users/${event.target.dataset.username}`
+          })
 
           //render the comment onto the page
           //     data.comments.forEach(comment => {
@@ -299,6 +308,7 @@
         })
         .catch(err => console.log(err))
 
+    
 
       function displaySignOut() {
 

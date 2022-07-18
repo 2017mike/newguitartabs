@@ -31,15 +31,16 @@ function renderUsername() {
                 <div class="col s12 m6 l4">
                 <div class="card #424242 grey darken-3 transparent">
                 <div class="card-image waves-effect">
-                <img class="viewPostImg" src='/assets/images/angel.webp' data-id=${post.id} alt="image not found">
+                <img class="viewPostImg" src='/assets/images/angel.webp' data-id="${post.id}" alt="image not found">
                 </div>
                 <div class="card-content center-align">
 
                 <span class="card-title activator white-text text-darken-4 myTitle truncate">${post.song} <br> ${post.artist}</span>
-                <a class="waves-effect waves-light btn viewPost black myBtn" data-id=${post.id}>Tab</a>
+                <a class="waves-effect waves-light btn viewPost black myBtn" data-id="${post.id}">Tab</a>
             
                 
            
+                </div>
                 </div>
                 </div>
       `;
