@@ -123,4 +123,35 @@ function displaySignOutNav() {
 displaySignOut()
 displaySignOutNav()
 
+function search(searchInput) {
+
+} 
+
+document.addEventListener('keydown', event => {
+  console.log(event)
+  console.log(document.getElementById('autocomplete-input-mobile').value)
+
+  if (
+    event.target.id === "autocomplete-input-mobile" && event.code==="Enter" ||
+    event.target.id === "autocomplete-input"
+    && event.code==="Enter")
+  {
+    const mobileSearchInput = document.getElementById(
+      "autocomplete-input-mobile"
+    ).value;
+    const desktopSearchInput = document.getElementById(
+      "autocomplete-input"
+    ).value;
+
+    if(mobileSearchInput !== "") {
+       window.location = `/search/${mobileSearchInput}`;
+    } else {
+      window.location = `/search/${desktopSearchInput}`;
+    }
+  
+   
+   
+  }
+})
+
 

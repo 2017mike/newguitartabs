@@ -25,6 +25,24 @@ router.get('/posts/users', passport.authenticate('jwt'), (req, res) => {
     .catch(err => console.log(err))
 })
 
+
+router.get("/posts/search/:searchTerm", async(req, res) => {
+
+  const searchTerm = req.params.searchTerm.toLowerCase();
+  const songPosts = await Post.findAll({
+    where: { song: req.params.searchTerm },
+  });
+  const artistPosts = await Post.findAll({
+    where: { artist: req.params.searchTerm },
+  });
+
+  console.log(songPosts, artistPosts)
+  const totalResults = songPosts.concat(artistPosts)
+  res.json(totalResults)
+  
+});
+
+
 //get one post by id
 router.get('/post/:id', 
 // passport.authenticate('jwt'), 

@@ -43,6 +43,10 @@ router.get('/edit', (req, res) => {
   res.sendFile(join(__dirname, '..', 'public', 'editPage.html'))
 })
 
+router.get("/search/:searchValue", (req, res) => {
+  res.sendFile(join(__dirname, "..", "public", "search.html"));
+});
+
 
 // router.get('/aboutus', (req, res) => {
 //   res.sendFile(join(__dirname, '..', 'public', 'aboutus.html'))

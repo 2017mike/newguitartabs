@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/index.css">
+  <title>BigMike's Guitar Tabs - Home</title>
+
+  <style>
+
+
+
+  </style>
+</head>
+
+<body>
+
+  <!-- navbar -->
+
+  <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper black">
+        <a href="/" class="brand-logo myLogo" id="logoButton">BigMike's Guitar Tabs</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li id="homePage" class='active'><a href="/">Home</a></li>
+          <!-- <li id="tabs"><a href="/tabs">Tabs</a></li> -->
+          <li id="profilePage"><a href="/profile">My Profile</a></li>
+          <li id="createNav"><a href="/create">Create</a></li>
+          <li id="aboutPage"><a href="/about">About</a></li>
+          <li>
+            <div class="input-field white-text">
+              <i class="white-text material-icons prefix notActive" id="mySearch">search</i>
+              <input type="text" placeholder="search" id="autocomplete-input" class="autocomplete white-text hidden">
+            </div>
+          </li>
+          <li id="signOutConditional"></li>
+
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <ul class="sidenav" id="mobile-demo" style="width: 50vw;">
+    <li id="homePageNav"><a href="/">Home</a></li>
+    <li id="profilePageNav"><a href="/profile">My Profile</a></li>
+    <li id="createSideNav"><a href="/create">Create</a></li>
+    <li id="aboutPageNav"><a href="/about">About</a></li>
+    <div class="input-field col s6 s12 black-text">
+      <p id="mySearchMobile" class="black-text material-icons prefix notActive">search</p>
+      <input type="text" placeholder="search" id="autocomplete-input-mobile" class="autocomplete black-text hidden">
+    </div>
+    <li id="signOutNav"></li>
+  </ul>
+
+  <!-- end of navbar -->
+
+  <!-- site content  -->
+
+  <div class="container">
+    <div class="row center">
+      <h1 class="section white-text homeDiv">Search</h1>
+    </div>
+    <div class="row" id="renderCards">
+    </div>
+
+
+
+  </div>
+
+  <!-- end of site content -->
+  <script> </script>
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="/assets/js/all.js"></script>
+  <script>
+
+    //function renderCards puts each post (tab) into a card, with a clickable 'view button'. viewbutton contains unique id of the post, and  navigates you to /post/:id. when you go to /post/:id, the id is grabbed from the pathname, then an axios request is made to get that particular post. 
+
+
+    console.log(window.location.pathname)
+    let terms = window.location.pathname.split('/')
+    console.log(terms)
+    const searchTerm = terms[2]
+    console.log(searchTerm)
+
+      const renderCards = () => {
+        axios.get(`/api/posts/search/${searchTerm}`, {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+          .then(({ data }) => {
+            console.log(data)
+            data.forEach(post => {
+
+              // console.log(post, 'this is post')
+
+              // axios.get(`https://theaudiodb.com/api/v1/json/1/search.php?s=${post.artist}`)
+              //   .then(res => {
+              // let artist = res.data
+              // console.log(artist,  'this is artist')
+
+              // if (artist.artists === null) {
+              document.getElementById('renderCards').innerHTML += `
+
+                <div class="col s12 m6 l4">
+                <div class="card #424242 grey darken-3 transparent hoverable">
+                <div class="card-image waves-effect">
+                <img class="viewPostImg" src='/assets/images/angel.webp' data-id=${post.id} alt="image not found">
+                </div>
+                <div class="card-content center-align">
+
+                <span class="card-title activator white-text text-darken-4 myTitle truncate">${post.song} <br> ${post.artist}</span>
+                <a class="waves-effect waves-light btn viewPost black myBtn"  data-id=${post.id}>Tab</a>
+                </div>
+                </div>
+                `
+              // } else {
+              //   document.getElementById('renderCards').innerHTML += `
+
+              // <div class="col s12 m6 l4">
+              // <div class="card #424242 grey darken-3 transparent hoverable">
+              // <div class="card-image waves-effect">
+              // <img  class="viewPostImg" src=${artist.artists[0].strArtistThumb} data-id=${post.id} alt="image not found">
+              // </div>
+              // <div class="card-content center-align">
+              // <span class="card-title  white-text text-darken-4 myTitle truncate">${post.song} <br> ${post.artist}</span>
+              // <a class="waves-effect waves-light btn viewPost black myBtn" data-id=${post.id}>Tab</a>
+              // </div>
+              // </div>
+              // `
+              // }
+              //end forEach
+              //     })
+            })
+          })
+          .catch(err => console.log(err))
+      }
+
+      renderCards()
+
+
+      //listener to view post
+      document.addEventListener('click', event => {
+        event.preventDefault()
+        if (event.target.classList.contains('viewPost')) {
+          //grab post id, takes you to post/:id
+          window.location = `/post/${event.target.dataset.id}`
+        }
+      })
+
+      document.addEventListener('click', event => {
+        event.preventDefault()
+        if (event.target.classList.contains('viewPostImg')) {
+          //grab post id, takes you to post/:id
+          window.location = `/post/${event.target.dataset.id}`
+        }
+      })
+
+
+
+
+
+    
+
+  </script>
+
+
+</body>
+
+</html>

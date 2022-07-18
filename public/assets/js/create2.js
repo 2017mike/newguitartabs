@@ -92,12 +92,12 @@ document.getElementById("tabField").addEventListener("input", (event) => {
     // tabValue = tabValue.split("")
     if(inTabCheck(tabValue)) {
       tabValue = tabValue.split("");
-      console.log(tabValue)
-      console.log('hi')
-      getCursorPosition()
-      console.log(cursorPosition)
       
-      console.log(cursorPosition)
+
+      getCursorPosition()
+   
+      
+     
       document.getElementById("tabField").value = pastTabFieldValue
       pastTabFieldValue = document.getElementById("tabField").value
       setCursorPosition(cursorPosition +54);
@@ -132,7 +132,7 @@ document.getElementById("tabField").addEventListener("input", (event) => {
      
         pastTabFieldValue[cursorPosition] === "\n"
       ) {
-        console.log("hello");
+  
         document.getElementById("tabField").value = pastTabFieldValue;
         pastTabFieldValue = document.getElementById("tabField").value;
         setCursorPosition(cursorPosition);
@@ -149,11 +149,11 @@ document.getElementById("tabField").addEventListener("input", (event) => {
 
   //splice here to check the length of each element in the array.this array will have each line as an item  each template line should have a length of 53
   for (let i = 0;  i < tabValue.length;  i++) {
-    // console.log(typeof tabValue) 
+
     if (typeof tabValue === 'string') {
       tabValue = tabValue.split("\n") 
     }
-    // console.log(tabValue)
+
     let element = tabValue[i] 
 
     if (
@@ -222,6 +222,11 @@ document.getElementById("clearTemplate").addEventListener("click", (event) => {
 document.getElementById("create").addEventListener("click", (event) => {
   event.preventDefault() 
 
+  if(document.getElementById("songName").value === '' || document.getElementById("artistName").value === '') {
+    alert('your tab must have a song and an artist!')
+    return
+  }
+
   // console.log(tabField.value)
   let newPost = {
     song: document.getElementById("songName").value,
@@ -235,7 +240,7 @@ document.getElementById("create").addEventListener("click", (event) => {
       },
     })
     .then((res) => {
-      console.log(res) 
+
       alert("your tab has been created :)") 
       window.location = "/" 
     }) 
