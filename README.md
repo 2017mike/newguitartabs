@@ -1,12 +1,12 @@
-# BigMike's Guitar Tabs
+# tabAngel.io
 
-BigMike's Guitar tabs is a website where anyone can submit guitar tabs for their favorite songs. Each tab that is submitted will be on the front page and will include a picture of the artist if one is available from theAudioDB API. 
+tabAngel.io is a website where anyone can submit guitar tabs for their favorite songs. Each tab that is submitted will be on the front page and will include a picture of the artist if one is available from theAudioDB API. 
 
-I decided to make BigMike's guitar tabs because I hadn't seen a tab website that with a simple, easy to use tabbing process that also let you view tabs easily. Almost all of the tabbing websites I saw required you to pay to use a tabbing tool, required an app download, and/or were not mobile friendly at all. I also wasn't a big fan of the look of most of the tab sites either. 
+I decided to make tabAngel.io because I hadn't seen a tab website that with a simple, easy to use tabbing process that also let you view tabs easily. Almost all of the tabbing websites I saw required you to pay to use a tabbing tool, required an app download, and/or were not mobile friendly at all. I also wasn't a big fan of the look of most of the tab sites either. 
 
-BigMike's Guitar Tabs uses a SQL database, which is hosted on JawsDB via Heroku. For front-end design, the Materialize CSS library is used, and for backend and routing functions Node and Express are used. 
+tabAngel.io uses a SQL database, which is hosted on JawsDB via Heroku. For front-end design, the Materialize CSS library is used, and for backend and routing functions Node and Express are used. 
 
-To access the website click here: https://bigmikesguitartabs.com/
+To access the website click here: https://tabangel.io/
 
 # Screenshots
 
