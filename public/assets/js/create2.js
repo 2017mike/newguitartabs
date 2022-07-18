@@ -5,6 +5,7 @@
 
 
 
+
 const populateTab = () => {
   let newTemplateElem =
     "\n​E----------------------------------------------------\n​B----------------------------------------------------\n​G----------------------------------------------------\n​D----------------------------------------------------\n​A----------------------------------------------------\n​E----------------------------------------------------\n"; 
@@ -13,6 +14,12 @@ const populateTab = () => {
 } 
 //populates initial tab in tabfield textarea
 populateTab() 
+
+if(localStorage.getItem('tabValue')) {
+  document.getElementById("tabField").value = localStorage.getItem('tabValue'); 
+  alert('Thanks for creating an account! You can now save your tab as a draft or publish it.')
+  localStorage.removeItem('tabValue')
+}
 
 let cursorPosition 
 
@@ -68,7 +75,7 @@ document.getElementById("tabField").addEventListener("input", (event) => {
   //the main functonality of the textarea input is at the bottom of the event listener. Here, we will handle special cases including enter, backspace, and space
 
   //handle undo. this one's easy, all we have to do is set the pastTabField value to the value.
-  console.log(event)
+  // console.log(event)
 
 
   //handle space 
@@ -227,11 +234,13 @@ document.getElementById("create").addEventListener("click", (event) => {
     return
   }
 
+  if(loginVerify()) {
   // console.log(tabField.value)
   let newPost = {
     song: document.getElementById("songName").value,
     artist: document.getElementById("artistName").value,
     body: document.getElementById("tabField").value,
+    isDraft: false
   } 
   axios
     .post("/api/posts", newPost, {
@@ -243,15 +252,65 @@ document.getElementById("create").addEventListener("click", (event) => {
 
       alert("your tab has been created :)") 
       window.location = "/" 
-    }) 
-}) 
+    })
+  } else {
+    let tabValue = document.getElementById("tabField").value
+    localStorage.setItem('tabValue', tabValue)
+    if(confirm("Don't worry though, it's easy and free to make an account, and your progress here will be saved. Would you like to make an account now?"))
+    window.location = '/register'
+  }
+})
+
+document.getElementById("createDraft").addEventListener("click", (event) => {
+  event.preventDefault();
+
+  if (
+    document.getElementById("songName").value === "" ||
+    document.getElementById("artistName").value === ""
+  ) {
+    alert("your tab must have a song and an artist!");
+    return;
+  }
+
+  if (loginVerify()) {
+    // console.log(tabField.value)
+    let newPost = {
+      song: document.getElementById("songName").value,
+      artist: document.getElementById("artistName").value,
+      body: document.getElementById("tabField").value,
+      isDraft: true,
+    };
+    axios
+      .post("/api/posts", newPost, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((res) => {
+        alert("your tab has been created :)");
+        window.location = "/";
+      });
+  } else {
+    let tabValue = document.getElementById("tabField").value;
+    localStorage.setItem("tabValue", tabValue);
+    if (
+      confirm(
+        "Don't worry though, it's easy and free to make an account, and your progress here will be saved. Would you like to make an account now?"
+      )
+    )
+      window.location = "/register";
+  }
+});
 
 //login function, checks for token in local storage
 function loginVerify() {
   if (localStorage.getItem("token") === null) {
-    window.location = "/login" 
     alert("you must be logged in to create a tab, sorry :/") 
+    return false; 
+  } else {
+    return true
   }
+
 }
 
 

@@ -27,6 +27,9 @@ function renderUsername() {
            // console.log(artist, 'this is artist')
 
            // if (artist.artists === null) {
+            if(post.isDraft) {
+              ''
+            } else {
            document.getElementById("renderProfile").innerHTML += `
                 <div class="col s12 m6 l4">
                 <div class="card #424242 grey darken-3 transparent">
@@ -44,6 +47,7 @@ function renderUsername() {
                 </div>
                 </div>
       `;
+            }
 
            //   } else {
            //     document.getElementById('renderProfile').innerHTML += `

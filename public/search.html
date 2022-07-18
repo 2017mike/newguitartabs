@@ -103,7 +103,10 @@
             console.log(data)
             
             data.forEach(post => {
-              if(post.song !== undefined) {
+
+              if (post.isDraft === true) {
+                ''
+              } else if(post.song !== undefined) {
               // console.log(post, 'this is post')
 
               // axios.get(`https://theaudiodb.com/api/v1/json/1/search.php?s=${post.artist}`)

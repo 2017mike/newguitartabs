@@ -8,6 +8,7 @@ Post.init({
   song: DataTypes.STRING,
   artist: DataTypes.STRING,
   body: DataTypes.TEXT,
+  isDraft: DataTypes.BOOLEAN
 
 }, { sequelize, modelName: 'post' })
 

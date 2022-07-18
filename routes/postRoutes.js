@@ -10,7 +10,7 @@ router.get('/posts',
   (req, res) => 
   
   Post.findAll({
- 
+    
 })
   .then(posts => res.json(posts.reverse()))
   .catch(err => console.log(err)))
@@ -51,6 +51,7 @@ router.get("/posts/search/:searchTerm", async(req, res) => {
   }
 
   const totalResults = songPosts.concat(artistPosts).concat(users);
+  console.log(totalResults.length)
   res.json(totalResults);
 });
 
@@ -70,7 +71,8 @@ router.post('/posts', passport.authenticate('jwt'), (req, res) => Post.create({
   song: req.body.song,
   artist: req.body.artist,
   body: req.body.body,
-  uid: req.user.id
+  uid: req.user.id,
+  isDraft: req.body.isDraft
 })
   .then(post => res.json(post))
   .catch(err => console.log(err)))
