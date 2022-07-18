@@ -39,12 +39,16 @@ router.get("/posts/search/:searchTerm", async(req, res) => {
     where: { username: req.params.searchTerm },
   });
 
+  console.log(users)
+
+  if(users !== null) {
   delete users.dataValues.activationKey;
   delete users.dataValues.hash;
   delete users.dataValues.resetPasswordKey;
   delete users.dataValues.salt
   delete users.dataValues.updatedAt;
   delete users.dataValues.verified
+  }
 
   const totalResults = songPosts.concat(artistPosts).concat(users);
   res.json(totalResults);

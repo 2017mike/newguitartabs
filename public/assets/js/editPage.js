@@ -1,13 +1,4 @@
 
-let tabField = document.getElementById('tabField').value
-
-document.getElementById('tabField').addEventListener('input', updateValue)
-
-
-function updateValue(tabfield) {
-  tabField.replace('-', '')
-}
-
 
 let postId = localStorage.getItem('postId')
 
@@ -103,7 +94,3 @@ loginVerify()
 //conditional logic to display sign in or sign out depending on whether user is logged in
 
 
-
-
-
-document.querySelector('.myCreate').addEventListener("keyup", editString);
