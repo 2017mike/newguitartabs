@@ -20,6 +20,10 @@ input[type="text"] {
   display: inline;
 }
 
+.left {
+  float:none !important;
+}
+
 .myBio {
   font-size: 1.4rem;
   text-align: left;

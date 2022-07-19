@@ -11,7 +11,7 @@ const renderCards = () => {
     }
   })
     .then(({ data }) => {
-      console.log(data)
+      // console.log(data)
       
       data.forEach(post => {
 
