@@ -31,7 +31,7 @@ function renderUsername() {
       },
     })
     .then(({ data }) => {
-      console.log(data, "user data");
+      // console.log(data, "user data");
       document.getElementById("myProfileName").innerHTML = `${data.username}`;
       data.bio
         ? (document.getElementById("myBio").innerHTML = `${data.bio}`)
