@@ -40,7 +40,7 @@ document.getElementById("tabField").addEventListener("input", (event) => {
 
 
 
- console.log(event)
+
 
   if(event.inputType === 'insertLineBreak') {
     let tabValue = event.target.value;
@@ -54,7 +54,7 @@ document.getElementById("tabField").addEventListener("input", (event) => {
       tabValue[cursorPosition + 1] == "G" ||
       tabValue[cursorPosition + 1] == "B" 
     ) {
-      console.log(tabValue)
+      // console.log(tabValue)
       document.getElementById("tabField").value = pastTabFieldValue;
 
       // document.getElementById("tabField").value = tabValue;
@@ -76,9 +76,9 @@ document.getElementById("tabField").addEventListener("input", (event) => {
 
     tabValue = tabValue.split("");
 
-    console.log(tabValue[cursorPosition - 1])
-    console.log(tabValue[cursorPosition])
-    console.log(tabValue[cursorPosition+1]);
+    // console.log(tabValue[cursorPosition - 1])
+    // console.log(tabValue[cursorPosition])
+    // console.log(tabValue[cursorPosition+1]);
 
     
 
@@ -93,7 +93,7 @@ document.getElementById("tabField").addEventListener("input", (event) => {
       tabValue[cursorPosition + 1] == "B" 
     ) {
       tabValue.splice(cursorPosition, 0, "--");
-      console.log("spliced!");
+      // console.log("spliced!");
     }
 
     tabValue = tabValue.join('')
@@ -113,9 +113,9 @@ document.getElementById("tabField").addEventListener("input", (event) => {
 
   getCursorPosition();
 
-  console.log(tabValue[cursorPosition - 1]);
-  console.log(tabValue[cursorPosition]);
-  console.log(tabValue[cursorPosition + 1]);
+  // console.log(tabValue[cursorPosition - 1]);
+  // console.log(tabValue[cursorPosition]);
+  // console.log(tabValue[cursorPosition + 1]);
 
   if (tabValue[cursorPosition + 1] === "E"  ||
     tabValue[cursorPosition + 1] === "A" ||
@@ -186,17 +186,17 @@ document.getElementById("tabField").addEventListener("input", (event) => {
         element[0] === "B"
       ) {
         // here we are checking to make sure we are actually in the tab part of the textarea
-        console.log(element)
+        // console.log(element)
         if (element.length < 53) {
           //if we are in the tab part of the textarea, and we find ourselves with less than 53 characters, that means the tab is missing characters. We must add dashes to the end so that we have the correct amount of characters again.
-          console.log(i);
+          // console.log(i);
 
           element = element.split("");
           while (element.length < 53) {
             element.push("-");
           }
           element = element.join("");
-          console.log(tabValue)
+          // console.log(tabValue)
           tabValue.splice(i, 1, element);
           //we are putting the corrected line back into our array, at its original index. we are replacing the old short line with the new longer line
           tabValue = tabValue.join("\n");
@@ -205,7 +205,7 @@ document.getElementById("tabField").addEventListener("input", (event) => {
         }
         else if (element.length > 53) {
           //if we are in the tab part of the textarea, and we find ourselves with less than 53 characters, that means the tab is missing characters. We must add dashes to the end so that we have the correct amount of characters again.
-          console.log(i);
+          // console.log(i);
 
           element = element.split("");
           while (element.length > 53) {
@@ -278,7 +278,7 @@ document.getElementById("create").addEventListener("click", (event) => {
       },
     })
     .then((res) => {
-      console.log(res);
+      // console.log(res);
       alert("your tab has been created :)");
       window.location = "/";
     });

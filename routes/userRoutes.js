@@ -40,19 +40,42 @@ router.get('/user',
 
 
 router.get("/users/:username", passport.authenticate("jwt"), async(req, res) => {
-  console.log(req.params.username)
-  const user =  await User.findOne({where: {
-   username: req.params.username
- }})
 
- console.log(user)
+  const user = await User.findOne({
+    where: {
+      username: req.params.username,
+    },
+    include: [Post]
+  });
 
- const posts = await Post.findAll({
-    where: { uid: user.id },
-  })
+//  console.log(user)
 
-  res.json(posts)
+ const totalResults = {
+   username: user.username,
+   posts: user.posts,
+   bio: user.bio
+ }
+  res.json(totalResults)
   
+})
+
+router.put('/users/bio', passport.authenticate("jwt"), async (req, res) => {
+  try {
+  
+  const bioUpdate = await User.update(req.body, { where: { id: req.user.id } })
+  const updatedUser = await User.findOne({where: {
+    id: req.user.id
+  }})
+
+
+  res.json(updatedUser.bio)
+  }
+  catch {
+    console.log(err)
+    res.json(500)
+  }
+
+
 })
 
 

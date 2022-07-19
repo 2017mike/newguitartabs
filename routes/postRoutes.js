@@ -39,7 +39,7 @@ router.get("/posts/search/:searchTerm", async(req, res) => {
     where: { username: req.params.searchTerm },
   });
 
-  console.log(users)
+  // console.log(users)
 
   if(users !== null) {
   delete users.dataValues.activationKey;
@@ -51,7 +51,7 @@ router.get("/posts/search/:searchTerm", async(req, res) => {
   }
 
   const totalResults = songPosts.concat(artistPosts).concat(users);
-  console.log(totalResults.length)
+  // console.log(totalResults.length)
   res.json(totalResults);
 });
 

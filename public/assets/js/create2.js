@@ -82,7 +82,7 @@ document.getElementById("tabField").addEventListener("input", (event) => {
   //if a user presses the spacebar, and is also within the tab, then we want to cursor to go forward by one but not affect the tab. 
 
   if (inTabCheck(tabValue)) {
-    console.log(event)
+    // console.log(event)
     if(event.data === " ") {
       getCursorPosition()
       document.getElementById("tabField").value = pastTabFieldValue;

@@ -15,10 +15,15 @@ function renderUsername() {
       },
     })
     .then(({ data }) => {
-      // console.log(data, 'user data')
+      console.log(data, 'user data')
       console.log(data)
-      document.getElementById("myProfileName").innerHTML = `${searchTerm}`;
-         data.forEach((post) => {
+      document.getElementById("profileName").innerHTML = data.username
+       document.getElementById("userBio").innerHTML = data.bio
+
+      if(!data.posts) {
+        return
+      }
+         data.posts.forEach((post) => {
            // console.log(post, 'this is post')
 
            // axios.get(`https://theaudiodb.com/api/v1/json/1/search.php?s=${post.artist}`)

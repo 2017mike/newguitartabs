@@ -19,7 +19,7 @@ document.getElementById('mySearch').addEventListener('click', event => {
 })
 
 document.getElementById('mySearchMobile').addEventListener('click', event => {
-  console.log('ping')
+
   document.getElementById('autocomplete-input-mobile').classList.remove('hidden')
 })
 

@@ -73,7 +73,7 @@ document.getElementById('create').addEventListener('click', event => {
     }
   })
     .then(res => {
-      console.log(res)
+      // console.log(res)
       alert('your tab has been edited :)')
       window.location = '/'
     })

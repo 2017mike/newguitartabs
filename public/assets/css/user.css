@@ -14,14 +14,10 @@ body {
 
 
 
-input[type="text"] {
-  font-size: 1.4rem !important;
-  font-family: Cutive Mono, arial;
-  display: inline;
-}
 
-.myBio {
-  font-size: 1.4rem;
+
+.userBio {
+  font-size: 1.7rem;
   text-align: left;
 }
 
