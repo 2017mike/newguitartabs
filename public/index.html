@@ -15,9 +15,9 @@
   <title>tabAngel.io - Home</title>
 
   <style>
-    
 
-    
+
+
   </style>
 </head>
 
@@ -60,9 +60,9 @@
     <li id="signOutNav"></li>
   </ul>
 
-<!-- end of navbar -->
+  <!-- end of navbar -->
 
-<!-- site content  -->
+  <!-- site content  -->
 
   <div class="container">
     <div class="row center">
@@ -74,16 +74,29 @@
     <div class="row" id="renderCards">
     </div>
 
- 
-  
+
+
   </div>
 
-<!-- end of site content -->
-    <script> </script>
+  <!-- end of site content -->
+  <script> </script>
 
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+      if ('serviceWorker' in navigator) {
+          window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js')
+              .then(reg => {
+                console.log('registerd')
+              })
+              .catch(err => {
+                console.log(err)
+              })
+          })
+        }
+  </script>
   <script src="./assets/js/all.js"></script>
   <script src="assets/js/index.js"></script>
 
