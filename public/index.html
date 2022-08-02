@@ -11,7 +11,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/css/index.css">
+  <link rel="stylesheet" href="/assets/css/index.css">
+  <link rel="preload" as="image" href="/assets/images/angel.webp" type="image/webp">
   <title>tabAngel.io - Home</title>
 
   <style>
@@ -85,17 +86,17 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script>
-      if ('serviceWorker' in navigator) {
-          window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/sw.js')
-              .then(reg => {
-                console.log('registerd')
-              })
-              .catch(err => {
-                console.log(err)
-              })
-          })
-        }
+      // if ('serviceWorker' in navigator) {
+      //     window.addEventListener('load', () => {
+      //       navigator.serviceWorker.register('/sw.js')
+      //         .then(reg => {
+      //           console.log('registerd')
+      //         })
+      //         .catch(err => {
+      //           console.log(err)
+      //         })
+      //     })
+      //   }
   </script>
   <script src="./assets/js/all.js"></script>
   <script src="assets/js/index.js"></script>

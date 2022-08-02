@@ -1,16 +1,12 @@
 //function renderCards puts each post (tab) into a card, with a clickable 'view button'. viewbutton contains unique id of the post, and  navigates you to /post/:id. when you go to /post/:id, the id is grabbed from the pathname, then an axios request is made to get that particular post.
 
-if (localStorage.getItem("tabValue")) {
+if (localStorage.getItem("tabValue") && localStorage.getItem("token")) {
   window.location = "/create";
 }
 
 const renderCards = () => {
   axios
-    .get("/api/posts", {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    })
+    .get("/api/posts")
     .then(({ data }) => {
       data.forEach((post) => {
 
