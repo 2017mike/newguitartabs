@@ -34,7 +34,7 @@ router.post("/users/register", async (req, res) => {
       new User({
         username,
         email,
-        resetPasswordKey: resetPasswordKey(10),
+
         // any other properties you need
       }),
       req.body.password,
@@ -110,17 +110,60 @@ router.put("/users/bio", passport.authenticate("jwt"), async (req, res) => {
 
 //route to send email to user who forgot password
 router.post("/users/forgot", async (req, res) => {
+  const newResetPasswordKey = {
+    resetPasswordKey: resetPasswordKey(10),
+  };
+
   const user = await User.findOne({ where: { email: req.body.email } });
+
   if (!user) {
     res.status(404).send("user with that email not found");
     return;
   }
-  const email = await main(user.email, user.resetPasswordKey);
+  const updateUser = await User.update(newResetPasswordKey, {
+    where: { email: req.body.email },
+  });
+  const email = await main(user.email, newResetPasswordKey.resetPasswordKey);
   res
     .status(200)
     .send(
       "An email has been sent! Please make sure to check your spam folder :))"
     );
+});
+
+router.put("/users/password", async (req, res) => {
+  const user = await User.findOne({
+    where: { resetPasswordKey: req.body.resetPasswordKey },
+  });
+
+  if (!user) {
+    res.status(404).send("update password failed. User not found.");
+    return;
+  }
+
+  if (user.username === req.body.username) {
+    User.resetPassword(
+      req.body.username,
+      req.body.newPassword,
+      req.body.resetPasswordKey,
+      (err, user) => {
+        if (err) {
+          console.log(err);
+
+          res
+            .status(500)
+            .send(
+              "an error occurred with updating your password. Please make sure you put all info in correctly"
+            );
+
+          return;
+        } else {
+          res.status(200).send("password successfully changed!");
+          return;
+        }
+      }
+    );
+  }
 });
 
 module.exports = router;
