@@ -1,0 +1,84 @@
+ body {
+   font-family: Cutive Mono, arial;
+   background: #222;
+   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/assets/images/forgotAngel.webp');
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center center;
+   padding-top: 0 !important;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 120vh;
+   padding-right: 0 !important;
+   z-index: 0 !important;
+ }
+
+
+ html {
+   overflow-y: auto;
+ }
+
+ .forgotPasswordParagraph {
+   font-size: 1.5rem;
+ }
+
+
+ .swal2-shown {
+   display: flex;
+   height: 112vh;
+   width: 100vw;
+ }
+
+ .usernameField {
+   font-size: 16px;
+   color: darkgray;
+ }
+
+ .hidden {
+   display: none;
+ }
+
+ .overlay {}
+
+ .loader {
+   border: 16px solid #f3f3f3;
+   /* Light grey */
+   border-top: 16px solid black;
+   /* Blue */
+   border-radius: 50%;
+   width: 120px;
+   height: 120px;
+   animation: spin 2s linear infinite;
+   z-index: 40;
+   margin: 0 auto;
+   position: absolute;
+   top: 30vh;
+ }
+
+ @keyframes spin {
+   0% {
+     transform: rotate(0deg);
+   }
+
+   100% {
+     transform: rotate(360deg);
+   }
+ }
+
+
+ @media screen and (max-width: 830px) {
+   .myFont {
+     font-size: xx-large;
+   }
+ }
+
+
+
+ .myInput {
+   font-family: Cutive Mono, arial;
+ }
+
+ .tenVhSpacer {
+   height: 10vh;
+ }

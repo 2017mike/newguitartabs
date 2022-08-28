@@ -2,6 +2,8 @@ const router = require("express").Router();
 const { User, Post } = require("../models");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
+const main = require("../utils/email");
+const resetPasswordKey = require("../utils/resetPasswordKey");
 
 router.post("/users/register", async (req, res) => {
   const {
@@ -32,6 +34,7 @@ router.post("/users/register", async (req, res) => {
       new User({
         username,
         email,
+        resetPasswordKey: resetPasswordKey(10),
         // any other properties you need
       }),
       req.body.password,
@@ -105,8 +108,19 @@ router.put("/users/bio", passport.authenticate("jwt"), async (req, res) => {
   }
 });
 
-// router.get('/user', (req, res) => {
-//   res.json (req.user.username)
-// }
+//route to send email to user who forgot password
+router.post("/users/forgot", async (req, res) => {
+  const user = await User.findOne({ where: { email: req.body.email } });
+  if (!user) {
+    res.status(404).send("user with that email not found");
+    return;
+  }
+  const email = await main(user.email, user.resetPasswordKey);
+  res
+    .status(200)
+    .send(
+      "An email has been sent! Please make sure to check your spam folder :))"
+    );
+});
 
 module.exports = router;

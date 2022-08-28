@@ -12,7 +12,7 @@ document.getElementById("registerForm").addEventListener("submit", (event) => {
 
   if (!email) {
     console.log(email);
-    alert("you must have email must be to sign up!");
+    alert("you must have an email to sign up!");
     return;
   }
   if (username.length < 5) {

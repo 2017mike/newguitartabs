@@ -6,19 +6,19 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>tabAngel.io- Login</title>
+  <title>tabAngel.io- Forgot Password</title>
   <link rel="stylesheet" href="./assets/css/reset.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/css/register.css">
-  <link rel="stylesheet" href="./assets/css/login.css">
+  <link rel="stylesheet" href="./assets/css/forgot.css">
 
 </head>
 
-<body>
+<body >
+  <div id="loader" class="loader hidden"></div>
   <div class="container">
     <div class="row">
       <div class="col m6  s12 white-text left">
@@ -27,8 +27,9 @@
       </div>
       <div class="z-depth-1 transparent   myLog  col s12 m6 "
         style="display: inline-block; padding: 32px 30px 0px 48px; border: 1px solid #EEE; margin-top: 12px;">
-        <h5 class="white-text center ">Login</h5>
-        <form id="loginForm" class="col s12 ">
+        <p class="white-text forgotPasswordParagraph">Forgot your password? No worries! Enter your e-mail that you used
+          to sign up and we'll send you a link to reset your password.</p>
+        <form id="sendEmailForm" class="col s12 ">
           <div class='row center-align'>
             <div class='col s12'>
             </div>
@@ -36,39 +37,27 @@
           <div class='row'>
             <div class='input-field col s12'>
               <label for='email'></label>
-              <input class='validate white-text myInput' name='email' id='username' />
-              <p class="usernameField">username</p>
+              <input class='validate white-text myInput' name='email' id='email' />
+              <p class="usernameField">e-mail address</p>
             </div>
           </div>
-          <div class='row'>
-            <div class='input-field col s12'>
-              <input class='validate white-text myInput' type='password' name='password' id='password' />
-              <label for='password'></label>
-              <p class="usernameField">password</p>
-            </div>
-          </div>
+
           <br>
           <center>
             <div class='row'>
-              <div class='col s12'></div>
-              <div class='col s12'></div>
-              <div class='col s12'></div>
-              <div class='col s12'></div>
-              <div class='col s12'></div>
-              <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect black' id='login'
-                >Log In</button>
 
-                <div class='col s12'></div>
-                <div class='col s12'></div>
-                <div class='col s12'></div>
-                <div class='col s12'></div>
-                <div class='col s12'></div>
-                <div class='col s12'></div>
+              <button type='submit' name='sendEmailBtn' class='col s12 btn btn-large waves-effect black'
+                id='sendEmail'>Send Email</button>
 
-                <a type='submit' name='btn_login' class='col s12 btn btn-large waves-effect black' id='register'
-                  href="register.html">Create Account</a>
-              <div class="twentyVhSpacer"></div>
-              <div class='col s12'><a href="/forgot.html">forgot password?</a></div>
+              <div class='col s12'></div>
+              <div class='col s12'></div>
+              <div class='col s12'></div>
+              <div class='col s12'></div>
+              <div class='col s12'></div>
+              <div class='col s12'></div>
+
+              <div class="tenVhSpacer"></div>
+              <div class='col s12'><a href="/login">Back to Login</a></div>
 
             </div>
           </center>
@@ -77,9 +66,8 @@
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="assets/js/login.js"></script>
+  <script src="/assets/js/forgot.js"></script>
 
- 
 </body>
 
 </html>
