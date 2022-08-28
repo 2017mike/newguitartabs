@@ -10,8 +10,6 @@ document.getElementById("registerForm").addEventListener("submit", (event) => {
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
 
-  console.log(email);
-
   if (!email) {
     console.log(email);
     alert("you must have email must be to sign up!");
