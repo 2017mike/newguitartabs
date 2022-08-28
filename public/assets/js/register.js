@@ -1,10 +1,41 @@
+function validateEmail(email) {
+  var re =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
+
 document.getElementById("registerForm").addEventListener("submit", (event) => {
   event.preventDefault();
+  const email = document.getElementById("email").value;
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+
+  console.log(email);
+
+  if (!email) {
+    console.log(email);
+    alert("you must have email must be to sign up!");
+    return;
+  }
+  if (username.length < 5) {
+    alert("username must be at least 5 characters");
+    return;
+  }
+  if (password.length < 8) {
+    alert("password must be at least 8 characters to sign up");
+    return;
+  }
+
+  if (!validateEmail(email)) {
+    alert("email must have valid format to sign up");
+    return;
+  }
+
   axios
     .post("/api/users/register", {
-      email: document.getElementById("email").value,
-      username: document.getElementById("username").value,
-      password: document.getElementById("password").value,
+      email,
+      username,
+      password,
     })
     .then((res) => {
       console.log(res);
