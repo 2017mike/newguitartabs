@@ -46,7 +46,7 @@ html {
      
     } */
 
-@media screen and (max-width: 676px) {
+@media screen and (max-width: 836px) {
   .myFont {
     font-size: xx-large;
   }
