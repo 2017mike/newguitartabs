@@ -20,8 +20,6 @@ const setCursorPosition = (pos) => {
   elem.setSelectionRange(pos, pos);
 };
 
-
-
 let pastTabFieldValue = document.getElementById("tabField").value;
 
 document.getElementById("tabField").addEventListener("input", (event) => {
@@ -32,8 +30,6 @@ document.getElementById("tabField").addEventListener("input", (event) => {
   //We will handle return first.
 
   getCursorPosition();
-
-  
 
   // MAIN FUNCTIONALITY
   //check length of each line within tab to see if it has the correct number of dashes. If there is less than or more than 53 then we add or remove dashes to equal 53. This is the main functionality,
@@ -59,7 +55,6 @@ document.getElementById("tabField").addEventListener("input", (event) => {
       // console.log(element);
       if (element.length < 53) {
         //if we are in the tab part of the textarea, and we find ourselves with less than 53 characters, that means the tab is missing characters. We must add dashes to the end so that we have the correct amount of characters again.
-        console.log(i);
 
         element = element.split("");
         while (element.length < 53) {
