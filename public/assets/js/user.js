@@ -1,11 +1,8 @@
-
- console.log(window.location.pathname);
- let terms = window.location.pathname.split("/");
- console.log(terms);
- const searchTerm = terms[2];
- console.log(searchTerm);
-
-
+console.log(window.location.pathname);
+let terms = window.location.pathname.split("/");
+console.log(terms);
+const searchTerm = terms[2];
+console.log(searchTerm);
 
 function renderUsername() {
   axios
@@ -15,72 +12,61 @@ function renderUsername() {
       },
     })
     .then(({ data }) => {
-      console.log(data, 'user data')
-      console.log(data)
-      document.getElementById("profileName").innerHTML = data.username
-       document.getElementById("userBio").innerHTML = data.bio
+      console.log(data, "user data");
+      document.getElementById("profileName").innerHTML = data.username;
+      document.getElementById("userBio").innerHTML = data.bio;
 
-      if(!data.posts) {
-        return
+      if (!data.posts) {
+        return;
       }
-         data.posts.forEach((post) => {
-           // console.log(post, 'this is post')
+      data.posts.forEach((post) => {
+        axios
+          .get(
+            `https://theaudiodb.com/api/v1/json/2/search.php?s=${post.artist}`
+          )
+          .then((res) => {
+            let artist = res.data;
 
-           // axios.get(`https://theaudiodb.com/api/v1/json/1/search.php?s=${post.artist}`)
-           //   .then(res => {
-           //     let artist = res.data
-           // console.log(artist, 'this is artist')
-
-           // if (artist.artists === null) {
-            if(post.isDraft) {
-              ''
-            } else {
-           document.getElementById("renderProfile").innerHTML += `
+            if (artist.artists === null) {
+              document.getElementById("renderProfile").innerHTML += `
                 <div class="col s12 m6 l4">
                 <div class="card #424242 grey darken-3 transparent">
                 <div class="card-image waves-effect">
                 <img class="viewPostImg" src='/assets/images/angel.webp' data-id="${post.id}" alt="image not found">
                 </div>
                 <div class="card-content center-align">
-
                 <span class="card-title activator white-text text-darken-4 myTitle truncate">${post.song} <br> ${post.artist}</span>
                 <a class="waves-effect waves-light btn viewPost black myBtn" data-id="${post.id}">Tab</a>
-            
-                
-           
                 </div>
                 </div>
                 </div>
       `;
+            } else {
+              document.getElementById("renderProfile").innerHTML += `
+
+           <div class="col s12 m6 l4">
+           <div class="card #424242 grey darken-3">
+           <div class="card-image waves-effect">
+           <img  class="viewPostImg" src=${artist.artists[0].strArtistThumb} data-id=${post.id} alt="image not found">
+           </div>
+           <div class="card-content center-align">
+           <span class="card-title  white-text text-darken-4 myTitle truncate">${post.song} <br> ${post.artist}</span>
+           <a class="waves-effect waves-light btn viewPost black myBtn" data-id=${post.id}>Tab</a>
+
+           <a class="waves-effect waves-light btn  orange myBtn editPost" data-id=${post.id}><i class="material-icons editPost" data-id=${post.id}>edit</i></a>
+           <a class="waves-effect waves-light btn deletePost red myBtn" data-id=${post.id}><i data-id=${post.id} class="material-icons deletePost">delete</i></a>
+           </div>
+           </div>
+           `;
             }
-
-           //   } else {
-           //     document.getElementById('renderProfile').innerHTML += `
-
-           // <div class="col s12 m6 l4">
-           // <div class="card #424242 grey darken-3">
-           // <div class="card-image waves-effect">
-           // <img  class="viewPostImg" src=${artist.artists[0].strArtistThumb} data-id=${post.id} alt="image not found">
-           // </div>
-           // <div class="card-content center-align">
-           // <span class="card-title  white-text text-darken-4 myTitle truncate">${post.song} <br> ${post.artist}</span>
-           // <a class="waves-effect waves-light btn viewPost black myBtn" data-id=${post.id}>Tab</a>
-
-           // <a class="waves-effect waves-light btn  orange myBtn editPost" data-id=${post.id}><i class="material-icons editPost" data-id=${post.id}>edit</i></a>
-           // <a class="waves-effect waves-light btn deletePost red myBtn" data-id=${post.id}><i data-id=${post.id} class="material-icons deletePost">delete</i></a>
-           // </div>
-           // </div>
-           // `
-           //   }
-           //end forEach
-           // })
-         });
+            //  end forEach
+          });
+      });
     });
 }
 renderUsername();
 
 //here we render the users' profile by requesting all tabs that the user has created and rendering them in a grid of cards similar to the home page
-
 
 //listener to view post. takes your to /post/post_id. Once you are at post/post_id, a get is performed to that post id and populates the post page.
 document.addEventListener("click", (event) => {

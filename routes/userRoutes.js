@@ -79,11 +79,13 @@ router.get(
       include: [Post],
     });
 
-    //  console.log(user)
+    const publicPosts = await user.posts.filter(
+      (post) => post.isDraft !== true
+    );
 
     const totalResults = {
       username: user.username,
-      posts: user.posts,
+      posts: publicPosts,
       bio: user.bio,
     };
     res.json(totalResults);
