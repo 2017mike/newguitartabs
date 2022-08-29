@@ -52,9 +52,6 @@ function renderUsername() {
            <div class="card-content center-align">
            <span class="card-title  white-text text-darken-4 myTitle truncate">${post.song} <br> ${post.artist}</span>
            <a class="waves-effect waves-light btn viewPost black myBtn" data-id=${post.id}>Tab</a>
-
-           <a class="waves-effect waves-light btn  orange myBtn editPost" data-id=${post.id}><i class="material-icons editPost" data-id=${post.id}>edit</i></a>
-           <a class="waves-effect waves-light btn deletePost red myBtn" data-id=${post.id}><i data-id=${post.id} class="material-icons deletePost">delete</i></a>
            </div>
            </div>
            `;
