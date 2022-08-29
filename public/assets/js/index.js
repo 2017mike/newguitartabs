@@ -9,17 +9,14 @@ const renderCards = () => {
     .get("/api/posts")
     .then(({ data }) => {
       data.forEach((post) => {
-
-        // axios.get(`https://theaudiodb.com/api/v1/json/1/search.php?s=${post.artist}`)
+        // axios.get(`https://theaudiodb.com/api/v1/json/2/search.php?s=${post.artist}`)
         //   .then(res => {
         // let artist = res.data
         // console.log(artist,  'this is artist')
 
         // if (artist.artists === null) {
-        if (post.isDraft === true) {
-          ("");
-        } else {
-          document.getElementById("renderCards").innerHTML += `
+
+        document.getElementById("renderCards").innerHTML += `
 
                 <div class="col s12 m6 l4">
                 <div class="card #424242 grey darken-3 transparent hoverable">
@@ -33,24 +30,23 @@ const renderCards = () => {
                 </div>
                 </div>
                 `;
-          // } else {
-          //   document.getElementById('renderCards').innerHTML += `
+        // } else {
+        //   document.getElementById('renderCards').innerHTML += `
 
-          // <div class="col s12 m6 l4">
-          // <div class="card #424242 grey darken-3 transparent hoverable">
-          // <div class="card-image waves-effect">
-          // <img  class="viewPostImg" src=${artist.artists[0].strArtistThumb} data-id=${post.id} alt="image not found">
-          // </div>
-          // <div class="card-content center-align">
-          // <span class="card-title  white-text text-darken-4 myTitle truncate">${post.song} <br> ${post.artist}</span>
-          // <a class="waves-effect waves-light btn viewPost black myBtn" data-id=${post.id}>Tab</a>
-          // </div>
-          // </div>
-          // `
-          // }
-          //end forEach
-          //     })
-        }
+        // <div class="col s12 m6 l4">
+        // <div class="card #424242 grey darken-3 transparent hoverable">
+        // <div class="card-image waves-effect">
+        // <img  class="viewPostImg" src=${artist.artists[0].strArtistThumb} data-id=${post.id} alt="image not found">
+        // </div>
+        // <div class="card-content center-align">
+        // <span class="card-title  white-text text-darken-4 myTitle truncate">${post.song} <br> ${post.artist}</span>
+        // <a class="waves-effect waves-light btn viewPost black myBtn" data-id=${post.id}>Tab</a>
+        // </div>
+        // </div>
+        // `
+        // }
+        //end forEach
+        //     })
       });
     })
     .catch((err) => console.log(err));
