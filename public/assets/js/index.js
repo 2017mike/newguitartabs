@@ -15,7 +15,6 @@ const renderCards = () => {
           )
           .then((res) => {
             let artist = res.data;
-            console.log(artist, "this is artist");
 
             if (artist.artists === null) {
               document.getElementById("renderCards").innerHTML += `
