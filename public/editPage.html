@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edit Tab</title>
+  <title>Edit</title>
 
   <link rel="stylesheet" href="./assets/css/reset.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -13,13 +13,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/css/editPage.css">
-
+  <link rel="stylesheet" href="./assets/css/create.css">
 </head>
 
 <style>
 
+
+
 </style>
+
 
 <body>
 
@@ -30,9 +32,10 @@
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <li id="homePage"><a href="/">Home</a></li>
+          <!-- <li id="tabs"><a href="/tabs">Tabs</a></li> -->
           <li id="profilePage"><a href="/profile">My Profile</a></li>
-          <li id="createNav"><a href="/create">Create</a></li>
-          <li id="aboutPage" class='active'><a href="/about">About</a></li>
+          <li id="createNav" class='active'><a href="/create">Create</a></li>
+          <li id="aboutPage"><a href="/about">About</a></li>
           <li>
             <div class="input-field white-text">
               <i class="white-text material-icons prefix notActive" id="mySearch">search</i>
@@ -40,7 +43,7 @@
             </div>
           </li>
           <li id="signOutConditional"></li>
-  
+
         </ul>
       </div>
     </nav>
@@ -59,10 +62,7 @@
 
 
 
-  <div class="space">
-  </div>
-  
-
+  <div class="space"></div>
   <div class="myCenter">
     <div class="myContainer">
 
@@ -90,8 +90,15 @@
 
             </div>
 
-            <div class='testPost'>
-
+            <div class="row">
+              <div class="col s12">
+                <!-- <p>
+                <label>
+                  <input id="formatter" type="checkbox" class="filled-in" checked="checked" />
+                  <span>AutoFormatter</span>
+                </label>
+              </p> -->
+              </div>
             </div>
 
 
@@ -111,11 +118,7 @@
               <br>
               <br>
 
-              <p>
-                please make sure all of your string fields have the same amount of characters otherwise they will start
-                doing a
-                weird wrap thing and they won't show up right :(
-              </p>
+
               <br>
 
 
@@ -139,9 +142,7 @@
               <p>
                 Remember that I am still working hard to get this site going so please be patient with me and also
                 please let me know
-                if you encounter any bugs or anything like that... Also it is going to be very hard to tab on mobile so
-                make sure you
-                tab on a computer!!
+                if you encounter any bugs. You can find my contact info in the about page.
               </p>
             </div>
 
@@ -151,22 +152,20 @@
           <br>
 
           <button form='post_form' class="btn waves-effect waves-light black center" type="submit" name="action"
-            id="create">Submit</button>
+            id="create">Publish</button>
+          <button form='post_form' class="btn waves-effect waves-light black center" type="submit" name="action"
+            id="createDraft">Save as Draft</button>
         </div>
       </div>
     </div>
   </div>
 
 
-
-
-
-
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="./assets/js/all.js"></script>
-  <script src="./assets/js/editPage.js"></script>
+  <script src="assets/js/editPage.js"></script>
+
 </body>
 
 
