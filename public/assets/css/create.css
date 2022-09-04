@@ -10,6 +10,12 @@
   background: ghostwhite;
 }
 
+textarea {
+  white-space: pre;
+  overflow-wrap: normal;
+  overflow-x: scroll;
+}
+
 body {
   font-family: Cutive Mono, arial;
 
