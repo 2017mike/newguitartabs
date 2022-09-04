@@ -34,11 +34,11 @@ const startSpace = "­";
 
 //it is easier to visualize with an 'e' and 's' for start and endspace during development. Just make sure that the gibberish you use to test the tab doesn't contain an 'e' and 's' otherwise you will think the code's not working lol
 
-console.log(tenEmptySpaces.length);
-console.log(fiveEmptySpaces.length);
-console.log(fiftyFourEmptySpaces.length);
-console.log(fiftyFiveEmptySpaces.length);
-console.log(fiftySixEmptySpaces.length);
+// console.log(tenEmptySpaces.length);
+// console.log(fiveEmptySpaces.length);
+// console.log(fiftyFourEmptySpaces.length);
+// console.log(fiftyFiveEmptySpaces.length);
+// console.log(fiftySixEmptySpaces.length);
 
 const newTemplateElem = `\n${startSpace}${fiftyFiveEmptySpaces}E----------------------------------------------------\n${fiftyFourEmptySpaces}B----------------------------------------------------\n${fiftyFourEmptySpaces}G----------------------------------------------------\n${fiftyFourEmptySpaces}D----------------------------------------------------\n${fiftyFourEmptySpaces}A----------------------------------------------------\n${fiftySixEmptySpaces}${endSpace}E----------------------------------------------------${endSpace}\n`;
 
@@ -67,7 +67,7 @@ const setCursorPosition = (pos) => {
 //each individual tab can have variable length. This function will be useful for us to check the length of each line of tab.
 const checkTabLength = (singleLine) => {
   //the amount of empty spaces at the beginning of each line of tab is the length of the tab. The default length is 54 but the user may increase it.
-  //lets check here how many empty spaces are at the beginnning of the line
+  //let's check here how many empty spaces are at the beginnning of the line
   let tabLength = 0;
   //we'll start tabLength at zero and increment it
   for (let index = 0; index < singleLine.length; index++) {
@@ -189,11 +189,7 @@ const addTenToCurrentTab = (tabValue) => {
     const newTabValue = tabValue.join("\n");
     document.getElementById("tabField").value = newTabValue;
   }
-
-  // tabValue.splice(currentLineIndex, 1, newLine);
-  // tabValue = tabValue.join("\n");
-  // document.getElementById("tabField").value = tabValue;
-  // setCursorPosition(cursorPosition);
+  return linesAwayFromStart;
 };
 
 //this function is needed because the ending line of each tab must end with the end space. Without this function, a user can backspace normally through the tab, and the endSpace will move back along with the other characters. We don't want that!
@@ -206,7 +202,6 @@ const addEndSpaceToEndLine = (tabValue) => {
     singleLine = singleLine.split("");
     if (singleLine.includes(endSpace)) {
       if (singleLine[singleLine.length - 1] === endSpace) {
-        console.log("its already in the right spot");
         continue;
       }
     }
@@ -218,6 +213,7 @@ let pastTabFieldValue = document.getElementById("tabField").value;
 document.getElementById("tabField").addEventListener("input", (event) => {
   // console.log(event);
   getCursorPosition();
+  console.log(cursorPosition);
 
   let tabValue = document.getElementById("tabField").value;
 
@@ -230,7 +226,44 @@ document.getElementById("tabField").addEventListener("input", (event) => {
   //We also want to add to the number of empty spaces to all the preceding and proceeding lines
   if (inTab) {
     if (event.data === "+") {
-      addTenToCurrentTab(tabValue);
+      let cursorVar = addTenToCurrentTab(tabValue);
+
+      //now let's take out the "+" from the tab
+      let newTabValue = document.getElementById("tabField").value;
+      newTabValue = newTabValue.split("\n");
+      for (let index = 0; index < newTabValue.length; index++) {
+        let singleLine = newTabValue[index];
+        if (singleLine[0] === startSpace || singleLine[0] === emptySpace) {
+          singleLine = singleLine.replace("+", "-");
+          newTabValue.splice(index, 1, singleLine);
+        }
+      }
+      newTabValue = newTabValue.join("\n");
+      document.getElementById("tabField").value = newTabValue;
+
+      //once the lines have been added, we need to set the cursor based on how many lines away from start of the tab it's in. That is why addTenToCurrentTab returns the cursor var. Yes, I know, I should really refactor this so that cursorPosition isn't a global variable. I'm going to get to that but right now I'm just really interested in making this work.
+      switch (cursorVar) {
+        case 0:
+          setCursorPosition(cursorPosition + 5);
+          break;
+        case 1:
+          setCursorPosition(cursorPosition + 15);
+          break;
+        case 2:
+          setCursorPosition(cursorPosition + 25);
+          break;
+        case 3:
+          setCursorPosition(cursorPosition + 35);
+          break;
+        case 4:
+          setCursorPosition(cursorPosition + 45);
+          break;
+        case 5:
+          setCursorPosition(cursorPosition + 55);
+          break;
+      }
+
+      //we also need to set tabValue to the tabField value because tabValue is used later on in the event listener and the tab has changed by running this function.
       tabValue = document.getElementById("tabField").value;
     }
   }
@@ -260,7 +293,6 @@ document.getElementById("tabField").addEventListener("input", (event) => {
       let currentLineLength = checkTabLength(currentLine);
 
       setCursorPosition(cursorPosition + currentLineLength);
-      console.log(cursorPosition + currentLineLength);
       return;
     }
   }
@@ -332,7 +364,6 @@ document.getElementById("tabField").addEventListener("input", (event) => {
         //some more functionality here. We're just handling the case where a user has somehow moved the endSpace (usually through backspacing). We just need to make sure that the ending lines always end with endSpaces otherwise things get wonky real fast.
         if (singleLine.includes(endSpace)) {
           if (singleLine[singleLine.length - 1] !== endSpace) {
-            console.log(singleLine[singleLine.length - 1]);
             //here we are handling what to do when our ending line doesn't actually end with an endSpace. What we are going to do is search through the line, delete any endSpaces that are not at the end, and then add the endSpace at the end.
 
             //why start at Math.ceil(tabLength/2) +1?
@@ -346,7 +377,6 @@ document.getElementById("tabField").addEventListener("input", (event) => {
               const element = singleLine[index];
 
               if (element === endSpace) {
-                console.log(index);
                 singleLine.splice(index, 1);
               }
             }
