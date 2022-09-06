@@ -196,6 +196,10 @@ placeholder {
   width: 0px !important;
 }
 
+.keysHidden {
+  display: none;
+}
+
 /* #autocomplete-input {
   -webkit-transition: all 1s ease;
   -moz-transition: all 1s ease;
