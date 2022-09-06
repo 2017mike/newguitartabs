@@ -8,7 +8,7 @@ if (localStorage.getItem("tabValue")) {
 }
 //this will make our arrows visible for users on mobile. These arrow buttons will be necessary because it is much easier to tab with arrow keys than by tapping on the correct spot on mobile.
 document.getElementById("tabField").addEventListener("focus", (event) => {
-  if (window.innerWidth < 800) {
+  if (window.innerWidth < 1400) {
     document.getElementById("arrows").classList.remove("keysHidden");
   }
 });
@@ -98,7 +98,8 @@ document.getElementById("tabField").addEventListener("input", (event) => {
   if (
     event.inputType === "insertLineBreak" ||
     event.data === "k" ||
-    event.data === "K"
+    event.data === "K" ||
+    event.data === ","
   ) {
     // tabValue = tabValue.split("")
     if (inTabCheck(tabValue)) {
@@ -113,7 +114,7 @@ document.getElementById("tabField").addEventListener("input", (event) => {
     }
   }
 
-  if (event.data === "i" || event.data === "I" || event.data === "@") {
+  if (event.data === "i" || event.data === "I" || event.data === ";") {
     // tabValue = tabValue.split("")
     if (inTabCheck(tabValue)) {
       tabValue = tabValue.split("");
@@ -127,7 +128,7 @@ document.getElementById("tabField").addEventListener("input", (event) => {
     }
   }
 
-  if (event.data === "l" || event.data === "L") {
+  if (event.data === "l" || event.data === "L" || event.data === "?") {
     // tabValue = tabValue.split("")
     if (inTabCheck(tabValue)) {
       tabValue = tabValue.split("");
@@ -141,7 +142,7 @@ document.getElementById("tabField").addEventListener("input", (event) => {
     }
   }
 
-  if (event.data === "j" || event.data === "J") {
+  if (event.data === "j" || event.data === "J" || event.data === ".") {
     // tabValue = tabValue.split("")
     if (inTabCheck(tabValue)) {
       tabValue = tabValue.split("");
