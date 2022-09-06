@@ -95,7 +95,11 @@ document.getElementById("tabField").addEventListener("input", (event) => {
 
   //in the case that a user presses enter, and is also within the tab, we just want their cursor to go down vertically by one line. The tab itself should not be affected.
   //we also want the same functionality for "j". This is because we want mobile users to be able to have
-  if (event.inputType === "insertLineBreak" || event.data === "k") {
+  if (
+    event.inputType === "insertLineBreak" ||
+    event.data === "k" ||
+    event.data === "K"
+  ) {
     // tabValue = tabValue.split("")
     if (inTabCheck(tabValue)) {
       tabValue = tabValue.split("");
@@ -109,7 +113,7 @@ document.getElementById("tabField").addEventListener("input", (event) => {
     }
   }
 
-  if (event.data === "i") {
+  if (event.data === "i" || event.data === "I") {
     // tabValue = tabValue.split("")
     if (inTabCheck(tabValue)) {
       tabValue = tabValue.split("");
@@ -123,7 +127,7 @@ document.getElementById("tabField").addEventListener("input", (event) => {
     }
   }
 
-  if (event.data === "l") {
+  if (event.data === "l" || event.data === "L") {
     // tabValue = tabValue.split("")
     if (inTabCheck(tabValue)) {
       tabValue = tabValue.split("");
@@ -137,7 +141,7 @@ document.getElementById("tabField").addEventListener("input", (event) => {
     }
   }
 
-  if (event.data === "j") {
+  if (event.data === "j" || event.data === "J") {
     // tabValue = tabValue.split("")
     if (inTabCheck(tabValue)) {
       tabValue = tabValue.split("");
