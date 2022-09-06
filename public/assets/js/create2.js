@@ -113,7 +113,7 @@ document.getElementById("tabField").addEventListener("input", (event) => {
     }
   }
 
-  if (event.data === "i" || event.data === "I") {
+  if (event.data === "i" || event.data === "I" || event.data === "@") {
     // tabValue = tabValue.split("")
     if (inTabCheck(tabValue)) {
       tabValue = tabValue.split("");
