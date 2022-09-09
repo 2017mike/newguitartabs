@@ -2,6 +2,15 @@
 <html lang="en">
 
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B4LQVPQJ6V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-B4LQVPQJ6V');
+  </script>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,40 +27,40 @@
 <body>
 
 
-<div class="navbar-fixed">
-  <nav>
-    <div class="nav-wrapper black">
-      <a href="/" class="brand-logo myLogo" id="logoButton">tabAngel.io</a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-        <li id="homePage"><a href="/">Home</a></li>
-        <!-- <li id="tabs"><a href="/tabs">Tabs</a></li> -->
-        <li id="profilePage" class='active'><a href="/profile">My Profile</a></li>
-        <li id="createNav"><a href="/create">Create</a></li>
-        <li id="aboutPage" ><a href="/about">About</a></li>
-        <li>
-          <div class="input-field white-text">
-            <i class="white-text material-icons prefix notActive" id="mySearch">search</i>
-            <input type="text" placeholder="search" id="autocomplete-input" class="autocomplete white-text hidden">
-          </div>
-        </li>
-        <li id="signOutConditional"></li>
+  <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper black">
+        <a href="/" class="brand-logo myLogo" id="logoButton">tabAngel.io</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li id="homePage"><a href="/">Home</a></li>
+          <!-- <li id="tabs"><a href="/tabs">Tabs</a></li> -->
+          <li id="profilePage" class='active'><a href="/profile">My Profile</a></li>
+          <li id="createNav"><a href="/create">Create</a></li>
+          <li id="aboutPage"><a href="/about">About</a></li>
+          <li>
+            <div class="input-field white-text">
+              <i class="white-text material-icons prefix notActive" id="mySearch">search</i>
+              <input type="text" placeholder="search" id="autocomplete-input" class="autocomplete white-text hidden">
+            </div>
+          </li>
+          <li id="signOutConditional"></li>
 
-      </ul>
-    </div>
-  </nav>
-</div>
-<ul class="sidenav" id="mobile-demo" style="width: 50vw;">
-  <li id="homePageNav"><a href="/">Home</a></li>
-  <li id="profilePageNav"><a href="/profile">My Profile</a></li>
-  <li id="createSideNav"><a href="/create">Create</a></li>
-  <li id="aboutPageNav"><a href="/about">About</a></li>
-  <div class="input-field col s6 s12 black-text">
-    <i id="mySearchMobile" class="black-text material-icons prefix notActive">search</i>
-    <input type="text" placeholder="search" id="autocomplete-input-mobile" class="autocomplete black-text hidden">
+        </ul>
+      </div>
+    </nav>
   </div>
-  <li id="signOutNav"></li>
-</ul>
+  <ul class="sidenav" id="mobile-demo" style="width: 50vw;">
+    <li id="homePageNav"><a href="/">Home</a></li>
+    <li id="profilePageNav"><a href="/profile">My Profile</a></li>
+    <li id="createSideNav"><a href="/create">Create</a></li>
+    <li id="aboutPageNav"><a href="/about">About</a></li>
+    <div class="input-field col s6 s12 black-text">
+      <i id="mySearchMobile" class="black-text material-icons prefix notActive">search</i>
+      <input type="text" placeholder="search" id="autocomplete-input-mobile" class="autocomplete black-text hidden">
+    </div>
+    <li id="signOutNav"></li>
+  </ul>
 
   <div class="container">
     <div class="row center infoRow">
@@ -77,4 +86,5 @@
     <script src="assets/js/myProfile.js"></script>
 
 </body>
+
 </html>
