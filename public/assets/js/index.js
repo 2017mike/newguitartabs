@@ -16,7 +16,7 @@ const renderCards = () => {
           .then((res) => {
             let artist = res.data;
 
-            if (artist.artists === null) {
+            if (artist.artists == null) {
               document.getElementById("renderCards").innerHTML += `
 
                 <div class="col s12 m6 l4">
