@@ -27,7 +27,7 @@ function renderUsername() {
           .then((res) => {
             let artist = res.data;
 
-            if (artist.artists === null) {
+            if (artist.artists == null) {
               document.getElementById("renderProfile").innerHTML += `
                 <div class="col s12 m6 l4">
                 <div class="card #424242 grey darken-3 transparent">
