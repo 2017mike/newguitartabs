@@ -68,29 +68,23 @@ router.get("/user", passport.authenticate("jwt"), (req, res) =>
     .catch((err) => console.log(err))
 );
 
-router.get(
-  "/users/:username",
-  passport.authenticate("jwt"),
-  async (req, res) => {
-    const user = await User.findOne({
-      where: {
-        username: req.params.username,
-      },
-      include: [Post],
-    });
+router.get("/users/:username", async (req, res) => {
+  const user = await User.findOne({
+    where: {
+      username: req.params.username,
+    },
+    include: [Post],
+  });
 
-    const publicPosts = await user.posts.filter(
-      (post) => post.isDraft !== true
-    );
+  const publicPosts = await user.posts.filter((post) => post.isDraft !== true);
 
-    const totalResults = {
-      username: user.username,
-      posts: publicPosts,
-      bio: user.bio,
-    };
-    res.json(totalResults);
-  }
-);
+  const totalResults = {
+    username: user.username,
+    posts: publicPosts,
+    bio: user.bio,
+  };
+  res.json(totalResults);
+});
 
 router.put("/users/bio", passport.authenticate("jwt"), async (req, res) => {
   try {

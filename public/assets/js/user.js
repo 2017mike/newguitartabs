@@ -5,30 +5,22 @@ const searchTerm = terms[2];
 console.log(searchTerm);
 
 function renderUsername() {
-  axios
-    .get(`/api/users/${searchTerm}`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    })
-    .then(({ data }) => {
-      console.log(data, "user data");
-      document.getElementById("profileName").innerHTML = data.username;
-      document.getElementById("userBio").innerHTML = data.bio;
+  axios.get(`/api/users/${searchTerm}`).then(({ data }) => {
+    console.log(data, "user data");
+    document.getElementById("profileName").innerHTML = data.username;
+    document.getElementById("userBio").innerHTML = data.bio;
 
-      if (!data.posts) {
-        return;
-      }
-      data.posts.forEach((post) => {
-        axios
-          .get(
-            `https://theaudiodb.com/api/v1/json/2/search.php?s=${post.artist}`
-          )
-          .then((res) => {
-            let artist = res.data;
+    if (!data.posts) {
+      return;
+    }
+    data.posts.forEach((post) => {
+      axios
+        .get(`https://theaudiodb.com/api/v1/json/2/search.php?s=${post.artist}`)
+        .then((res) => {
+          let artist = res.data;
 
-            if (artist.artists == null) {
-              document.getElementById("renderProfile").innerHTML += `
+          if (artist.artists == null) {
+            document.getElementById("renderProfile").innerHTML += `
                 <div class="col s12 m6 l4">
                 <div class="card #424242 grey darken-3 transparent">
                 <div class="card-image waves-effect">
@@ -41,8 +33,8 @@ function renderUsername() {
                 </div>
                 </div>
       `;
-            } else {
-              document.getElementById("renderProfile").innerHTML += `
+          } else {
+            document.getElementById("renderProfile").innerHTML += `
 
            <div class="col s12 m6 l4">
            <div class="card #424242 grey darken-3">
@@ -55,11 +47,11 @@ function renderUsername() {
            </div>
            </div>
            `;
-            }
-            //  end forEach
-          });
-      });
+          }
+          //  end forEach
+        });
     });
+  });
 }
 renderUsername();
 
@@ -72,15 +64,6 @@ document.addEventListener("click", (event) => {
     window.location = `/post/${event.target.dataset.id}`;
   }
 });
-
-//verify user is logged in to view profile, otherwise send them to login page
-function loginVerify() {
-  if (localStorage.getItem("token") === null) {
-    window.location = "/login";
-  }
-}
-
-loginVerify();
 
 //listener to delete post
 document.addEventListener("click", (event) => {
