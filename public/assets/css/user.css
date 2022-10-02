@@ -1,7 +1,8 @@
 body {
   font-family: Cutive Mono, arial;
   background: #222;
-  background: linear-gradient(rgba(0, 0, 0, 0.764), rgba(0, 0, 55, 0.3)), url('/assets/images/creepyAngel.webp');
+  background: linear-gradient(rgba(0, 0, 0, 0.764), rgba(0, 0, 55, 0.3)),
+    url("/assets/images/creepyAngel.webp");
   background-size: cover;
   background-position: center center;
   padding-top: 0px !important;
@@ -10,11 +11,6 @@ body {
   padding-right: 0 !important;
   z-index: 0 !important;
 }
-
-
-
-
-
 
 .userBio {
   font-size: 1.7rem;
@@ -41,12 +37,6 @@ body {
   font-size: 16px !important;
 }
 
-
-
-
-
-
-
 .nav-wrapper {
   background-color: black;
 }
@@ -59,8 +49,6 @@ body {
   background-position: top !important;
   height: 300px;
 }
-
-
 
 @media screen and (max-width: 434px) {
   .myLogo {
@@ -76,7 +64,6 @@ body {
   .card-image {
     background-position: top !important;
     height: 220px;
-
   }
 
   .card-title {
@@ -85,7 +72,6 @@ body {
 
   .card-content {
     padding: 0px !important;
-
   }
 
   .card-title {
@@ -96,7 +82,6 @@ body {
     font-size: 10px;
   }
 }
-
 
 @media screen and (max-width: 1200px) {
   .card {
@@ -155,7 +140,6 @@ body {
   .myBtn {
     font-size: 10px !important;
   }
-
 }
 
 @media screen and (max-width: 600px) {
@@ -186,7 +170,6 @@ body {
   .card-image {
     background-position: top !important;
     height: auto;
-
   }
 }
 
@@ -208,7 +191,6 @@ body {
 }
 
 /* search animation css start */
-
 
 .showNav {
   -webkit-transition: all 1s ease;
@@ -234,10 +216,27 @@ body {
   transition: all 1s ease;
 }
 
+.input-field {
+  width: 90%;
+}
+
+#autocomplete-input {
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.css-transitions-only-after-page-load * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
+}
+
 .notActive {
   background-color: transparent !important;
 }
-
-
 
 /* search animation end */

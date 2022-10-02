@@ -13,7 +13,12 @@ const renderCards = () => {
     })
     .then(({ data }) => {
       console.log(data);
-
+      if (data[0] == null) {
+        document.getElementById("renderCards").innerHTML = `
+        <h2 class="white-text center">Sorry! Nothing matched your search :( </h2>
+        `;
+        return;
+      }
       data.forEach((post) => {
         if (post.isDraft === true) {
           ("");

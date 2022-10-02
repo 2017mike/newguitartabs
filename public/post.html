@@ -23,21 +23,14 @@
   <style>
     body {
       font-family: Cutive Mono, arial;
-      /* background-color: #222; */
       background: url("/assets/images/posbackground.jpeg");
-      /* background-color: black; */
-
       background-size: cover;
       background-position: center center;
       padding-top: 0px !important;
       display: flex;
-      /* justify-content: center;
-        align-items: center; */
-      /* height: 120vh; */
       white-space: nowrap;
       padding-right: 0 !important;
       z-index: 0 !important;
-
     }
 
     @media screen and (max-width: 434px) {
@@ -181,6 +174,10 @@
       width: 0px !important;
     }
 
+    .input-field {
+      width: 90%;
+    }
+
     #autocomplete-input {
       -webkit-transition: all 1s ease;
       -moz-transition: all 1s ease;
@@ -189,6 +186,7 @@
     }
 
     #autocomplete-input-mobile {
+      box-shadow: none;
       -webkit-transition: all 1s ease;
       -moz-transition: all 1s ease;
       -o-transition: all 1s ease;
@@ -213,7 +211,7 @@
 <body>
 
 
-  <div class="navbar-fixed">
+  <div class="navbar-fixed css-transitions-only-after-page-load">
     <nav>
       <div class="nav-wrapper black">
         <a href="/" class="brand-logo myLogo" id="logoButton">tabAngel.io</a>
@@ -265,6 +263,9 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="/assets/js/all.js"></script>
   <script src="/assets/js/post.js"></script>
 </body>
 

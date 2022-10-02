@@ -76,7 +76,7 @@ body {
 
 .myContainer {
   animation: showUp 0.5s cubic-bezier(0.18, 1.3, 1, 1) forwards;
-  background: rgba(255, 255, 255, .99);
+  background: rgba(255, 255, 255, 0.99);
   /* width: 90vw; */
   justify-content: center;
   display: flex;
@@ -84,7 +84,7 @@ body {
 }
 
 .myCreate {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   height: 40vh;
   width: 100%;
   font-size: 18px;
@@ -126,7 +126,6 @@ body {
   }
 }
 
-
 @media screen and (max-width: 550px) {
   .myCreate {
     font-size: 15px;
@@ -145,13 +144,11 @@ body {
   }
 }
 
-
 @media screen and (max-width: 445px) {
   .myCreate {
     font-size: 12px;
   }
 }
-
 
 @media screen and (max-width: 415px) {
   .myCreate {
@@ -182,7 +179,6 @@ placeholder {
 
 /* search animation css start */
 
-
 .showNav {
   -webkit-transition: all 1s ease;
   -moz-transition: all 1s ease;
@@ -205,12 +201,16 @@ placeholder {
   margin-left: 5%;
 }
 
-/* #autocomplete-input {
+.input-field {
+  width: 90%;
+}
+
+#autocomplete-input {
   -webkit-transition: all 1s ease;
   -moz-transition: all 1s ease;
   -o-transition: all 1s ease;
   transition: all 1s ease;
-} */
+}
 
 #autocomplete-input-mobile {
   -webkit-transition: all 1s ease;
@@ -219,10 +219,16 @@ placeholder {
   transition: all 1s ease;
 }
 
+.css-transitions-only-after-page-load * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
+}
+
 .notActive {
   background-color: transparent !important;
 }
-
-
 
 /* search animation end */
