@@ -1,13 +1,13 @@
-$(document).ready(function () {
-  $(".css-transitions-only-after-page-load").each(function (index, element) {
-    setTimeout(function () {
-      $(element).removeClass("css-transitions-only-after-page-load");
-    }, 10);
-  });
-});
+//need this code to fix css transition bug. Transition runs on page load instead of on clicking search button without this fix.
+setTimeout(function () {
+  const transitionClass = document.querySelector(
+    ".css-transitions-only-after-page-load"
+  );
+  if (transitionClass)
+    transitionClass.classList.remove("css-transitions-only-after-page-load");
+}, 10);
 
 //this is for hamburger, signout and navbar buttons
-
 //for hamburger menu
 document.addEventListener("DOMContentLoaded", function () {
   var elems = document.querySelectorAll(".sidenav");
