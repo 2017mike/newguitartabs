@@ -1,4 +1,3 @@
-
 const showBioInput = () => {
   document.getElementById("bioInput").classList.remove("hidden1");
 };
@@ -63,9 +62,9 @@ document.addEventListener("keydown", (event) => {
         showBioParagraph();
         M.toast({ html: "Bio successfully updated" });
       })
-      .catch(err=> {
+      .catch((err) => {
         M.toast({ html: "Failed to updated bio :( Try again later" });
-      })
+      });
   }
 });
 
@@ -89,15 +88,18 @@ const renderProfile = () => {
     .then(({ data }) => {
       data.forEach((post) => {
         if (post.isDraft !== true) {
-          // console.log(post, 'this is post')
+          console.log(post, "this is post");
 
-          // axios.get(`https://theaudiodb.com/api/v1/json/1/search.php?s=${post.artist}`)
-          //   .then(res => {
-          //     let artist = res.data
-          // console.log(artist, 'this is artist')
+          axios
+            .get(
+              `https://theaudiodb.com/api/v1/json/523532/search.php?s=${post.artist}`
+            )
+            .then((res) => {
+              let artist = res.data;
+              console.log(artist, "this is artist");
 
-          // if (artist.artists === null) {
-          document.getElementById("renderProfile").innerHTML += `
+              if (artist.artists == null) {
+                document.getElementById("renderProfile").innerHTML += `
                 <div class="col s12 m6 l4">
                 <div class="card #424242 grey darken-3 transparent">
                 <div class="card-image waves-effect">
@@ -113,27 +115,26 @@ const renderProfile = () => {
                 </div>
                 </div>
       `;
+              } else {
+                document.getElementById("renderProfile").innerHTML += `
 
-          //   } else {
-          //     document.getElementById('renderProfile').innerHTML += `
+          <div class="col s12 m6 l4">
+          <div class="card #424242 grey darken-3">
+          <div class="card-image waves-effect">
+          <img  class="viewPostImg" src=${artist.artists[0].strArtistThumb} data-id=${post.id} alt="image not found">
+          </div>
+          <div class="card-content center-align">
+          <span class="card-title  white-text text-darken-4 myTitle truncate">${post.song} <br> ${post.artist}</span>
+          <a class="waves-effect waves-light btn viewPost black myBtn" data-id=${post.id}>Tab</a>
 
-          // <div class="col s12 m6 l4">
-          // <div class="card #424242 grey darken-3">
-          // <div class="card-image waves-effect">
-          // <img  class="viewPostImg" src=${artist.artists[0].strArtistThumb} data-id=${post.id} alt="image not found">
-          // </div>
-          // <div class="card-content center-align">
-          // <span class="card-title  white-text text-darken-4 myTitle truncate">${post.song} <br> ${post.artist}</span>
-          // <a class="waves-effect waves-light btn viewPost black myBtn" data-id=${post.id}>Tab</a>
-
-          // <a class="waves-effect waves-light btn  orange myBtn editPost" data-id=${post.id}><i class="material-icons editPost" data-id=${post.id}>edit</i></a>
-          // <a class="waves-effect waves-light btn deletePost red myBtn" data-id=${post.id}><i data-id=${post.id} class="material-icons deletePost">delete</i></a>
-          // </div>
-          // </div>
-          // `
-          //   }
-          //end forEach
-          // })
+          <a class="waves-effect waves-light btn  orange myBtn editPost" data-id=${post.id}><i class="material-icons editPost" data-id=${post.id}>edit</i></a>
+          <a class="waves-effect waves-light btn deletePost red myBtn" data-id=${post.id}><i data-id=${post.id} class="material-icons deletePost">delete</i></a>
+          </div>
+          </div>
+          `;
+              }
+              // end forEach
+            });
         } else {
           document.getElementById("renderDrafts").innerHTML += `
                 <div class="col s12 m6 l4">
