@@ -14,7 +14,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edit</title>
+  <title>Create</title>
 
   <link rel="stylesheet" href="./assets/css/reset.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -73,90 +73,67 @@
 
 
 
-  <div class="space"></div>
-  <div class="myCenter">
-    <div class="myContainer">
-
+  <div class="myContainer">
+    <div class="containerLg">
       <div class="row">
-        <div class="col m10 offset-m1">
-          <form method="GET" id='post_form'>
+        <form method="GET" id='post_form'>
 
-            <div class="row">
-              <div class="input-field col s12">
-                <textarea id="songName" class="materialize-textarea validate black-text" placeholder="Song Name"
-                  style="font-size: 18px; font-family: Cutive Mono, arial;"></textarea>
-                <label for="textarea1"></label>
-
-              </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea id="songName" class="materialize-textarea validate white-text songName" placeholder="Song Name"
+                style="font-size: 18px; font-family: Cutive Mono, arial;"></textarea>
+              <label for="textarea1"></label>
 
             </div>
 
-            <div class="row">
-              <div class="input-field col s12">
-                <textarea id="artistName" class="materialize-textarea validate black-text" placeholder="Artist"
-                  style="font-size: 18px; font-family: Cutive Mono, arial;"></textarea>
-                <label for="textarea1"></label>
+          </div>
 
-              </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea id="artistName" class="materialize-textarea validate white-text" placeholder="Artist"
+                style="font-size: 18px; font-family: Cutive Mono, arial;"></textarea>
+              <label for="textarea1"></label>
 
             </div>
 
-            <div class="row">
-              <div class="col s12">
-              </div>
+          </div>
+
+          <div class="row">
+            <div class="col s12">
             </div>
-            <div class="row">
-              <div class="input-field col s12 ">
-                <textarea name="" id="tabField" cols="30" rows="30" class="myCreate black-text ">
+          </div>
+          <div class="row">
+            <div id="arrows" class="keysHidden keysInfo">
+              You can use ";" or "i" as a substitute for the up arrow key! Try it out:)</p>
+            </div>
+
+            <div class="input-field col s12 ">
+              <textarea name="" id="tabField" cols="30" rows="30" class="myCreate">
         </textarea>
-                <label for="textarea1"></label>
-              </div>
-              <button class=" center" id="newTemplate">New Empty Template</button>
-              <button class="center" id="clearTemplate">Clear</button>
-              <br>
-              <br>
-              <br>
-              <p>
+              <label for="textarea1"></label>
 
-                New Empty Template just adds an empty 6-string template. It doesn't delete what you've already tabbed
-                out!! Try it out! </p>
-              <br>
-
-              <p>
-                Clear does delete what you have so far so keep that in mind!
-              </p>
-              <br>
-              <p>
-                You can actually add whatever info you want in the tab field, it will just save as is. It doesn't have
-                to be strictly
-                tab!!You could add your YouTube tutorial link or even your Venmo I'm not here to judge!!
-
-              </p>
-              <br>
-              <p>
-                Remember that I am still working hard to get this site going so please be patient with me and also
-                please let me know
-                if you encounter any bugs. You can find my contact info in the about page.
-              </p>
             </div>
+            <button class="btn-small waves-effect waves-light black center mlOne" id="newTemplate">New Empty
+              Template</button>
+            <button class="btn-small waves-effect waves-light black center" id="clearTemplate">Clear</button>
 
-          </form>
-
-          <br>
-          <br>
-
-          <button form='post_form' class="btn waves-effect waves-light black center" type="submit" name="action"
-            id="create">Publish</button>
-          <button form='post_form' class="btn waves-effect waves-light black center" type="submit" name="action"
-            id="createDraft">Save as Draft</button>
-        </div>
+          </div>
+        </form>
+        <br>
+        <br>
+        <button form='post_form' class="btn waves-effect waves-light black center mlOne marginOne" type="submit"
+          name="action" id="create">Publish</button>
+        <button form='post_form' class="btn waves-effect waves-light black center" type="submit" name="action"
+          id="createDraft">Save as Draft</button>
       </div>
     </div>
+  </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+  <script src="./assets/js/all.js"></script>
   <script src="assets/js/editPage.js"></script>
 
 </body>

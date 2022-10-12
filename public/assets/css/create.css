@@ -1,28 +1,13 @@
-.container {
-  outline: auto;
-  font-family: Cutive Mono, arial;
-  padding-top: 5%;
-  padding: 2%;
-  margin-top: 1%;
-  background-color: black;
-  position: static !important;
-
-  background: ghostwhite;
-}
-
 body {
   font-family: Cutive Mono, arial;
-
   background: ghost-white;
-  /* background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('https://cdn.pixabay.com/photo/2016/01/09/17/15/cherub-1130585_1280.jpg'); */
+  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url("https://cdn.pixabay.com/photo/2016/01/09/17/15/cherub-1130585_1280.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  padding-top: 0 !important;
-
-  display: flex;
-
-  height: 150vh;
+  /* padding-top: 0 !important;
+  height: 100vh; */
   padding-right: 0 !important;
   z-index: 0 !important;
 }
@@ -42,6 +27,14 @@ body {
 
 .row {
   margin-bottom: 0px !important;
+}
+
+.input-field .songName {
+  margin-top: 5vh;
+}
+
+.input-field {
+  color: white;
 }
 
 @media screen and (max-width: 806px) {
@@ -64,6 +57,14 @@ body {
   margin-left: 1%;
 }
 
+.mlOne {
+  margin-left: 1rem;
+}
+
+.mtOne {
+  margin-top: 1rem;
+}
+
 @keyframes showUp {
   0% {
     transform: scale(0);
@@ -77,10 +78,11 @@ body {
 .myContainer {
   animation: showUp 0.5s cubic-bezier(0.18, 1.3, 1, 1) forwards;
   background: rgba(255, 255, 255, 0.99);
-  /* width: 90vw; */
-  justify-content: center;
-  display: flex;
-  align-items: center;
+  width: 100vw;
+  color: white;
+  background-color: rgb(23, 23, 23);
+  height: 100vh;
+  opacity: 0.91;
 }
 
 .myCreate {
@@ -88,6 +90,15 @@ body {
   height: 40vh;
   width: 100%;
   font-size: 18px;
+  color: white;
+  outline: none;
+}
+
+@media screen and (min-width: 601px) {
+  .containerLg {
+    padding-left: 8vw;
+    padding-right: 8vw;
+  }
 }
 
 @media screen and (max-width: 805px) {
@@ -166,10 +177,6 @@ body {
   .myCreate {
     font-size: 9px;
   }
-}
-
-placeholder {
-  color: black;
 }
 
 .myCenter {
