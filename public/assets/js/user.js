@@ -15,51 +15,43 @@ function renderUsername() {
     }
     data.posts.forEach((post) => {
       axios
-        .get("/api/posts")
-        .then(({ data }) => {
-          data.forEach((post) => {
-            axios
-              .get(
-                `https://theaudiodb.com/api/v1/json/523532/search.php?s=${post.artist}`
-              )
-              .then((res) => {
-                let artist = res.data;
+        .get(
+          `https://theaudiodb.com/api/v1/json/523532/search.php?s=${post.artist}`
+        )
+        .then((res) => {
+          let artist = res.data;
 
-                if (artist.artists == null) {
-                  document.getElementById("renderProfile").innerHTML += `
-
+          if (artist.artists == null) {
+            document.getElementById("renderProfile").innerHTML += `
                 <div class="col s12 m6 l4">
-                <div class="card #424242 grey darken-3 transparent hoverable">
+                <div class="card #424242 grey darken-3 transparent">
                 <div class="card-image waves-effect">
-                <img class="viewPostImg" src='/assets/images/angel.webp' data-id=${post.id} alt="image of an angel">
+                <img class="viewPostImg" src='/assets/images/angel.webp' data-id="${post.id}" alt="image not found">
                 </div>
                 <div class="card-content center-align">
-
                 <span class="card-title activator white-text text-darken-4 myTitle truncate">${post.song} <br> ${post.artist}</span>
-                <a class="waves-effect waves-light btn viewPost black myBtn"  data-id=${post.id}>Tab</a>
+                <a class="waves-effect waves-light btn viewPost black myBtn" data-id="${post.id}">Tab</a>
                 </div>
                 </div>
-                `;
-                } else {
-                  document.getElementById("renderProfile").innerHTML += `
+                </div>
+      `;
+          } else {
+            document.getElementById("renderProfile").innerHTML += `
 
-        <div class="col s12 m6 l4">
-        <div class="card #424242 grey darken-3 transparent hoverable">
-        <div class="card-image waves-effect">
-        <img  class="viewPostImg" src=${artist.artists[0].strArtistThumb} data-id=${post.id} alt="image not found">
-        </div>
-        <div class="card-content center-align">
-        <span class="card-title  white-text text-darken-4 myTitle truncate">${post.song} <br> ${post.artist}</span>
-        <a class="waves-effect waves-light btn viewPost black myBtn" data-id=${post.id}>Tab</a>
-        </div>
-        </div>
-        `;
-                }
-                // end forEach
-              });
-          });
-        })
-        .catch((err) => console.log(err));
+           <div class="col s12 m6 l4">
+           <div class="card #424242 grey darken-3">
+           <div class="card-image waves-effect">
+           <img  class="viewPostImg" src=${artist.artists[0].strArtistThumb} data-id=${post.id} alt="image not found">
+           </div>
+           <div class="card-content center-align">
+           <span class="card-title  white-text text-darken-4 myTitle truncate">${post.song} <br> ${post.artist}</span>
+           <a class="waves-effect waves-light btn viewPost black myBtn" data-id=${post.id}>Tab</a>
+           </div>
+           </div>
+           `;
+          }
+          //  end forEach
+        });
     });
   });
 }
