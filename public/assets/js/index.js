@@ -14,7 +14,6 @@ const renderCards = () => {
             `https://theaudiodb.com/api/v1/json/523532/search.php?s=${post.artist}`
           )
           .then((res) => {
-            console.log(res);
             let artist = res.data;
 
             if (artist.artists == null) {
