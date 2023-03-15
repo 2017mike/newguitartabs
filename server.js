@@ -7,10 +7,6 @@ const { User } = require("./models");
 const { Strategy: JWTStrategy, ExtractJwt } = require("passport-jwt");
 const app = express();
 
-app.use(express.static(join(__dirname, "public")));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
 app.use((req, res, next) => {
   if (req.headers["x-forwarded-proto"] !== "https") {
     res.redirect(`https://${req.headers.host}${req.url}`);
@@ -18,6 +14,10 @@ app.use((req, res, next) => {
     next();
   }
 });
+
+app.use(express.static(join(__dirname, "public")));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use(passport.initialize());
 app.use(passport.session());
