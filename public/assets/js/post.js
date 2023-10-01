@@ -55,3 +55,9 @@ document.addEventListener("DOMContentLoaded", function () {
   var elems = document.querySelectorAll("select");
   var instances = M.FormSelect.init(elems, {});
 });
+
+function closeDonationBar() {
+  const donationBar = document.getElementById("donation-bar");
+  donationBar.classList.add("closed");
+  console.log("Donation bar closed.");
+}
