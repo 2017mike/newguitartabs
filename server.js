@@ -7,13 +7,14 @@ const { User } = require("./models");
 const { Strategy: JWTStrategy, ExtractJwt } = require("passport-jwt");
 const app = express();
 
-app.use((req, res, next) => {
-  if (req.headers["x-forwarded-proto"] !== "https") {
-    res.redirect(`https://${req.headers.host}${req.url}`);
-  } else {
+if (process.env.NODE_ENV === "production") {
+  app.use((req, res, next) => {
+    if (req.headers["x-forwarded-proto"] !== "https") {
+      return res.redirect(`https://${req.headers.host}${req.url}`);
+    }
     next();
-  }
-});
+  });
+}
 
 app.use(express.static(join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
