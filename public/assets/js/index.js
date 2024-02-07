@@ -18,19 +18,16 @@ const renderCards = () => {
 
             if (artist.artists == null) {
               document.getElementById("renderCards").innerHTML += `
-
                 <div class="col s12 m6 l4">
                 <div class="card #424242 grey darken-3 transparent hoverable">
                 <div class="card-image waves-effect">
                 <img class="viewPostImg" src='/assets/images/angel.webp' data-id=${post.id} alt="image of an angel">
                 </div>
                 <div class="card-content center-align">
-
                 <span class="card-title activator white-text text-darken-4 myTitle truncate">${post.song} <br> ${post.artist}</span>
                 <a class="waves-effect waves-light btn viewPost black myBtn"  data-id=${post.id}>Tab</a>
                 </div>
-                </div>
-                `;
+                </div>`;
             } else {
               document.getElementById("renderCards").innerHTML += `
 
@@ -47,10 +44,37 @@ const renderCards = () => {
         `;
             }
             // end forEach
+          })
+          .catch((err) => {
+            console.log(err);
+            document.getElementById("renderCards").innerHTML += `
+                <div class="col s12 m6 l4">
+                <div class="card #424242 grey darken-3 transparent hoverable">
+                <div class="card-image waves-effect">
+                <img class="viewPostImg" src='/assets/images/angel.webp' data-id=${post.id} alt="image of an angel">
+                </div>
+                <div class="card-content center-align">
+                <span class="card-title activator white-text text-darken-4 myTitle truncate">${post.song} <br> ${post.artist}</span>
+                <a class="waves-effect waves-light btn viewPost black myBtn"  data-id=${post.id}>Tab</a>
+                </div>
+                </div>`;
           });
       });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      document.getElementById("renderCards").innerHTML += `
+                <div class="col s12 m6 l4">
+                <div class="card #424242 grey darken-3 transparent hoverable">
+                <div class="card-image waves-effect">
+                <img class="viewPostImg" src='/assets/images/angel.webp' data-id=${post.id} alt="image of an angel">
+                </div>
+                <div class="card-content center-align">
+                <span class="card-title activator white-text text-darken-4 myTitle truncate">${post.song} <br> ${post.artist}</span>
+                <a class="waves-effect waves-light btn viewPost black myBtn"  data-id=${post.id}>Tab</a>
+                </div>
+                </div>`;
+    });
 };
 
 renderCards();
